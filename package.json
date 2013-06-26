@@ -1,0 +1,19 @@
+{
+  "name": "dicuss",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Christoffer Niska",
+      "email": "christoffer.niska@gmail.com",
+      "homepage": "http://www.cniska.net/"
+    }
+  ],
+  "license": "Proprietary",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "~0.6.1",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-closure-compiler": "0.0.18"
+  }
+}

@@ -1,0 +1,40 @@
+@import "bootstrap";
+
+@import "controllers/site";
+@import "controllers/room";
+@import "controllers/thread";
+
+@import "widgets/markitup";
+@import "widgets/grid-view";
+
+@media(min-width: 980px) {
+  #page {
+    padding-top: 60px;
+  }
+}
+
+a {
+  &[href="#"] {
+    color: @textColor;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.permalink {
+    font-weight: bold;
+  }
+}
+
+.create-button {
+  margin-bottom: 20px;
+}
+
+.markitup-widget {
+  max-width: 702px;
+}
+
+#emoticons {
+  margin-top: 20px;
+}

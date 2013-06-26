@@ -1,0 +1,22 @@
+# phpstorm project directory
+.idea/*
+
+# yii runtime directories
+app/runtime/*
+web/assets/*
+web/files/*
+
+# composer
+vendor/*
+composer*
+
+# npm
+node_modules/*
+web/css/*
+web/js/*
+
+# local configuration
+local.php
+
+# env file
+app/config/environments/env
