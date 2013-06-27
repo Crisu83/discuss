@@ -8,7 +8,6 @@ web/files/*
 
 # composer
 vendor/*
-composer*
 
 # npm
 node_modules/*

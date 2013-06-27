@@ -82,7 +82,7 @@ class ThreadController extends Controller
 		if($request->isPostRequest)
 		{
 			$model->attributes = $request->getPost('Thread');
-			$model->body = app()->bbcodeParser->bbcode2html($model->body);
+			$model->body = app()->bbcodeParser->parse($model->body);
 			if ($model->save())
 			{
                 user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread for {subject} created.', array(
@@ -108,7 +108,7 @@ class ThreadController extends Controller
         if($request->isPostRequest)
         {
             $model->attributes = $request->getPost('Thread');
-			$model->body = Yii::app()->bbcodeParser->bbcode2html($model->body);
+            $model->body = app()->bbcodeParser->parse($model->body);
 			if ($model->save())
 			{
                 user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread {subject} updated.', array(

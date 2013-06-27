@@ -7,7 +7,7 @@ return array(
 	'name' => 'Keskustelu',
 
 	// application language
-	'language' => 'fi',
+	//'language' => 'fi',
 
 	// path aliases
 	'aliases' => array(
@@ -20,10 +20,11 @@ return array(
 
 	// paths to import
 	'import' => array(
-		'application.helpers.*',
-		'application.models.ar.*',
-		'application.models.form.*',
-		'application.components.*',
+        'app.behaviors.*',
+        'app.components.*',
+        'app.helpers.*',
+        'app.models.ar.*',
+        'app.models.form.*',
 		'vendor.nordsoftware.yii-audit.models.*',
 	),
 
@@ -43,29 +44,7 @@ return array(
 		),
 		*/
         'bbcodeParser' => array(
-            'class' => 'ext.bbcode.BBCodeParser',
-            'customToHtml'=>array(
-                array('/:\)/'=>'<img src="images/emoticons/emotion-happy.png" />'),
-                array('/:\(/'=>'<img src="images/emoticons/emotion-unhappy.png" />'),
-                array('/;\)/'=>'<img src="images/emoticons/emotion-wink.png" />'),
-                array('/:P/'=>'<img src="images/emoticons/emotion-tongue.png" />'),
-                array('/X\)/'=>'<img src="images/emoticons/emotion-waii.png" />'),
-                array('/:D/'=>'<img src="images/emoticons/emotion-smile.png" />'),
-                array('/XD/'=>'<img src="images/emoticons/emotion-grin.png" />'),
-                array('/:E/'=>'<img src="images/emoticons/emotion-evilgrin.png" />'),
-                array('/:O/'=>'<img src="images/emoticons/emotion-surprised.png" />'),
-            ),
-            'customFromHtml'=>array(
-                array('/\<img src="(.*?)emotion-happy.png" \/\>/'=>':)'),
-                array('/\<img src="(.*?)emotion-unhappy.png" \/\>/'=>':('),
-                array('/\<img src="(.*?)emotion-wink.png" \/\>/'=>';)'),
-                array('/\<img src="(.*?)emotion-tongue.png" \/\>/'=>';P'),
-                array('/\<img src="(.*?)emotion-waii.png" \/\>/'=>'X)'),
-                array('/\<img src="(.*?)emotion-smile.png" \/\>/'=>':D'),
-                array('/\<img src="(.*?)emotion-grin.png" \/\>/'=>'XD'),
-                array('/\<img src="(.*?)emotion-evilgrin.png" \/\>/'=>':E'),
-                array('/\<img src="(.*?)emotion-surprised.png" \/\>/'=>':O'),
-            ),
+            'class' => 'ext.bbcode.components.BBCodeParser',
         ),
 		'db' => array(
 			'connectionString' => 'mysql:host=localhost;dbname=discuss',
@@ -92,12 +71,12 @@ return array(
 					'class' => 'CFileLogRoute',
 					'levels' => 'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
 				array(
-					'class'=>'CWebLogRoute',
+					'class' => 'CDbLogRoute',
+                    'connectionID' => 'db',
+                    'logTableName' => 'log',
+                    'levels' => 'error, warning',
 				),
-				*/
 			),
 		),
 	),

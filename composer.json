@@ -1,0 +1,40 @@
+{
+	"name": "crisu83/discuss",
+	"keywords": ["yii", "application"],
+	"homepage": "https://github.com/Crisu83/discuss",
+	"type": "application",
+	"license": "Proprietary",
+	"authors": [
+		{
+			"name": "Christoffer Niska",
+			"email": "christoffer.niska@gmail.com",
+			"homepage": "http://www.cniska.net"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://packages.phundament.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.3.2",
+		"yiisoft/yii": "1.1.13",
+		"crisu83/yii-configbuilder": "dev-master",
+		"crisu83/yii-debug": "dev-master",
+		"crisu83/yii-extension": "dev-master",
+		"crisu83/yii-filemanager": "dev-master",
+		"crisu83/yii-imagemanager": "dev-master",
+		"crisu83/yii-seo": "dev-master",
+        "crisu83/yiistrap": "dev-master",
+        "malyshev/yii-debug-toolbar": "dev-master",
+		"nordsoftware/yii-audit": "dev-master",
+        "phpnode/yiipassword": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"config": "./app"
+		}
+	}
+}

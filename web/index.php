@@ -6,7 +6,7 @@ require_once($debugger);
 
 Debugger::init(__DIR__ . '/../app/runtime/debug');
 
-$yii = __DIR__ . '/../vendor/yiisoft/yii/framework/yii.php';
+$yii = __DIR__ . '/../vendor/yiisoft/yii/framework/' . (YII_DEBUG ? 'yii.php' : 'yiilite.php');
 $global = __DIR__ . '/../app/helpers/global.php';
 $builder = __DIR__ . '/../vendor/crisu83/yii-configbuilder/helpers/ConfigBuilder.php';
 
