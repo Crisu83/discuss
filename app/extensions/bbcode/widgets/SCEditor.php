@@ -96,12 +96,6 @@ class SCEditor extends CInputWidget
             'source' => array('icon' => 'code'),
         );
         $options = !empty($this->options) ? CJavaScript::encode($this->options) : '';
-        $cs->registerScript(__CLASS__ . '#' . $id, "(function($) {
-            var textarea = $('#{$id}');
-            textarea.sceditor($options);
-            var instance = textarea.sceditor('instance');
-            var html = textarea.text().replace(/<img alt=\"(.*?)\".*?>/, \"$1\");
-            instance.val(instance.toBBCode(html));
-        })(jQuery);");
+        $cs->registerScript(__CLASS__ . '#' . $id, "$('#{$id}').sceditor($options);");
     }
 }

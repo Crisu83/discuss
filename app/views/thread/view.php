@@ -26,7 +26,7 @@ $this->breadcrumbs = array(
             </div>
             <div class="span10">
                 <div class="thread-right">
-                    <?php echo $model->body; ?>
+                    <?php echo app()->bbcodeParser->parse($model->body); ?>
                 </div>
             </div>
         </div>

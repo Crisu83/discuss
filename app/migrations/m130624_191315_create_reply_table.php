@@ -1,10 +1,10 @@
 <?php
 
-class m130624_191315_create_comment_table extends CDbMigration
+class m130624_191315_create_reply_table extends CDbMigration
 {
 	public function up()
 	{
-        $this->execute("CREATE TABLE `comment` (
+        $this->execute("CREATE TABLE `reply` (
           `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
           `threadId` INT UNSIGNED NOT NULL,
           `alias` VARCHAR(255) NOT NULL,

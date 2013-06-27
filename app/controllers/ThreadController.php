@@ -55,6 +55,8 @@ class ThreadController extends Controller
 	 */
 	public function actionView($id)
 	{
+		stren();
+
 		$model = $this->loadModel($id);
 
         Statistic::create(array(
@@ -82,7 +84,6 @@ class ThreadController extends Controller
 		if($request->isPostRequest)
 		{
 			$model->attributes = $request->getPost('Thread');
-			$model->body = app()->bbcodeParser->parse($model->body);
 			if ($model->save())
 			{
                 user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread for {subject} created.', array(
@@ -108,7 +109,6 @@ class ThreadController extends Controller
         if($request->isPostRequest)
         {
             $model->attributes = $request->getPost('Thread');
-            $model->body = app()->bbcodeParser->parse($model->body);
 			if ($model->save())
 			{
                 user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread {subject} updated.', array(
@@ -131,7 +131,7 @@ class ThreadController extends Controller
 
 		if (Yii::app()->user->isAdmin)
 		{
-			Yii::app()->user->setFlash(WebUser::FLASH_SUCCESS,t('flash','Topic deleted.'));
+			Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_WARNING, t('flash', 'Thread deleted.'));
 			$model->delete();
 			$this->redirect(array('//discuss'));
 		}

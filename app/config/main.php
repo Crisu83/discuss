@@ -12,7 +12,7 @@ return array(
 	// path aliases
 	'aliases' => array(
 		'app' => 'application',
-		'vendor' => '../vendor',
+		'vendor' => realpath(__DIR__ . '/../../vendor'),
 	),
 
 	// components to preload
@@ -53,7 +53,15 @@ return array(
 			'charset' => 'utf8',
 		),
 		'errorHandler' => array(
+			'class' => 'ext.coalmine.components.CoalmineErrorHandler',
 			'errorAction' => 'site/error',
+			'config' => array(
+				'signature' => 'd9ab0f63ce2668718d1857946dc5497ccde517ef',
+				'environment' => 'development',
+				'enabledEnvironments' => array('development'),
+				'framework' => 'Yii',
+				'version' => '1.0.0',
+			),
 		),
 		'fileManager' => array(
 			'class' => 'vendor.crisu83.yii-filemanager.components.FileManager',
