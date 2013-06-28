@@ -8,6 +8,11 @@
         'layout'=>TbHtml::FORM_LAYOUT_VERTICAL,
         'id'=>ThreadController::FORM_ID,
         'enableAjaxValidation'=>true,
+        'enableClientValidation'=>true,
+        'clientOptions'=>array(
+            'validateOnChange'=>true,
+            'validateOnSubmit'=>true,
+        ),
     )); ?>
 
         <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE)); ?>

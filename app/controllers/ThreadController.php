@@ -59,6 +59,9 @@ class ThreadController extends Controller
 		$model = $this->loadModel($id);
         $reply = new Reply;
         $reply->threadId = $model->id;
+
+        $this->performAjaxValidation($reply, ReplyController::FORM_ID);
+
         $request = request();
         if ($request->isPostRequest)
         {
