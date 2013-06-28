@@ -20,15 +20,15 @@
 
 	<div class="container" id="page">
 
-        <?php $this->widget('TbAlert'); ?>
-
 		<?php if(!empty($this->breadcrumbs)):?>
-		<?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
-			'links'=>$this->breadcrumbs,
-		)); ?>
+            <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                'links'=>$this->breadcrumbs,
+            )); ?>
 		<?php endif?>
 
-		<?php echo $content; ?>
+        <?php $this->widget('TbAlert'); ?>
+
+        <?php echo $content; ?>
 
 	</div>
 </body>

@@ -17,39 +17,39 @@
 /**
 * This is the model class for table "<?php echo $tableName; ?>".
 *
-* The followings are the available columns in table '<?php echo $tableName; ?>':
+* The followings are the available columns:
 <?php foreach($columns as $column): ?>
 * @property <?php echo $column->type.' $'.$column->name."\n"; ?>
 <?php endforeach; ?>
 <?php if(!empty($relations)): ?>
 *
-* The followings are the available model relations:
-    <?php foreach($relations as $name=>$relation): ?>
+* The followings are the available relations:
+<?php foreach($relations as $name=>$relation): ?>
 * @property <?php
-        if (preg_match("~^array\(self::([^,]+), '([^']+)', '([^']+)'\)$~", $relation, $matches))
-        {
-            $relationType = $matches[1];
-            $relationModel = $matches[2];
+    if (preg_match("~^array\(self::([^,]+), '([^']+)', '([^']+)'\)$~", $relation, $matches))
+    {
+        $relationType = $matches[1];
+        $relationModel = $matches[2];
 
-            switch($relationType){
-                case 'HAS_ONE':
-                    echo $relationModel.' $'.$name."\n";
-                    break;
-                case 'BELONGS_TO':
-                    echo $relationModel.' $'.$name."\n";
-                    break;
-                case 'HAS_MANY':
-                    echo $relationModel.'[] $'.$name."\n";
-                    break;
-                case 'MANY_MANY':
-                    echo $relationModel.'[] $'.$name."\n";
-                    break;
-                default:
-                    echo 'mixed $'.$name."\n";
-            }
+        switch($relationType){
+            case 'HAS_ONE':
+                echo $relationModel.' $'.$name."\n";
+                break;
+            case 'BELONGS_TO':
+                echo $relationModel.' $'.$name."\n";
+                break;
+            case 'HAS_MANY':
+                echo $relationModel.'[] $'.$name."\n";
+                break;
+            case 'MANY_MANY':
+                echo $relationModel.'[] $'.$name."\n";
+                break;
+            default:
+                echo 'mixed $'.$name."\n";
         }
-        ?>
-    <?php endforeach; ?>
+    }
+    ?>
+<?php endforeach; ?>
 <?php endif; ?>
 */
 class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
@@ -141,9 +141,9 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 foreach ($columns as $name => $column)
 {
     if($column->type==='string')
-        echo "\t\t\$criteria->compare('$name',\$this->$name,true);\n";
+        echo "\t\t\$criteria->compare('$name', \$this->$name, true);\n";
     else
-        echo "\t\t\$criteria->compare('$name',\$this->$name);\n";
+        echo "\t\t\$criteria->compare('$name', \$this->$name);\n";
 }
 ?>
 

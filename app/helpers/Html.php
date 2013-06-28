@@ -16,11 +16,12 @@ class Html extends CHtml
             'language' => 'fi',
             'cssFile'=>baseUrl('css/main.css'),
             'options' => array(
-                'toolbar' => 'bold,italic,underline|link|quote|emoticon|source',
-                'resizeEnabled' => false,
-                'enablePasteFiltering' => true,
                 'autoExpand' => true,
                 'autoUpdate' => true,
+                'emoticonsCompat' => true,
+                'enablePasteFiltering' => true,
+                'resizeEnabled' => false,
+                'toolbar' => 'bold,italic,underline|link|quote|emoticon|source',
             ),
         ));
         $input = ob_get_clean();

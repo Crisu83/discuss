@@ -9,9 +9,9 @@ require_once(__DIR__ . '/../lib/sbbcodeparser/SBBCodeParser.php');
 class BBCodeParser extends CApplicationComponent
 {
     /**
-     * @var array additional emoticons (shorthand=>url).
+     * @var array additional emoticons (code=>url).
      */
-    public $emoticons;
+    public $emoticons = array();
 
     /**
      * @var array the default emoticons.
@@ -50,8 +50,7 @@ class BBCodeParser extends CApplicationComponent
         ':wassat:'      => 'emoticons/wassat.png',
     );
 
-    /** @var SBBCodeParser_Document */
-    private $_parser;
+    private $_assetsUrl;
 
     /**
      * Initializes the component.
@@ -59,10 +58,6 @@ class BBCodeParser extends CApplicationComponent
     public function init()
     {
         $this->attachBehavior('ext', new ComponentBehavior);
-        $this->_parser = new SBBCodeParser_Document(true, false);
-        $assetsUrl = $this->publishAssets(__DIR__ . '/../assets');
-        $this->_parser->set_base_uri($assetsUrl . '/');
-        $this->_parser->add_emoticons(array_merge($this->_defaultEmoticons, $this->_defaultEmoticons));
     }
 
     /**
@@ -72,10 +67,24 @@ class BBCodeParser extends CApplicationComponent
      */
     public function parse($bbCode)
     {
-        return $this->_parser->parse($bbCode)
+        $parser = new SBBCodeParser_Document(true, false);
+        $parser->set_base_uri($this->getAssetsUrl() . '/');
+        $parser->add_emoticons(array_merge($this->_defaultEmoticons, $this->emoticons));
+        return  $parser->parse($bbCode)
             ->detect_links()
             ->detect_emails()
             ->detect_emoticons()
             ->get_html();
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getAssetsUrl()
+    {
+        if (isset($this->_assetsUrl))
+            return $this->_assetsUrl;
+        else
+            return $this->_assetsUrl = $this->publishAssets(__DIR__ . '/../assets');
     }
 }

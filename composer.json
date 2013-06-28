@@ -30,7 +30,8 @@
         "crisu83/yiistrap": "dev-master",
         "malyshev/yii-debug-toolbar": "dev-master",
 		"nordsoftware/yii-audit": "dev-master",
-        "phpnode/yiipassword": "dev-master"
+        "phpnode/yiipassword": "dev-master",
+		"phundament/gii-template-collection": "dev-master"
 	},
 	"autoload": {
 		"psr-0": {

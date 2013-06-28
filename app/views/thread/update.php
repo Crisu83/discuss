@@ -1,6 +1,6 @@
 <?php
-/* @var $this ThreadController */
-/* @var $model Thread */
+/* @var ThreadController $this */
+/* @var Thread $model */
 ?>
 <div class="thread-controller update-action">
     <h1>

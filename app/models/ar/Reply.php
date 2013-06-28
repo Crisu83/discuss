@@ -13,7 +13,7 @@
  * The followings are the available relations for table 'comment':
  * @property Thread $thread
  */
-class Reply extends ActiveRecord
+class Reply extends AuditActiveRecord
 {
     const STATUS_REPORTED = -2;
 
@@ -41,12 +41,11 @@ class Reply extends ActiveRecord
 	public function rules()
 	{
 		return array_merge(parent::rules(), array(
-			array('threadId, alias, body, status', 'required'),
+			array('threadId, alias, body', 'required'),
 			array('threadId, status', 'numerical', 'integerOnly'=>true),
-			array('alias', 'length', 'max'=>255),
+			array('alias, subject', 'length', 'max'=>255),
 			array('threadId, status', 'length', 'max'=>10),
-            array('body','filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),
-            array('id, threadId, alias, body, status', 'safe', 'on'=>'search'),
+            array('id, threadId, alias, subject, body, status', 'safe', 'on'=>'search'),
 		));
 	}
 
@@ -100,4 +99,30 @@ class Reply extends ActiveRecord
 	{
 		return $this->thread->getUrl(array('#' => 'post-'.$this->id));
 	}
+
+    public function buttonToolbar()
+    {
+        $buttons = array();
+        $buttons[] = TbHtml::linkButton(t('replyButton', 'Quote'), array(
+            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+            'url' => '#',
+            'class' => 'reply-button',
+        ));
+        if (!user()->isGuest)
+        {
+            $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
+                'url' => array('reply/update', 'id' => $this->id),
+                'rel' => 'tooltip',
+                'title' => t('replyTitle', 'Edit post'),
+                'class' => 'reply-button',
+            ));
+            $buttons[] = TbHtml::linkButton(TbHtml::icon('remove'), array(
+                'url' => array('reply/delete', 'id' => $this->id),
+                'rel' => 'tooltip',
+                'title' => t('replyTitle', 'Delete post'),
+                'class' => 'reply-button',
+            ));
+        }
+        return implode(' ', $buttons);
+    }
 }

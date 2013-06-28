@@ -13,6 +13,7 @@
  */
 class Statistic extends ActiveRecord
 {
+    // Statistics actions.
     const ACTION_VIEW = 'view';
 
     /**
@@ -44,22 +45,23 @@ class Statistic extends ActiveRecord
         ));
     }
 
+    /**
+     * Creates a statistics record.
+     * @param array $attributes the attributes.
+     * @param bool $allowMultiple whether multiple occurrences are allowed.
+     * @return boolean whether the record was saved.
+     */
     public static function create($attributes, $allowMultiple = false)
     {
         $model = Statistic::model()->findByAttributes($attributes);
         if ($model === null || $allowMultiple)
         {
+            $attributes['createdAt'] = sqlDateTime();
             $model = new Statistic();
             foreach ($attributes as $name => $value)
                 $model->$name = $value;
-            $model->createdAt = sqlDateTime();
-            return $model->save(true, $attributes);
+            return $model->save(true, array_keys($attributes));
         }
         return false;
-    }
-
-    public static function calculateCount($attributes)
-    {
-        return Statistic::model()->countByAttributes($attributes);
     }
 }

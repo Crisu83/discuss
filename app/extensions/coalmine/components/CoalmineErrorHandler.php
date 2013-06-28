@@ -2,6 +2,23 @@
 
 Yii::setPathOfAlias('Coalmine', __DIR__ . '/../lib/Coalmine');
 
+/**
+ * Coalmine error handler.
+ *
+ * Example configuration:
+ *
+ * 'errorHandler' => array(
+ *    'class' => 'ext.coalmine.components.CoalmineErrorHandler',
+ *    'errorAction' => 'site/error',
+ *    'config' => array(
+ *       'signature' => '<insert your application signature here>',
+ *       'environment' => 'development',
+ *       'enabledEnvironments' => array('development'),
+ *       'framework' => 'Yii',
+ *       'version' => '1.0.0',
+ *    ),
+ * ),
+ */
 class CoalmineErrorHandler extends CErrorHandler
 {
 	/**
@@ -83,7 +100,7 @@ class CoalmineErrorHandler extends CErrorHandler
 	}
 
 	/**
-	 * @return Coalmine_Configuration
+	 * @return \Coalmine\Configuration
 	 */
 	protected function _getConfiguration()
 	{
@@ -93,7 +110,10 @@ class CoalmineErrorHandler extends CErrorHandler
 			return $this->_configuration = new \Coalmine\Configuration;
 	}
 
-	protected function _getSender()
+    /**
+     * @return \Coalmine\Sender
+     */
+    protected function _getSender()
 	{
 		if (isset($this->_sender))
 			return $this->_sender;
@@ -107,7 +127,7 @@ class CoalmineErrorHandler extends CErrorHandler
 	 * @param null $file
 	 * @param null $line
 	 * @param array $context
-	 * @return Coalmine_Error
+	 * @return \Coalmine\Error
 	 */
 	protected function _exceptionFromError($type, $message, $file = null, $line = null, $context = array())
 	{

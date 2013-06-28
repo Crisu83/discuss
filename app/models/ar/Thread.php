@@ -84,7 +84,6 @@ class Thread extends AuditActiveRecord
 			array('alias, subject', 'length', 'max'=>255),
 			array('roomId, status', 'length', 'max'=>10),
             array('lastActivityAt', 'safe'),
-            array('body','filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),
             array('id, roomId, alias, subject, body, pinned, locked, status', 'safe', 'on'=>'search'),
 		));
 	}
@@ -205,14 +204,9 @@ class Thread extends AuditActiveRecord
     public function buttonToolbar()
     {
         $buttons = array();
-        $buttons[] = TbHtml::linkButton(t('threadButton', 'Reply'), array(
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'url' => array('view', 'id'=>$this->id),
-            'class' => 'thread-button',
-        ));
         $buttons[] = TbHtml::linkButton(t('threadButton', 'Quote'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'url' => array('view', 'id'=>$this->id),
+            'url' => '#',
             'class' => 'thread-button',
         ));
         if (!user()->isGuest)
@@ -230,12 +224,6 @@ class Thread extends AuditActiveRecord
                 'class' => 'thread-button',
             ));
         }
-        $buttons[] = TbHtml::linkButton(TbHtml::icon('exclamation'), array(
-            'url' => array('view', 'id'=>$this->id),
-            'rel' => 'tooltip',
-            'title' => t('threadTitle', 'Report post'),
-            'class' => 'thread-button',
-        ));
         return implode(' ', $buttons);
     }
 

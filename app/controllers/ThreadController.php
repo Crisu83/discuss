@@ -23,7 +23,8 @@ class ThreadController extends Controller
 	{
 		return array(
 			array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
-			'accessControl',
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -34,19 +35,19 @@ class ThreadController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',
-				'actions'=>array('view','create','captcha'),
-				'users'=>array('*'),
-			),
-			array('allow',
-				'actions'=>array('update','delete'),
-				'users'=>array('@'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+        return array(
+            array('allow',
+                'actions' => array('view', 'create'),
+                'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array('update', 'delete'),
+                'users' => array('@'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
 	}
 
 	/**
@@ -55,9 +56,26 @@ class ThreadController extends Controller
 	 */
 	public function actionView($id)
 	{
-		stren();
-
 		$model = $this->loadModel($id);
+        $reply = new Reply;
+        $reply->threadId = $model->id;
+        $request = request();
+        if ($request->isPostRequest)
+        {
+            $reply->attributes = $request->getPost('Reply');
+            if ($reply->save())
+            {
+                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('replyFlash', 'Post created.'));
+                $this->redirect($model->getUrl());
+            }
+        }
+
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('threadId=:threadId');
+        $criteria->params = array(':threadId'=>$model->id);
+        $replies = new CActiveDataProvider('Reply', array(
+            'criteria' => $criteria,
+        ));
 
         Statistic::create(array(
             'action' => Statistic::ACTION_VIEW,
@@ -68,6 +86,8 @@ class ThreadController extends Controller
 
 		$this->render('view', array(
 			'model' => $model,
+            'reply' => $reply,
+            'replies' => $replies,
 		));
 	}
 
@@ -86,7 +106,7 @@ class ThreadController extends Controller
 			$model->attributes = $request->getPost('Thread');
 			if ($model->save())
 			{
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread for {subject} created.', array(
+                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('threadFlash', 'Thread for {subject} created.', array(
                     '{subject}' => '<b>' . $model->subject . '</b>',
                 )));
 				$this->redirect($model->room->getUrl(array('id' => $model->roomId)));
@@ -127,16 +147,11 @@ class ThreadController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$model = $this->loadModel($id);
+        $this->loadModel($id)->delete();
 
-		if (Yii::app()->user->isAdmin)
-		{
-			Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_WARNING, t('flash', 'Thread deleted.'));
-			$model->delete();
-			$this->redirect(array('//discuss'));
-		}
-		else
-			throw new CHttpException(404,t('core','Access denied.'));
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if (!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**

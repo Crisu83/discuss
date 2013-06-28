@@ -1,5 +1,9 @@
 <?php
 
+Yii::import('vendor.crisu83.yii-extension.behaviors.WidgetBehavior', true);
+
+use \crisu83\yii_extension\behaviors\WidgetBehavior;
+
 class SCEditor extends CInputWidget
 {
     /**
@@ -37,11 +41,7 @@ class SCEditor extends CInputWidget
     public function init()
     {
         parent::init();
-        $this->attachBehavior('widget', array(
-            'class' => 'WidgetBehavior',
-            'forceCopyAssets' => $this->forceCopyAssets,
-            'debug' => $this->debug,
-        ));
+        $this->attachBehavior('widget', new WidgetBehavior);
     }
 
     /**
@@ -64,19 +64,17 @@ class SCEditor extends CInputWidget
         else
             echo CHtml::textArea($name, $this->value, $this->htmlOptions);
 
-        $assetsUrl = $this->getAssetsUrl(__DIR__ . '/../assets');
+        $assetsUrl = $this->publishAssets(__DIR__ . '/../assets', $this->forceCopyAssets);
 
         /* @var CClientScript $cs */
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript('jquery');
         if (isset($this->theme))
-            $cs->registerCssFile($assetsUrl . '/css/themes/' . $this->resolveScriptVersion($this->theme . '.css'));
-        $cs->registerScriptFile($assetsUrl . '/js/' . $this->resolveScriptVersion('jquery.sceditor.js'), CClientScript::POS_END);
-        $cs->registerScriptFile($assetsUrl . '/js/plugins/' . $this->resolveScriptVersion($this->plugin . '.js'), CClientScript::POS_END);
-        $cs->registerScriptFile($assetsUrl . '/js/' . $this->resolveScriptVersion('jquery.sceditor.bbcode.js'), CClientScript::POS_END);
+            $cs->registerCssFile($assetsUrl . '/css/themes/' . $this->_resolveScriptVersion($this->theme . '.css'));
+        $cs->registerScriptFile($assetsUrl . '/js/' . $this->_resolveScriptVersion('jquery.sceditor.bbcode.js'), CClientScript::POS_END);
         if (isset($this->language))
         {
-            $cs->registerScriptFile($assetsUrl . '/js/languages/' . $this->resolveScriptVersion($this->language . '.js'), CClientScript::POS_END);
+            $cs->registerScriptFile($assetsUrl . '/js/languages/' . $this->language . '.js', CClientScript::POS_END);
             $this->options['locale'] = $this->language;
         }
         if (isset($this->cssFile))
@@ -84,7 +82,6 @@ class SCEditor extends CInputWidget
         $this->options['plugins'] = $this->plugin;
         $this->options['width'] = '100%';
         $this->options['height'] = '200px';
-        $this->options['emoticonsCompat'] = true;
         $this->options['emoticonsRoot'] = $assetsUrl . '/';
         $this->options['commands'] = array(
             'bold' => array('icon' => 'bold'),
@@ -97,5 +94,10 @@ class SCEditor extends CInputWidget
         );
         $options = !empty($this->options) ? CJavaScript::encode($this->options) : '';
         $cs->registerScript(__CLASS__ . '#' . $id, "$('#{$id}').sceditor($options);");
+    }
+
+    protected function _resolveScriptVersion($filename)
+    {
+        return $this->resolveScriptVersion($filename, !$this->debug);
     }
 }

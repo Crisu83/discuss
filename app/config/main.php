@@ -9,6 +9,8 @@ return array(
 	// application language
 	//'language' => 'fi',
 
+    'timeZone' => 'Europe/Helsinki',
+
 	// path aliases
 	'aliases' => array(
 		'app' => 'application',
@@ -22,6 +24,7 @@ return array(
 	'import' => array(
         'app.behaviors.*',
         'app.components.*',
+        'app.controllers.*',
         'app.helpers.*',
         'app.models.ar.*',
         'app.models.form.*',

@@ -3,8 +3,26 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1d7927ccaff6b68daeb58b9cf62834ff",
+    "hash": "9c2a5609b2902c6103817480ea3b96c6",
     "packages": [
+        {
+            "name": "crisu83/yii-bootstrap",
+            "version": "1.2.0",
+            "source": {
+                "type": "hg",
+                "url": "https://bitbucket.org/Crisu83/yii-bootstrap",
+                "reference": "524486d5ecedd42d8a0d5e3e8756a16ca4e2b3e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/Crisu83/yii-bootstrap/get/524486d5ec.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "Bootstrap is an extension for the Yii PHP framework that provides a wide range of server-side widgets that allow you to easily use Twitter's Bootstrap together with Yii.",
+            "homepage": "http://www.cniska.net/yii-bootstrap"
+        },
         {
             "name": "crisu83/yii-configbuilder",
             "version": "dev-master",
@@ -197,12 +215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3"
+                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
-                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
+                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -227,7 +245,26 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-06-26 14:42:37"
+            "time": "2013-06-27 19:14:50"
+        },
+        {
+            "name": "ifdattic/echosen",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ifdattic/EChosen.git",
+                "reference": "97c235df2640342074bf5902190bc74720890ce7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ifdattic/EChosen/archive/97c235df2640342074bf5902190bc74720890ce7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "Yii extension which adds Chosen JavaScript plugin.",
+            "homepage": "https://github.com/ifdattic/EChosen",
+            "time": "2013-04-11 00:01:58"
         },
         {
             "name": "imagine/imagine",
@@ -306,12 +343,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-audit.git",
-                "reference": "0fdfdaf2ab54851d9c663b830c045251eaf8b3dd"
+                "reference": "84c651882febbb82d7a0779739fb33523953a473"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-audit/zipball/0fdfdaf2ab54851d9c663b830c045251eaf8b3dd",
-                "reference": "0fdfdaf2ab54851d9c663b830c045251eaf8b3dd",
+                "url": "https://api.github.com/repos/nordsoftware/yii-audit/zipball/84c651882febbb82d7a0779739fb33523953a473",
+                "reference": "84c651882febbb82d7a0779739fb33523953a473",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -326,7 +363,7 @@
                 }
             ],
             "description": "Extension for collecting active records audit data for the Yii PHP framework.",
-            "time": "2013-05-22 13:03:25"
+            "time": "2013-06-27 10:30:36"
         },
         {
             "name": "phpnode/yiipassword",
@@ -346,6 +383,69 @@
             "description": "Password strategies for Yii",
             "homepage": "https://github.com/phpnode/YiiPassword",
             "time": "2013-04-26 09:55:59"
+        },
+        {
+            "name": "phundament/gii-template-collection",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/gii-template-collection.git",
+                "reference": "0.8.11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/0.8.11",
+                "reference": "0.8.11",
+                "shasum": ""
+            },
+            "require": {
+                "crisu83/yii-bootstrap": "1.*",
+                "ifdattic/echosen": "@dev",
+                "php": ">=5.3.0",
+                "vitalets/yii-bootstrap-editable": "@dev"
+            },
+            "type": "library",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Gii Template Collection",
+            "homepage": "http://phundament.com/",
+            "keywords": [
+                "autoload",
+                "dependency",
+                "package"
+            ],
+            "support": {
+                "source": "https://github.com/schmunk42/gii-template-collection/tree/master",
+                "issues": "https://github.com/schmunk42/gii-template-collection/issues"
+            },
+            "time": "2013-05-28 12:59:21"
+        },
+        {
+            "name": "vitalets/yii-bootstrap-editable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitalets/yii-bootstrap-editable.git",
+                "reference": "24f8fbaa111f53a3325fc02351add4e20bcba6be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/vitalets/yii-bootstrap-editable/archive/24f8fbaa111f53a3325fc02351add4e20bcba6be.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "yii-extension",
+            "description": "Yii extension for Bootstrap-editable plugin",
+            "homepage": "https://github.com/vitalets/yii-bootstrap-editable",
+            "time": "2013-03-14 06:44:35"
         },
         {
             "name": "yiisoft/yii",
@@ -383,7 +483,8 @@
         "crisu83/yiistrap": 20,
         "malyshev/yii-debug-toolbar": 20,
         "nordsoftware/yii-audit": 20,
-        "phpnode/yiipassword": 20
+        "phpnode/yiipassword": 20,
+        "phundament/gii-template-collection": 20
     },
     "platform": {
         "php": ">=5.3.2"
