@@ -8,6 +8,7 @@ class m130624_191315_create_reply_table extends CDbMigration
           `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
           `threadId` INT UNSIGNED NOT NULL,
           `alias` VARCHAR(255) NOT NULL,
+          `subject` VARCHAR(255) NULL DEFAULT NULL,
           `body` TEXT NOT NULL,
           `status` TINYINT(4) UNSIGNED NOT NULL,
           PRIMARY KEY (`id`)

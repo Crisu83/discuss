@@ -1,63 +1,46 @@
 <?php
 
-Yii::setPathOfAlias('Coalmine', __DIR__ . '/../lib/Coalmine');
+Yii::import('ext.coalmine.components.*');
 
-/**
- * Coalmine error handler.
- *
- * Example configuration:
- *
- * 'errorHandler' => array(
- *    'class' => 'ext.coalmine.components.CoalmineErrorHandler',
- *    'errorAction' => 'site/error',
- *    'config' => array(
- *       'signature' => '<insert your application signature here>',
- *       'environment' => 'development',
- *       'enabledEnvironments' => array('development'),
- *       'framework' => 'Yii',
- *       'version' => '1.0.0',
- *    ),
- * ),
- */
-class CoalmineErrorHandler extends CErrorHandler
-{
+class CoalmineErrorHandler extends CErrorHandler {
 	/**
-	 * @var array the configuration (key=>value).
+	 * @var string the Coalmine application signature.
 	 */
-	public $config;
+	public $signature;
+	/**
+	 * @var array the connection configuration (key=>value).
+	 */
+	public $connection = array();
+	/**
+	 * @var array items to filter out from the sent data.
+	 */
+	public $filters = array('password');
 	/**
 	 * @var array custom variables to send with notifications.
 	 */
 	public $customVariables = array();
+	/**
+	 * @var string the application version.
+	 */
+	public $version = '1.0.0';
+	/**
+	 * @var integer the trace depth for the errors reported (defaults to 2).
+	 */
+	public $traceDepth = 2;
 
-	/** @var \Coalmine\Configuration */
-	protected $_configuration;
-	/** @var \Coalmine\Sender */
-	protected $_sender;
+	/** @var CoalmineConnection */
+	protected $_connection;
 
 	/**
 	 * Initializes the component.
 	 */
-	public function init()
-	{
+	public function init() {
 		parent::init();
-		$this->config['userId'] = $this->_resolveUserId();
-		$this->configure($this->config);
-	}
-
-	/**
-	 * @param $callableOrArray
-	 */
-	public function configure($callableOrArray)
-	{
-		$configuration = $this->_getConfiguration();
-		if (is_array($callableOrArray))
-		{
-			foreach ($callableOrArray as $key => $value)
-				$configuration->$key = $value;
+		if (!isset($this->connection['class'])) {
+			$this->connection['class'] = 'CoalmineConnection';
 		}
-		else
-			$callableOrArray($configuration);
+		$this->_connection = Yii::createComponent($this->connection);
+		Yii::app()->attachEventHandler('onEndRequest', array($this, 'onShutdown'));
 	}
 
 	/**
@@ -65,12 +48,15 @@ class CoalmineErrorHandler extends CErrorHandler
 	 * @param array $options
 	 * @return bool
 	 */
-	public function notify($exception, $options = array())
-	{
+	public function notify($exception, $options = array()) {
 		try {
+			$options['signature'] = $this->signature;
+			$options['framework'] = 'Yii';
+			$options['version'] = $this->version;
 			$options['customVariables'] = $this->customVariables;
-			$notification = \Coalmine\Notification::fromException($exception, $this->_getConfiguration(), $options);
-			$success = $this->_getSender()->send($notification);
+			$options['filters'] = $this->filters;
+			$notification = CoalmineNotification::createFromException($exception, $options);
+			$success = $this->_connection->sendNotification($notification);
 		} catch (Exception $e) {
 			$success = false;
 		}
@@ -78,13 +64,22 @@ class CoalmineErrorHandler extends CErrorHandler
 	}
 
 	/**
+	 *
+	 */
+	public function onShutdown() {
+		$error = $this->_getLastError();
+		if ($error && (int)$error['type'] === E_ERROR && $this->_isReportable($error['type'])) {
+			$error = CoalmineError::create($error['type'], $error['message'], $error['file'], $error['line'], $this->traceDepth);
+			$this->notify($error, array('severity' => $error->getSeverity()));
+		}
+	}
+
+	/**
 	 * @param CErrorEvent $event
 	 */
-	protected function handleError($event)
-	{
-		if ($this->_isReportable($event->code))
-		{
-			$error = $this->_exceptionFromError($event->code, $event->message, $event->file, $event->line);
+	protected function handleError($event) {
+		if ($this->_isReportable($event->code)) {
+			$error = CoalmineError::create($event->code, $event->message, $event->file, $event->line, $this->traceDepth);
 			$this->notify($error, array('severity' => $error->getSeverity()));
 		}
 		parent::handleError($event);
@@ -93,65 +88,23 @@ class CoalmineErrorHandler extends CErrorHandler
 	/**
 	 * @param Exception $exception
 	 */
-	protected function handleException($exception)
-	{
+	protected function handleException($exception) {
 		$this->notify($exception);
 		parent::handleException($exception);
-	}
-
-	/**
-	 * @return \Coalmine\Configuration
-	 */
-	protected function _getConfiguration()
-	{
-		if (isset($this->_configuration))
-			return $this->_configuration;
-		else
-			return $this->_configuration = new \Coalmine\Configuration;
-	}
-
-    /**
-     * @return \Coalmine\Sender
-     */
-    protected function _getSender()
-	{
-		if (isset($this->_sender))
-			return $this->_sender;
-		else
-			return $this->_sender = new \Coalmine\Sender($this->_getConfiguration());
-	}
-
-	/**
-	 * @param $type
-	 * @param $message
-	 * @param null $file
-	 * @param null $line
-	 * @param array $context
-	 * @return \Coalmine\Error
-	 */
-	protected function _exceptionFromError($type, $message, $file = null, $line = null, $context = array())
-	{
-		$trace = array_slice(debug_backtrace(), 2);
-		return new \Coalmine\Error($type, $message, $file, $line, $context, $trace);
 	}
 
 	/**
 	 * @param $code
 	 * @return int
 	 */
-	protected function _isReportable($code)
-	{
-		return error_reporting() & $code;
+	protected function _isReportable($code) {
+		return $code & error_reporting();
 	}
 
 	/**
-	 * @return int
+	 * @return array|null
 	 */
-	protected function _resolveUserId()
-	{
-		/* @var CWebUser $user */
-		if (($user = Yii::app()->getComponent('user')) !== null)
-			return $user->id;
-		return 0;
+	protected function _getLastError() {
+		return function_exists('error_get_last') ? error_get_last() : null;
 	}
 }

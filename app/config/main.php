@@ -18,7 +18,7 @@ return array(
 	),
 
 	// components to preload
-	'preload' => array('log'),
+	'preload' => array('log', 'errorHandler'),
 
 	// paths to import
 	'import' => array(
@@ -58,12 +58,11 @@ return array(
 		'errorHandler' => array(
 			'class' => 'ext.coalmine.components.CoalmineErrorHandler',
 			'errorAction' => 'site/error',
-			'config' => array(
-				'signature' => 'd9ab0f63ce2668718d1857946dc5497ccde517ef',
-				'environment' => 'development',
+			'signature' => 'd9ab0f63ce2668718d1857946dc5497ccde517ef',
+			'version' => '1.0.0',
+			'connection' => array(
+				'environmentName' => 'development',
 				'enabledEnvironments' => array('development'),
-				'framework' => 'Yii',
-				'version' => '1.0.0',
 			),
 		),
 		'fileManager' => array(

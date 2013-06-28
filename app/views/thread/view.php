@@ -54,8 +54,6 @@ $this->breadcrumbs = array(
         )); ?>
     </div>
 
-    <hr>
-
     <div class="row">
         <div class="span10 offset2">
             <div class="new-reply">
