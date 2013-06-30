@@ -66,6 +66,8 @@ class ThreadController extends Controller
         if ($request->isPostRequest)
         {
             $reply->attributes = $request->getPost('Reply');
+            if (empty($reply->alias))
+                $reply->alias = t('reply', 'Anonymous');
             if ($reply->save())
             {
                 user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('replyFlash', 'Post created.'));
@@ -73,11 +75,8 @@ class ThreadController extends Controller
             }
         }
 
-        $criteria = new CDbCriteria();
-        $criteria->addCondition('threadId=:threadId');
-        $criteria->params = array(':threadId'=>$model->id);
         $replies = new CActiveDataProvider('Reply', array(
-            'criteria' => $criteria,
+            'criteria' => $model->createReplyCriteria(),
         ));
 
         Statistic::create(array(

@@ -62,7 +62,7 @@ return array(
 			'version' => '1.0.0',
 			'connection' => array(
 				'environmentName' => 'development',
-				'enabledEnvironments' => array('development'),
+				'enabledEnvironments' => array('production', 'staging'),
 			),
 		),
 		'fileManager' => array(

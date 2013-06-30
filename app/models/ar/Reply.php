@@ -41,7 +41,7 @@ class Reply extends AuditActiveRecord
 	public function rules()
 	{
 		return array_merge(parent::rules(), array(
-			array('threadId, alias, body', 'required'),
+			array('threadId, body', 'required'),
 			array('threadId, status', 'numerical', 'integerOnly'=>true),
 			array('alias, subject', 'length', 'max'=>255),
 			array('threadId, status', 'length', 'max'=>10),

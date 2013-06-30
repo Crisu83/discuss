@@ -1,41 +1,57 @@
 .thread-controller {
-  .thread {
-    .thread-top, {
-      padding: 10px;
+  position: relative;
+
+  &.view-action {
+    .post {
+      margin-bottom: 20px;
+
+      .post-subject {
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 30px;
+        margin-top: 0;
+        padding-right: 25px;
+      }
+
+      .post-author {
+        padding: 10px;
+      }
+
+      .post-content {
+        background: @grayLighter;
+        padding: 10px;
+        position: relative;
+      }
+
+      .post-actions {
+        .clearfix();
+        margin-top: 10px;
+      }
+
+      .post-permalink {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+
+        > a {
+          color: @grayLight;
+
+          &:hover {
+            color: @linkColorHover;
+          }
+        }
+      }
     }
 
-    .thread-left {
-      padding: 10px;
+    .thread {
+      .post-subject {
+        font-size: 30px;
+        line-height: 40px;
+      }
     }
 
-    .thread-right {
-      padding: 10px 0;
+    .time-ago {
+      color: @grayLight;
     }
-
-    .thread-bottom {
-      padding: 10px;
-    }
-  }
-
-  .reply {
-    .reply-top, {
-      padding: 10px;
-    }
-
-    .reply-left {
-      padding: 10px;
-    }
-
-    .reply-right {
-      padding: 10px 0;
-    }
-
-    .reply-bottom {
-      padding: 10px;
-    }
-  }
-
-  .time-ago {
-    color: @grayLight;
   }
 }

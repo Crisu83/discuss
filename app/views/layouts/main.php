@@ -4,6 +4,7 @@
 <?php $this->renderPartial('app.views.layouts._head'); ?>
 <body class="layout-main">
 	<?php $this->widget('bootstrap.widgets.TbNavbar',array(
+        'color'=>TbHtml::NAVBAR_COLOR_INVERSE,
         'brandLabel'=>TbHtml::icon('comments').' '.app()->name,
 		'collapse'=>true,
 		'items'=>array(
@@ -20,13 +21,32 @@
 
 	<div class="container" id="page">
 
-		<?php if(!empty($this->breadcrumbs)):?>
-            <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
-                'links'=>$this->breadcrumbs,
-            )); ?>
-		<?php endif?>
+        <?php if (!empty($this->breadcrumbs) && !empty($this->backButton)): ?>
+            <div class="page-top">
+                <div class="row">
+                    <div class="span8">
+                        <div class="page-breadcrumb">
+                            <?php if(!empty($this->breadcrumbs)):?>
+                                <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                                    'links'=>$this->breadcrumbs,
+                                )); ?>
+                            <?php endif?>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="page-back">
+                            <?php if (!empty($this->backButton)): ?>
+                                <?php echo $this->backButton; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
 
-        <?php $this->widget('TbAlert'); ?>
+        <?php $this->widget('TbAlert',array(
+            'closeText'=>TbHtml::icon('remove'),
+        )); ?>
 
         <?php echo $content; ?>
 

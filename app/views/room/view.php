@@ -5,6 +5,10 @@
 $this->breadcrumbs=array(
     $model->title,
 );
+$this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
+    'url'=>array('room/list'),
+    'size'=>TbHtml::BUTTON_SIZE_LARGE,
+));
 ?>
 <div class="room-controller view-action">
     <h1>

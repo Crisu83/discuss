@@ -149,15 +149,7 @@ class Thread extends AuditActiveRecord
 
     public function loadLatestPost()
     {
-        $criteria = new CDbCriteria();
-        $criteria->join = 'INNER JOIN audit_model ON (action=:action AND model=:model AND modelId=:modelId)';
-        $criteria->params = array(
-            ':action' => AuditModel::ACTION_CREATE,
-            ':model' => __CLASS__,
-            ':modelId' => $this->id,
-        );
-        $criteria->order = 'audit_model.created DESC';
-        return Reply::model()->find($criteria);
+        return Reply::model()->find($this->createReplyCriteria());
     }
 
 	/**
@@ -237,5 +229,19 @@ class Thread extends AuditActiveRecord
         ));
         $column .= ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $model->getUrl());
         return $column;
+    }
+
+    public function createReplyCriteria()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->join = 'INNER JOIN audit_model ON (t.id=modelId AND action=:action AND model=:model)';
+        $criteria->addCondition('t.threadId=:threadId');
+        $criteria->params = array(
+            ':action' => AuditModel::ACTION_CREATE,
+            ':model' => 'Reply',
+            ':threadId' => $this->id,
+        );
+        $criteria->order = 'audit_model.created ASC';
+        return $criteria;
     }
 }

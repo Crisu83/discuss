@@ -13,6 +13,10 @@ class Controller extends CController
 	 * @var array the breadcrumbs for the current page.
 	 */
 	public $breadcrumbs = array();
+    /**
+     * @var string the back button.
+     */
+    public $backButton;
 
     /**
      * Performs ajax validation on the given model.
