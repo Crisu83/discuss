@@ -140,13 +140,18 @@ class Room extends AuditActiveRecord
     {
         $rows = array();
         $thread = $this->loadLatestPost();
-        $model = !empty($thread->replies) ? $thread->loadLatestPost() : $thread;
-        $rows[] = l(e($thread->subject), $model->getUrl());
-        $rows[] = t('roomGrid', '{timeAgo} by {alias}', array(
-            '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
-            '{alias}' => '<b>' . e($thread->alias) . '</b>'
-        )) . ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $thread->getUrl(array('#'=>'latest-post')));
-        return implode('<br>', $rows);
+        if ($thread !== null)
+        {
+            $model = !empty($thread->replies) ? $thread->loadLatestPost() : $thread;
+            $rows[] = l(e($thread->subject), $model->getUrl());
+            $rows[] = t('roomGrid', '{timeAgo} by {alias}', array(
+                '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
+                '{alias}' => '<b>' . e($thread->alias) . '</b>'
+            )) . ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $thread->getUrl(array('#'=>'latest-post')));
+            return implode('<br>', $rows);
+        }
+        else
+            return '';
     }
 
     /**
