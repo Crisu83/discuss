@@ -11,11 +11,6 @@ vendor/*
 
 # npm
 node_modules/*
-web/css/*
-web/js/*
 
 # local configuration
 local.php
-
-# env file
-app/config/environments/env
