@@ -33,7 +33,7 @@ class SCEditor extends CInputWidget
     /**
      * @var boolean indicates whether the include the minified js and css files.
      */
-    public $debug = YII_DEBUG;
+    public $debug = true; // don't change before we have minified the script
 
     /**
      * Initializes the widget.
