@@ -21,10 +21,10 @@ return array(
 	'behaviors' => array(
 		// uncomment this if your application is multilingual
 		/*
-		'multilingual' => array(
+        'multilingual' => array(
 			'class' => 'vendor.crisu83.yii-multilingual.behaviors.MlApplicationBehavior',
 			'languages' => array( // enabled languages (locale => language)
-				'en' => 'English',
+				'fi' => 'Suomi',
 			),
 		),
 		*/
@@ -86,16 +86,16 @@ return array(
 			),
 		),
 		'urlManager' => array(
-			// uncomment the following if you application is multilingual
-			//'class' => 'vendor.crisu83.yii-multilingual.components.MlUrlManager','
-			// uncomment the following if you have enabled Apache's Rewrite module.
+			//'class' => 'vendor.crisu83.yii-multilingual.components.MlUrlManager',
 			'urlFormat' => 'path',
 			'showScriptName' => false,
 			'rules' => array(
 				// language rules, uncomment the following if your application is multilingual
 				//'<lang:([a-z]{2}(?:_[a-z]{2})?)>/<route:[\w\/]+>'=>'<route>',
 				// seo rules
-				'<controller:\w+>/<name>-<id:\d+>.html'=>'<controller>/view',
+                'keskustelu/<name>-<id:\d+>.html' => 'room/view',
+                'keskustelu/<room>/<name>-<id:\d+>.html' => 'thread/view',
+                '<controller:\w+>/<name>-<id:\d+>.html'=>'<controller>/view',
 				// default rules
 				'<controller:\w+>/<id:\d+>' => '<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

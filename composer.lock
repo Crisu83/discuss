@@ -3,26 +3,8 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9c2a5609b2902c6103817480ea3b96c6",
+    "hash": "950a0bcc8f7032513b605d87f8110ae3",
     "packages": [
-        {
-            "name": "crisu83/yii-bootstrap",
-            "version": "1.2.0",
-            "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/Crisu83/yii-bootstrap",
-                "reference": "524486d5ecedd42d8a0d5e3e8756a16ca4e2b3e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/Crisu83/yii-bootstrap/get/524486d5ec.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Bootstrap is an extension for the Yii PHP framework that provides a wide range of server-side widgets that allow you to easily use Twitter's Bootstrap together with Yii.",
-            "homepage": "http://www.cniska.net/yii-bootstrap"
-        },
         {
             "name": "crisu83/yii-configbuilder",
             "version": "dev-master",
@@ -61,12 +43,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-debug.git",
-                "reference": "cc49bf66d3384dee928574b1c8c59b3b6b2df1cd"
+                "reference": "081e9c985f44e0c0e0de13b70190b1004ff54115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-debug/zipball/cc49bf66d3384dee928574b1c8c59b3b6b2df1cd",
-                "reference": "cc49bf66d3384dee928574b1c8c59b3b6b2df1cd",
+                "url": "https://api.github.com/repos/Crisu83/yii-debug/zipball/081e9c985f44e0c0e0de13b70190b1004ff54115",
+                "reference": "081e9c985f44e0c0e0de13b70190b1004ff54115",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -85,7 +67,7 @@
             "keywords": [
                 "debug"
             ],
-            "time": "2013-03-24 21:25:17"
+            "time": "2013-06-27 20:32:04"
         },
         {
             "name": "crisu83/yii-extension",
@@ -93,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-extension.git",
-                "reference": "3243e43fa6450409382e4f7941467ce50e366d59"
+                "reference": "1add4a36788a9849bddb6146c59702c10e57cdfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/3243e43fa6450409382e4f7941467ce50e366d59",
-                "reference": "3243e43fa6450409382e4f7941467ce50e366d59",
+                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/1add4a36788a9849bddb6146c59702c10e57cdfd",
+                "reference": "1add4a36788a9849bddb6146c59702c10e57cdfd",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -113,7 +95,7 @@
                 }
             ],
             "description": "Tools for building extensions for the Yii PHP framework.",
-            "time": "2013-04-26 21:41:15"
+            "time": "2013-06-27 21:02:02"
         },
         {
             "name": "crisu83/yii-filemanager",
@@ -147,23 +129,20 @@
             "time": "2013-05-14 07:55:48"
         },
         {
-            "name": "crisu83/yii-imagemanager",
+            "name": "crisu83/yii-multilingual",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Crisu83/yii-imagemanager.git",
-                "reference": "fa4834508a540fc3c0def6694f0145dfbec23ed1"
+                "url": "https://github.com/Crisu83/yii-multilingual.git",
+                "reference": "85f9bcf6c76718a8cbeb599a08010c1bd4494e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-imagemanager/zipball/fa4834508a540fc3c0def6694f0145dfbec23ed1",
-                "reference": "fa4834508a540fc3c0def6694f0145dfbec23ed1",
+                "url": "https://api.github.com/repos/Crisu83/yii-multilingual/zipball/85f9bcf6c76718a8cbeb599a08010c1bd4494e66",
+                "reference": "85f9bcf6c76718a8cbeb599a08010c1bd4494e66",
                 "shasum": ""
             },
-            "require": {
-                "imagine/imagine": "dev-develop"
-            },
-            "type": "library",
+            "type": "yii-extension",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -171,11 +150,15 @@
             "authors": [
                 {
                     "name": "Christoffer Niska",
-                    "email": "ChristofferNiska@gmail.com"
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
                 }
             ],
-            "description": "Image manager for the Yii PHP framework.",
-            "time": "2013-05-09 19:54:28"
+            "description": "Multilingual toolkit for the Yii PHP framework.",
+            "keywords": [
+                "i18n"
+            ],
+            "time": "2013-03-22 20:46:57"
         },
         {
             "name": "crisu83/yii-seo",
@@ -248,77 +231,6 @@
             "time": "2013-06-27 19:14:50"
         },
         {
-            "name": "ifdattic/echosen",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ifdattic/EChosen.git",
-                "reference": "97c235df2640342074bf5902190bc74720890ce7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/ifdattic/EChosen/archive/97c235df2640342074bf5902190bc74720890ce7.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Yii extension which adds Chosen JavaScript plugin.",
-            "homepage": "https://github.com/ifdattic/EChosen",
-            "time": "2013-04-11 00:01:58"
-        },
-        {
-            "name": "imagine/imagine",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "9c70f0d12b44e16f31fc7a4701082aa46d523761"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/9c70f0d12b44e16f31fc7a4701082aa46d523761",
-                "reference": "9c70f0d12b44e16f31fc7a4701082aa46d523761",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "sami/sami": "dev-master"
-            },
-            "suggest": {
-                "ext-gd": "to use the GD implementation",
-                "ext-gmagick": "to use the Gmagick implementation",
-                "ext-imagick": "to use the Imagick implementation"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Imagine": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bulat Shakirzyanov",
-                    "email": "mallluhuct@gmail.com",
-                    "homepage": "http://avalanche123.com"
-                }
-            ],
-            "description": "Image processing for PHP 5.3",
-            "homepage": "http://imagine.readthedocs.org/",
-            "keywords": [
-                "drawing",
-                "graphics",
-                "image manipulation",
-                "image processing"
-            ],
-            "time": "2013-04-29 19:10:37"
-        },
-        {
             "name": "malyshev/yii-debug-toolbar",
             "version": "dev-master",
             "source": {
@@ -385,69 +297,6 @@
             "time": "2013-04-26 09:55:59"
         },
         {
-            "name": "phundament/gii-template-collection",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmunk42/gii-template-collection.git",
-                "reference": "0.8.11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/gii-template-collection/zipball/0.8.11",
-                "reference": "0.8.11",
-                "shasum": ""
-            },
-            "require": {
-                "crisu83/yii-bootstrap": "1.*",
-                "ifdattic/echosen": "@dev",
-                "php": ">=5.3.0",
-                "vitalets/yii-bootstrap-editable": "@dev"
-            },
-            "type": "library",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
-                }
-            ],
-            "description": "Gii Template Collection",
-            "homepage": "http://phundament.com/",
-            "keywords": [
-                "autoload",
-                "dependency",
-                "package"
-            ],
-            "support": {
-                "source": "https://github.com/schmunk42/gii-template-collection/tree/master",
-                "issues": "https://github.com/schmunk42/gii-template-collection/issues"
-            },
-            "time": "2013-05-28 12:59:21"
-        },
-        {
-            "name": "vitalets/yii-bootstrap-editable",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vitalets/yii-bootstrap-editable.git",
-                "reference": "24f8fbaa111f53a3325fc02351add4e20bcba6be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/vitalets/yii-bootstrap-editable/archive/24f8fbaa111f53a3325fc02351add4e20bcba6be.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "yii-extension",
-            "description": "Yii extension for Bootstrap-editable plugin",
-            "homepage": "https://github.com/vitalets/yii-bootstrap-editable",
-            "time": "2013-03-14 06:44:35"
-        },
-        {
             "name": "yiisoft/yii",
             "version": "1.1.13",
             "source": {
@@ -478,13 +327,12 @@
         "crisu83/yii-debug": 20,
         "crisu83/yii-extension": 20,
         "crisu83/yii-filemanager": 20,
-        "crisu83/yii-imagemanager": 20,
+        "crisu83/yii-multilingual": 20,
         "crisu83/yii-seo": 20,
         "crisu83/yiistrap": 20,
         "malyshev/yii-debug-toolbar": 20,
         "nordsoftware/yii-audit": 20,
-        "phpnode/yiipassword": 20,
-        "phundament/gii-template-collection": 20
+        "phpnode/yiipassword": 20
     },
     "platform": {
         "php": ">=5.3.2"

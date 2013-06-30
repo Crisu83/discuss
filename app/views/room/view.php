@@ -32,7 +32,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
         'type'=>TbHtml::GRID_TYPE_STRIPED,
         'dataProvider'=>$model->createThreadDataProvider(),
         'summaryText'=>t('threadGrid','Displaying {start}-{end} of {count} threads.'),
-        'emptyText'=>t('threadGrid','No threads available.'),
+        'emptyText'=>t('threadGrid','Sorry, no were threads found.'),
         'filter'=>null,
         'columns'=>array(
             array(
@@ -43,7 +43,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 },
             ),
             array(
-                'header'=>t('roomGrid','Replies'),
+                'header'=>t('threadGrid','Replies'),
                 'headerHtmlOptions'=>array('class'=>'number-column'),
                 'htmlOptions'=>array('class'=>'number-column'),
                 'value'=>function($data) {
@@ -52,7 +52,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 }
             ),
             array(
-                'header'=>t('roomGrid','Views'),
+                'header'=>t('threadGrid','Views'),
                 'headerHtmlOptions'=>array('class'=>'text-column'),
                 'htmlOptions'=>array('class'=>'text-column'),
                 'value'=>function($data) {
@@ -61,7 +61,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 }
             ),
             array(
-                'header'=>t('threadGrid','Latest post'),
+                'header'=>t('threadGrid','Last post'),
                 'value'=>function($data) {
                     /* @var Thread $data */
                     echo $data->lastPostColumn();

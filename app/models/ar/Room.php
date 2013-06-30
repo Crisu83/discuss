@@ -40,9 +40,9 @@ class Room extends AuditActiveRecord
     {
         return array_merge(parent::rules(), array(
             array(
-                'class'=>'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
-                'route'=>'room/view',
-                'params'=>array('id'=>$this->id, 'name'=>$this->title),
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
+                'route' => 'room/view',
+                'params' => array('id' => $this->id, 'name' => strtolower($this->title)),
             ),
         ));
     }
@@ -79,10 +79,10 @@ class Room extends AuditActiveRecord
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), array(
-            'id' => t('label', 'ID'),
-            'title' => t('label', 'Title'),
-            'description' => t('label', 'Description'),
-            'status' => t('label', 'Status'),
+            'id' => t('roomLabel', 'Id'),
+            'title' => t('roomLabel', 'Title'),
+            'description' => t('roomLabel', 'Description'),
+            'status' => t('roomLabel', 'Status'),
         ));
     }
 
@@ -107,13 +107,12 @@ class Room extends AuditActiveRecord
     public function createThreadDataProvider()
     {
         $criteria = new CDbCriteria();
+        $criteria->distinct = true;
         $criteria->addCondition('roomId=:roomId');
-        $criteria->join = 'INNER JOIN audit_model ON (action=:action AND model=:model AND modelId=:modelId)';
+        $criteria->join = 'INNER JOIN audit_model ON (t.id=modelId AND model=:model)';
         $criteria->params = array(
             ':roomId' => $this->id,
-            ':action' => AuditModel::ACTION_CREATE,
             ':model' => 'Thread',
-            ':modelId' => $this->id,
         );
         $criteria->order = 'pinned DESC, audit_model.created DESC';
         return new CActiveDataProvider('Thread', array(
@@ -126,14 +125,6 @@ class Room extends AuditActiveRecord
         $column = Html::tag('h5', array(), l(e($this->title), $this->getUrl()));
         $column .= e($this->description);
         return $column;
-    }
-
-    public function statsColumn()
-    {
-        $rows = array();
-        $rows[] = t('roomGrid', '{n} Thread|{n} Threads', array($this->numThreads, '{n}' => '<b>' . $this->numThreads . '</b>'));
-        $rows[] = t('roomGrid', '{n} Reply|{n} Replies', array($this->numReplies, '{n}' => '<b>' . $this->numReplies . '</b>'));
-        return implode('<br>', $rows);
     }
 
     public function latestPostColumn()

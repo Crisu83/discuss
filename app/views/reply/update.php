@@ -9,6 +9,5 @@
             <small><?php echo e($model->subject); ?></small>
         <?php endif; ?>
     </h1>
-
     <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
 </div>

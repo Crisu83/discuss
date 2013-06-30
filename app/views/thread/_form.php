@@ -26,7 +26,7 @@
         <?php echo TbHtml::linkButton(t('threadButton','Cancel'),array(
             'color'=>TbHtml::BUTTON_COLOR_LINK,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
-            'url'=>$model->room->getUrl(),
+            'url'=>!$model->isNewRecord ? $model->getUrl() : $model->room->getUrl(),
         )); ?>
 
     <?php $this->endWidget(); ?>

@@ -49,24 +49,24 @@ class Thread extends AuditActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             array(
-                'class'=>'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
-                'route'=>'thread/view',
-                'params'=>array('id'=>$this->id, 'name'=>$this->subject),
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
+                'route' => 'thread/view',
+                'params' => array('id' => $this->id, 'name' => strtolower($this->subject), 'room' => strtolower(v($this, 'room.title'))),
             ),
             array(
-                'class'=>'app.behaviors.WorkflowBehavior',
-                'defaultStatus'=>self::STATUS_DEFAULT,
-                'statuses'=>array(
+                'class' => 'app.behaviors.WorkflowBehavior',
+                'defaultStatus' => self::STATUS_DEFAULT,
+                'statuses' => array(
                     self::STATUS_DEFAULT => array(
-                        'label'=>t('topic','Default'),
-                        'transitions'=>array(self::STATUS_REPORTED, self::STATUS_DELETED),
+                        'label' => t('threadStatus', 'Default'),
+                        'transitions' => array(self::STATUS_REPORTED, self::STATUS_DELETED),
                     ),
                     self::STATUS_REPORTED => array(
-                        'label'=>t('topic','Reported'),
-                        'transitions'=>array(self::STATUS_DEFAULT, self::STATUS_DELETED),
+                        'label' => t('threadStatus', 'Reported'),
+                        'transitions' => array(self::STATUS_DEFAULT, self::STATUS_DELETED),
                     ),
                     self::STATUS_DELETED => array(
-                        'label'=>t('topic','Deleted'),
+                        'label' => t('threadStatus', 'Deleted'),
                     ),
                 ),
             )
@@ -113,15 +113,15 @@ class Thread extends AuditActiveRecord
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), array(
-			'id' => t('label', 'Id'),
-			'roomId' => t('label', 'Room'),
-			'alias' => t('label', 'Alias'),
-			'subject' => t('label', 'Subject'),
-			'body' => t('label', 'Body'),
-			'pinned' => t('label', 'Pinned'),
-			'locked' => t('label', 'Locked'),
-			'lastActivityAt' => t('label', 'Last activity at'),
-			'status' => t('label', 'Status'),
+			'id' => t('threadLabel', 'Id'),
+			'roomId' => t('threadLabel', 'Room'),
+			'alias' => t('threadLabel', 'Alias'),
+			'subject' => t('threadLabel', 'Subject'),
+			'body' => t('threadLabel', 'Body'),
+			'pinned' => t('threadLabel', 'Pinned'),
+			'locked' => t('threadLabel', 'Locked'),
+			'lastActivityAt' => t('threadLabel', 'Last activity at'),
+			'status' => t('threadLabel', 'Status'),
 		));
 	}
 
@@ -175,22 +175,10 @@ class Thread extends AuditActiveRecord
 	{
 		$icons = array();
         if ($this->pinned)
-            $icons[] = l(TbHtml::icon('pushpin'), '#', array('rel' => 'tooltip', 'title' => t('iconTitle', 'This thread is pinned')));
+            $icons[] = l(TbHtml::icon('pushpin'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'This thread is pinned')));
         if ($this->locked)
-            $icons[] = l(TbHtml::icon('lock'), '#', array('rel' => 'tooltip', 'title' => t('iconTitle', 'This thread is locked')));
-        return implode(' ', $icons) . ' ';
-	}
-
-	/**
-	 * Renders the stats column.
-	 * @return string the generated column.
-	 */
-	public function statsColumn()
-	{
-        $rows = array();
-		$rows[] = t('topic', '{n} Reply|{n} Replies', array($this->numReplies, '{n}' => '<b>' . $this->numReplies . '</b>'));
-		$rows[] = t('topic', '{n} View|{n} Views', array($this->numViews, '{n}' => '<b>' . $this->numViews . '</b>'));
-		return implode('<br>', $rows);
+            $icons[] = l(TbHtml::icon('lock'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'This thread is locked')));
+        return !empty($icons) ? implode(' ', $icons) . ' ' : '';
 	}
 
     public function buttonToolbar()
@@ -199,7 +187,7 @@ class Thread extends AuditActiveRecord
         $buttons[] = TbHtml::linkButton(t('threadButton', 'Quote'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'url' => '#',
-            'class' => 'thread-button',
+            'class' => 'quote-button thread-button',
         ));
         if (!user()->isGuest)
         {

@@ -12,6 +12,17 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return to the room'),arra
     'url'=>$model->room->getUrl(),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
+
+/*
+clientScript()->registerScript('PostQuoteButton',"
+    $('.quote-button').click(function() {
+            window.location.hash = 'add-reply';
+            var bbcode = $(this).parents('.post-content').find('.post-bbcode').html();
+            $('#Reply_body').text(bbcode);
+            return false;
+    });
+");
+*/
 ?>
 <div class="thread-controller view-action">
     <div class="thread post">
@@ -29,10 +40,11 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return to the room'),arra
             <div class="span10">
                 <div class="post-content">
                     <h1 class="post-subject">
-                        <?php echo $model->renderIcons().'&nbsp;'.e($model->subject); ?>
+                        <?php echo $model->renderIcons().e($model->subject); ?>
                     </h1>
                     <div class="post-body">
                         <?php echo app()->bbcodeParser->parse($model->body); ?>
+                        <div class="post-bbcode hidden"><?php echo $model->body; ?></div>
                     </div>
                     <div class="post-actions">
                         <div class="pull-right">
@@ -42,7 +54,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return to the room'),arra
                     <div class="post-permalink">
                         <?php echo l(TbHtml::icon('link'),$model->getUrl(),array(
                             'rel'=>'tooltip',
-                            'title'=>t('threadTitle','Permalink'),
+                            'title'=>t('title','Permalink'),
                         )); ?>
                     </div>
                 </div>
@@ -60,7 +72,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return to the room'),arra
         )); ?>
     </div>
 
-    <div class="row">
+    <div class="row" id="add-reply">
         <div class="span10 offset2">
             <div class="new-reply">
                 <h3><?php echo t('threadHeading','Post a new reply'); ?></h3>

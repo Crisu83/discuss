@@ -12,8 +12,8 @@
                 'class'=>'bootstrap.widgets.TbNav',
                 'htmlOptions'=>array('pull'=>TbHtml::PULL_RIGHT),
                 'items'=>array(
-                    array('label'=>'Sign in','url'=>array('/site/login'),'visible'=>user()->isGuest),
-                    array('label'=>'Sign out','url'=>array('/site/logout'),'visible'=>!user()->isGuest),
+                    array('label'=>t('link','Sign in'),'url'=>array('/site/login'),'visible'=>user()->isGuest),
+                    array('label'=>t('link','Sign out'),'url'=>array('/site/logout'),'visible'=>!user()->isGuest),
                 ),
             ),
 		),

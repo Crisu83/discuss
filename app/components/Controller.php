@@ -19,13 +19,6 @@ abstract class Controller extends CController
     public $backButton;
 
     /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * @param integer $id the ID of the model to be loaded
-     * @return CActiveRecord the loaded model.
-     */
-    abstract public function loadModel($id);
-
-    /**
      * @return array action filters
      */
     public function filters()
@@ -60,11 +53,14 @@ abstract class Controller extends CController
      */
     public function actionDelete($id)
     {
-        $this->loadModel($id)->delete();
+        if (method_exists($this, 'loadModel'))
+        {
+            $this->loadModel($id)->delete();
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        }
     }
 
     /**

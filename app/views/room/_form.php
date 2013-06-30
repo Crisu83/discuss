@@ -22,10 +22,10 @@
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
     )); ?>
 
-    <?php echo TbHtml::linkButton(t('threadButton','Cancel'),array(
+    <?php echo TbHtml::linkButton(t('roomButton','Cancel'),array(
         'color'=>TbHtml::BUTTON_COLOR_LINK,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
-        'url'=>array('list'),
+        'url'=>!$model->isNewRecord ? $model->getUrl() : array('list'),
     )); ?>
 
 <?php $this->endWidget(); ?>

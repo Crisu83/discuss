@@ -65,11 +65,12 @@ class Reply extends AuditActiveRecord
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), array(
-			'id' => t('label', 'Id'),
-            'threadId' => t('label', 'Thread'),
-			'alias' => t('label', 'Alias'),
-			'body' => t('label', 'Body'),
-			'status' => t('label', 'Status'),
+			'id' => t('replyLabel', 'Id'),
+            'threadId' => t('replyLabel', 'Thread'),
+			'alias' => t('replyLabel', 'Alias'),
+			'subject' => t('replyLabel', 'Subject'),
+			'body' => t('replyLabel', 'Body'),
+			'status' => t('replyLabel', 'Status'),
 		));
 	}
 

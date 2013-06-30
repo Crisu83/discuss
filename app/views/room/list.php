@@ -20,7 +20,7 @@
             'type'=>TbHtml::GRID_TYPE_STRIPED,
             'dataProvider'=>$rooms,
             'summaryText'=>t('roomGrid','Displaying {start}-{end} of {count} rooms.'),
-            'emptyText'=>t('roomGrid','No rooms available.'),
+            'emptyText'=>t('roomGrid','Sorry, no rooms were found.'),
             'filter'=>null,
             'columns'=>array(
                 array(
