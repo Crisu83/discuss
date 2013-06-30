@@ -69,7 +69,7 @@ class Room extends AuditActiveRecord
         return array_merge(parent::relations(), array(
             'lastActiveThread' => array(self::HAS_ONE, 'Thread', 'roomId', 'order' => 'lastActivityAt DESC'),
             'numThreads' => array(self::STAT, 'Thread', 'roomId'),
-            'numReplies' => array(self::STAT, 'Reply', 'thread(roomId, id)'),
+            'numReplies' => array(self::STAT, 'Thread', 'roomId', 'join' => 'INNER JOIN reply ON(t.id = reply.threadId)'),
         ));
     }
 
@@ -142,7 +142,7 @@ class Room extends AuditActiveRecord
         $thread = $this->loadLatestPost();
         if ($thread !== null)
         {
-            $model = !empty($thread->replies) ? $thread->loadLatestPost() : $thread;
+            $model = !empty($thread->replies) ? $thread->loadLastPost() : $thread;
             $rows[] = l(e($thread->subject), $model->getUrl());
             $rows[] = t('roomGrid', '{timeAgo} by {alias}', array(
                 '{timeAgo}' => format()->formatTimeAgo($model->createdAt),

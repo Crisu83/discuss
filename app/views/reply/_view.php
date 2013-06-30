@@ -7,7 +7,7 @@
         <div class="row">
             <div class="span2">
                 <div class="post-author">
-                    <?php echo TbHtml::b($data->alias); ?><br>
+                    <?php echo TbHtml::b($data->aliasText()); ?><br>
                     <?php echo l(format()->formatTimeAgo($data->createdAt),'#',array(
                         'rel'=>'tooltip',
                         'title'=>dateFormatter()->formatDateTime(strtotime($data->createdAt), 'long', 'short'),

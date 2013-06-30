@@ -10,7 +10,6 @@
         'enableAjaxValidation'=>true,
         'enableClientValidation'=>true,
         'clientOptions'=>array(
-            'validateOnChange'=>true,
             'validateOnSubmit'=>true,
         ),
     )); ?>
@@ -27,7 +26,7 @@
         <?php echo TbHtml::linkButton(t('threadButton','Cancel'),array(
             'color'=>TbHtml::BUTTON_COLOR_LINK,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
-            'url'=>$model->getUrl(),
+            'url'=>$model->room->getUrl(),
         )); ?>
 
     <?php $this->endWidget(); ?>

@@ -21,11 +21,9 @@ class ThreadController extends Controller
 	 */
 	public function filters()
 	{
-		return array(
-			array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
-            'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
-		);
+        return array_merge(parent::filters(), array(
+            array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
+        ));
 	}
 
 	/**
@@ -66,24 +64,20 @@ class ThreadController extends Controller
         if ($request->isPostRequest)
         {
             $reply->attributes = $request->getPost('Reply');
-            if (empty($reply->alias))
-                $reply->alias = t('reply', 'Anonymous');
             if ($reply->save())
-            {
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('replyFlash', 'Post created.'));
                 $this->redirect($model->getUrl());
-            }
         }
 
         $replies = new CActiveDataProvider('Reply', array(
-            'criteria' => $model->createReplyCriteria(),
+            'criteria' => $model->createRepliesCriteria(),
         ));
 
         Statistic::create(array(
             'action' => Statistic::ACTION_VIEW,
             'model' => get_class($model),
             'modelId' => $model->id,
-            'creatorId' => user()->id,
+            'ipAddress' => request()->getUserHostAddress(),
+            'userId' => user()->id,
         ));
 
 		$this->render('view', array(
@@ -107,12 +101,7 @@ class ThreadController extends Controller
 		{
 			$model->attributes = $request->getPost('Thread');
 			if ($model->save())
-			{
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('threadFlash', 'Thread for {subject} created.', array(
-                    '{subject}' => '<b>' . $model->subject . '</b>',
-                )));
 				$this->redirect($model->room->getUrl(array('id' => $model->roomId)));
-			}
 		}
 
 		$this->render('create', array('model' => $model));
@@ -132,28 +121,9 @@ class ThreadController extends Controller
         {
             $model->attributes = $request->getPost('Thread');
 			if ($model->save())
-			{
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Thread {subject} updated.', array(
-                    '{subject}' => '<b>' . $model->subject . '</b>',
-                )));
 				$this->redirect($model->getUrl());
-			}
 		}
 		$this->render('update', array('model'=>$model));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-        $this->loadModel($id)->delete();
-
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**

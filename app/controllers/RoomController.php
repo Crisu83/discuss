@@ -23,10 +23,9 @@ class RoomController extends Controller
      */
     public function filters()
     {
-        return array(
+        return array_merge(parent::filters(), array(
             array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
-            'accessControl',
-        );
+        ));
     }
 
     /**
@@ -43,6 +42,14 @@ class RoomController extends Controller
         ));
     }
 
+    public function actionView($id)
+    {
+        $model = $this->loadModel($id);
+        $this->render('view', array(
+            'model' => $model,
+        ));
+    }
+
     /**
      * Creates a new model.
      */
@@ -55,12 +62,7 @@ class RoomController extends Controller
         {
             $model->attributes = $request->getPost('Room');
             if ($model->save())
-            {
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Room {title} created.', array(
-                    '{title}' => '<b>' . $model->title . '</b>',
-                )));
                 $this->redirect(array('view', 'id' => $model->id));
-            }
         }
         $this->render('create', array(
             'model' => $model,
@@ -80,23 +82,9 @@ class RoomController extends Controller
         {
             $model->attributes = $request->getPost('Room');
             if ($model->save())
-            {
-                user()->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('roomFlash', 'Room {title} updated.', array(
-                    '{title}' => '<b>' . $model->title . '</b>',
-                )));
                 $this->redirect(array('view', 'id' => $model->id));
-            }
         }
         $this->render('update', array(
-            'model' => $model,
-        ));
-    }
-
-    public function actionView($id)
-    {
-        $model = $this->loadModel($id);
-
-        $this->render('view', array(
             'model' => $model,
         ));
     }

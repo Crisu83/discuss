@@ -8,7 +8,8 @@
  * @property string $action
  * @property string $model
  * @property integer $modelId
- * @property integer $creatorId
+ * @property string $ipAddress
+ * @property integer $userId
  * @property integer $createdAt
  */
 class Statistic extends ActiveRecord
@@ -39,9 +40,9 @@ class Statistic extends ActiveRecord
     public function rules()
     {
         return array_merge(parent::rules(), array(
-            array('action, model, modelId, creatorId', 'required'),
-            array('action, model', 'length', 'max'=>255),
-            array('modelId, creatorId', 'length', 'max'=>10),
+            array('action, model, modelId, userId, ipAddress', 'required'),
+            array('action, model, ipAddress', 'length', 'max'=>255),
+            array('modelId, userId', 'length', 'max'=>10),
         ));
     }
 

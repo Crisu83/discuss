@@ -10,7 +10,6 @@
         'enableAjaxValidation'=>true,
         'enableClientValidation'=>true,
         'clientOptions'=>array(
-            'validateOnChange'=>true,
             'validateOnSubmit'=>true,
         ),
     )); ?>

@@ -64,7 +64,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 'header'=>t('threadGrid','Latest post'),
                 'value'=>function($data) {
                     /* @var Thread $data */
-                    echo $data->latestPostColumn();
+                    echo $data->lastPostColumn();
                 },
             ),
         ),

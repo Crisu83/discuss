@@ -147,9 +147,9 @@ class Thread extends AuditActiveRecord
 		));
 	}
 
-    public function loadLatestPost()
+    public function loadLastPost()
     {
-        return Reply::model()->find($this->createReplyCriteria());
+        return Reply::model()->find($this->createLastPostCriteria());
     }
 
 	/**
@@ -219,13 +219,24 @@ class Thread extends AuditActiveRecord
         return implode(' ', $buttons);
     }
 
-    public function latestPostColumn()
+    /**
+     * Returns the alias text.
+     * @return string the alias.
+     */
+    public function aliasText()
     {
-        $reply = $this->loadLatestPost();
+        return !empty($this->alias)
+            ? '<span class="alias">' . $this->alias . '</span>'
+            : '<span class="alias muted">' . t('reply', 'Anonymous') . '</span>';
+    }
+
+    public function lastPostColumn()
+    {
+        $reply = $this->loadLastPost();
         $model = $reply !== null ? $reply : $this;
         $column = t('threadGrid', '{timeAgo} by {alias}', array(
             '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
-            '{alias}' => '<b>' . $model->alias . '</b>',
+            '{alias}' => '<b>' . $model->aliasText() . '</b>',
         ));
         $column .= ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $model->getUrl());
         return $column;
@@ -241,7 +252,21 @@ class Thread extends AuditActiveRecord
             ':model' => 'Reply',
             ':threadId' => $this->id,
         );
+        return $criteria;
+    }
+
+    public function createRepliesCriteria()
+    {
+        $criteria = $this->createReplyCriteria();
         $criteria->order = 'audit_model.created ASC';
+        return $criteria;
+    }
+
+    public function createLastPostCriteria()
+    {
+        $criteria = $this->createReplyCriteria();
+        $criteria->order = 'audit_model.created DESC';
+        $criteria->limit = 1;
         return $criteria;
     }
 }

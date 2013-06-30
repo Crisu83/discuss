@@ -92,6 +92,17 @@ class Reply extends AuditActiveRecord
 		));
     }
 
+    /**
+     * Returns the alias text.
+     * @return string the alias.
+     */
+    public function aliasText()
+    {
+        return !empty($this->alias)
+            ? '<span class="alias">' . $this->alias . '</span>'
+            : '<span class="alias muted">' . t('reply', 'Anonymous') . '</span>';
+    }
+
 	/**
 	 * @return string the URL to this comment.
 	 */

@@ -7,7 +7,7 @@ return array(
 	'name' => 'Kotipolku',
 
 	// application language
-	//'language' => 'fi',
+	'language' => 'fi',
 
     'timeZone' => 'Europe/Helsinki',
 
