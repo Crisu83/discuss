@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
     $model->title,
 );
-$this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
+$this->backButton = TbHtml::linkButton(t('threadLink','Palaa etusivulle'),array(
     'url'=>array('room/list'),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
@@ -14,7 +14,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
     <h1>
         <?php echo e($model->title); ?>
         <?php if (!user()->isGuest): ?>
-            <small><?php echo l(t('roomButton','edit'),array('update','id'=>$model->id)); ?></small>
+            <small><?php echo l(t('roomButton','muokkaa'),array('update','id'=>$model->id)); ?></small>
         <?php endif; ?>
     </h1>
 
@@ -22,7 +22,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
 
     <hr>
 
-    <?php echo TbHtml::linkButton(t('threadButton','Create thread'),array(
+    <?php echo TbHtml::linkButton(t('threadButton','Uusi aihe'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
         'url'=>array('thread/create', 'roomId'=>$model->id),
         'class'=>'create-button',
@@ -31,19 +31,19 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
     <?php $this->widget('TbGridView',array(
         'type'=>TbHtml::GRID_TYPE_STRIPED,
         'dataProvider'=>$model->createThreadDataProvider(),
-        'summaryText'=>t('threadGrid','Displaying {start}-{end} of {count} threads.'),
-        'emptyText'=>t('threadGrid','Sorry, no were threads found.'),
+        'emptyText'=>t('threadGrid','Valitettavasti yhtään aihetta ei löytynyt.'),
         'filter'=>null,
+        'template'=>"{items}",
         'columns'=>array(
             array(
-                'header'=>t('threadGrid', 'Subject'),
+                'header'=>t('threadGrid', 'Otsikko'),
                 'value'=>function($data) {
                     /* @var Thread $data */
                     echo $data->subjectColumn();
                 },
             ),
             array(
-                'header'=>t('threadGrid','Replies'),
+                'header'=>t('threadGrid','Vastauksia'),
                 'headerHtmlOptions'=>array('class'=>'number-column'),
                 'htmlOptions'=>array('class'=>'number-column'),
                 'value'=>function($data) {
@@ -52,7 +52,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 }
             ),
             array(
-                'header'=>t('threadGrid','Views'),
+                'header'=>t('threadGrid','Katsottu'),
                 'headerHtmlOptions'=>array('class'=>'text-column'),
                 'htmlOptions'=>array('class'=>'text-column'),
                 'value'=>function($data) {
@@ -61,7 +61,7 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Return home'),array(
                 }
             ),
             array(
-                'header'=>t('threadGrid','Last post'),
+                'header'=>t('threadGrid','Viimeisin viesti'),
                 'value'=>function($data) {
                     /* @var Thread $data */
                     echo $data->lastPostColumn();

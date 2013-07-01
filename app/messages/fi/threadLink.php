@@ -17,6 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Return home' => 'Palaa etusivulle',
-  'Return to the room' => 'Palaa aihealueelle',
+  'Palaa aihealueelle' => '',
+  'Palaa etusivulle' => '',
 );

@@ -34,8 +34,9 @@ class RoomController extends Controller
      */
     public function actionList()
     {
+        $criteria = Room::model()->createWeightCriteria();
         $rooms = new CActiveDataProvider('Room', array(
-            // todo: add this.
+            'criteria' => $criteria,
         ));
 
         $this->render('list', array(

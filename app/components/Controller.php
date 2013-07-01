@@ -41,7 +41,7 @@ abstract class Controller extends CController
      */
     public function pageNotFound()
     {
-        throw new CHttpException(404, t('error', 'Page not found.'));
+        throw new CHttpException(404, t('error', 'Sivua ei löytynyt.'));
     }
 
     /**
@@ -50,7 +50,7 @@ abstract class Controller extends CController
      */
     public function accessDenied()
     {
-        throw new CHttpException(403, t('error', 'Access denied.'));
+        throw new CHttpException(403, t('error', 'Pääsy kielletty.'));
     }
 
     /**
@@ -59,6 +59,6 @@ abstract class Controller extends CController
      */
     public function badRequest()
     {
-        throw new CHttpException(400, t('error', 'Bad request.'));
+        throw new CHttpException(400, t('error', 'Virheellinen pyyntö.'));
     }
 }

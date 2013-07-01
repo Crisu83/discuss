@@ -17,5 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Are you sure you want to delete this thread?' => 'Oletko varma että haluat poistaa tämän aiheen?',
+  'Oletko varma että haluat poistaa tämän aiheen?' => '',
 );

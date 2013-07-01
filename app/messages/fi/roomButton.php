@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Cancel' => 'Peruuta',
-  'Create room' => 'Luo aihealue',
-  'Save' => 'Tallenna',
-  'edit' => 'muokkaa',
+  'Peruuta' => '',
+  'Tallenna' => '',
+  'Uusi aihealue' => '',
+  'muokkaa' => '',
 );

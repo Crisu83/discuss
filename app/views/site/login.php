@@ -16,7 +16,7 @@
 			<?php echo $form->textFieldControlGroup($model,'username',array('block'=>true,'label'=>false,'placeholder'=>'Username')); ?>
 			<?php echo $form->passwordFieldControlGroup($model,'password',array('block'=>true,'label'=>false,'placeholder'=>'Password')); ?>
 
-            <?php echo TbHtml::submitButton('Login',array(
+            <?php echo TbHtml::submitButton('Kirjaudu sisään',array(
                 'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
                 'size'=>TbHtml::BUTTON_SIZE_LARGE,
                 'block'=>true,

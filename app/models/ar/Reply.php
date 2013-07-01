@@ -66,11 +66,11 @@ class Reply extends AuditActiveRecord
 	{
 		return array_merge(parent::attributeLabels(), array(
 			'id' => t('replyLabel', 'Id'),
-            'threadId' => t('replyLabel', 'Thread'),
-			'alias' => t('replyLabel', 'Alias'),
-			'subject' => t('replyLabel', 'Subject'),
-			'body' => t('replyLabel', 'Body'),
-			'status' => t('replyLabel', 'Status'),
+            'threadId' => t('replyLabel', 'Aihe'),
+			'alias' => t('replyLabel', 'Nimimerkki'),
+			'subject' => t('replyLabel', 'Otsikko'),
+			'body' => t('replyLabel', 'Viesti'),
+			'status' => t('replyLabel', 'Tila'),
 		));
 	}
 
@@ -115,7 +115,7 @@ class Reply extends AuditActiveRecord
     public function buttonToolbar()
     {
         $buttons = array();
-        $buttons[] = TbHtml::linkButton(t('replyButton', 'Quote'), array(
+        $buttons[] = TbHtml::linkButton(t('replyButton', 'Lainaa'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'url' => '#',
             'class' => 'reply-button',
@@ -125,14 +125,14 @@ class Reply extends AuditActiveRecord
             $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
                 'url' => array('reply/update', 'id' => $this->id),
                 'rel' => 'tooltip',
-                'title' => t('replyTitle', 'Edit post'),
+                'title' => t('replyTitle', 'Muokkaa viestiä'),
                 'class' => 'reply-button',
             ));
             $buttons[] = TbHtml::linkButton(TbHtml::icon('remove'), array(
                 'url' => array('reply/delete', 'id' => $this->id),
                 'rel' => 'tooltip',
-                'title' => t('replyTitle', 'Delete post'),
-                'confirm' => t('replyConfirm', 'Are you sure you want to delete this post?'),
+                'title' => t('replyTitle', 'Poista viesti'),
+                'confirm' => t('replyConfirm', 'Oletko varma että haluat poistaa tämän viestin?'),
                 'class' => 'reply-button',
             ));
         }

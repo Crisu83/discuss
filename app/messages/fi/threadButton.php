@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Cancel' => 'Peruuta',
-  'Create thread' => 'Luo aihe',
-  'Quote' => 'Lainaa',
-  'Save' => 'Tallenna',
+  'Peruuta' => '',
+  'Tallenna' => '',
+  'Uusi aihe' => '',
+  'Lainaa' => '',
 );

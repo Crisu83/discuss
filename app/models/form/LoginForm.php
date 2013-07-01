@@ -35,7 +35,7 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity = new UserIdentity($this->username,$this->password);
 			if (!$this->_identity->authenticate())
-				$this->addError('password', t('error', 'Incorrect username or password.'));
+				$this->addError('password', t('error', 'Väärä käyttäjänimi tai salasana.'));
 		}
 	}
 
@@ -54,7 +54,7 @@ class LoginForm extends CFormModel
 		{
             $user = user();
 			$user->login($this->_identity);
-            $user->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('flash', 'You are now logged in as {name}.', array(
+            $user->setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('flash', 'Olet nyt kirjautunut {name} käyttäjänä.', array(
                 '{name}' => '<b>' . $user->name . '</b>',
             )));
 			return true;

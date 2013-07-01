@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Delete thread' => 'Poista aihe',
-  'Edit thread' => 'Muokkaa aihetta',
-  'This thread is locked' => 'Tämä aihe on lukittu',
-  'This thread is pinned' => 'Tämä aihe on kiinnitetty',
+  'Muokkaa aihetta' => '',
+  'Poista aihe' => '',
+  'Tämä aihe on kiinnitetty' => '',
+  'Tämä aihe on lukittu' => '',
 );

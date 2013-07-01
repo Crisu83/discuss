@@ -17,11 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Displaying {start}-{end} of {count} rooms.' => 'Näytetään {start}-{end} {count} aihealueesta.',
-  'Last post' => 'Viimeisin viesti',
-  'Replies' => 'Vastauksia',
-  'Sorry, no rooms were found.' => 'Valitettavasti yhtään aihealuetta ei löytynyt.',
-  'Threads' => 'Aiheita',
-  'Topic' => 'Aihepiiri',
-  '{timeAgo} by {alias}' => '{alias} {timeAgo}',
+  'Aiheita' => '',
+  'Aihepiiri' => '',
+  'Valitettavasti yhtään aihealuetta ei löytynyt.' => '',
+  'Vastauksia' => '',
+  'Viimeisin viesti' => '',
+  '{alias} {timeAgo}' => '',
 );

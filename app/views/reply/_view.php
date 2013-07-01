@@ -31,7 +31,7 @@
                     <div class="post-permalink">
                         <?php echo l(TbHtml::icon('link'),$data->getUrl(),array(
                             'rel'=>'tooltip',
-                            'title'=>t('title','Permalink'),
+                            'title'=>t('title','Linkki'),
                         )); ?>
                     </div>
                 </div>

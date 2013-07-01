@@ -18,12 +18,12 @@
     <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>5,'span'=>8)); ?>
     <?php echo $form->textFieldControlGroup($model,'weight',array('size'=>TbHtml::INPUT_SIZE_SMALL)); ?>
 
-    <?php echo TbHtml::submitButton(t('roomButton','Save'),array(
+    <?php echo TbHtml::submitButton(t('roomButton','Tallenna'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
     )); ?>
 
-    <?php echo TbHtml::linkButton(t('roomButton','Cancel'),array(
+    <?php echo TbHtml::linkButton(t('roomButton','Peruuta'),array(
         'color'=>TbHtml::BUTTON_COLOR_LINK,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
         'url'=>!$model->isNewRecord ? $model->getUrl() : array('list'),

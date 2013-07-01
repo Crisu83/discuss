@@ -17,13 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Alias' => 'Nimimerkki',
-  'Body' => 'Viesti',
+  'Aihealue' => '',
+  'Kiinnitetty' => '',
+  'Lukittu' => '',
+  'Nimimerkki' => '',
+  'Otsikko' => '',
+  'Tila' => '',
+  'Viesti' => '',
+  'Viimeisin viesti' => '',
   'Id' => 'Id',
-  'Last activity at' => 'Viimeisin viesti',
-  'Locked' => 'Lukittu',
-  'Pinned' => 'Kiinnitetty',
-  'Room' => 'Aihealue',
-  'Status' => 'Tila',
-  'Subject' => 'Otsikko',
 );

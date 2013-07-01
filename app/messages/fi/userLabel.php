@@ -17,9 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Käyttäjänimi' => '',
+  'Salasana' => '',
+  'Viimein aktiivinen' => '',
+  'Viimein kirjautunut' => '',
   'Id' => 'Id',
-  'Last active' => 'Viimein aktiivinen',
-  'Last login' => 'Viimein kirjautunut',
-  'Name' => 'Nimi',
-  'Password' => 'Salasana',
 );

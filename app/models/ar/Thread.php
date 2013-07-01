@@ -114,14 +114,14 @@ class Thread extends AuditActiveRecord
 	{
 		return array_merge(parent::attributeLabels(), array(
 			'id' => t('threadLabel', 'Id'),
-			'roomId' => t('threadLabel', 'Room'),
-			'alias' => t('threadLabel', 'Alias'),
-			'subject' => t('threadLabel', 'Subject'),
-			'body' => t('threadLabel', 'Body'),
-			'pinned' => t('threadLabel', 'Pinned'),
-			'locked' => t('threadLabel', 'Locked'),
-			'lastActivityAt' => t('threadLabel', 'Last activity at'),
-			'status' => t('threadLabel', 'Status'),
+			'roomId' => t('threadLabel', 'Aihealue'),
+			'alias' => t('threadLabel', 'Nimimerkki'),
+			'subject' => t('threadLabel', 'Otsikko'),
+			'body' => t('threadLabel', 'Viesti'),
+			'pinned' => t('threadLabel', 'Kiinnitetty'),
+			'locked' => t('threadLabel', 'Lukittu'),
+			'lastActivityAt' => t('threadLabel', 'Viimeisin viesti'),
+			'status' => t('threadLabel', 'Tila'),
 		));
 	}
 
@@ -160,7 +160,7 @@ class Thread extends AuditActiveRecord
 	{
         $heading = $this->renderIcons() . l($this->subject, $this->getUrl());
 		$column = Html::tag('h5', array(), $heading);
-        $column .= TbHtml::mutedSpan(t('threadGrid', 'Started by {alias} – {dateTime}', array(
+        $column .= TbHtml::mutedSpan(t('threadGrid', 'Aloittaja {alias} {dateTime}', array(
             '{alias}' => '<b>' . $this->alias . '</b>',
             '{dateTime}' => dateFormatter()->formatDateTime(strtotime($this->createdAt), 'long', 'short'),
         )));
@@ -175,16 +175,16 @@ class Thread extends AuditActiveRecord
 	{
 		$icons = array();
         if ($this->pinned)
-            $icons[] = l(TbHtml::icon('pushpin'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'This thread is pinned')));
+            $icons[] = l(TbHtml::icon('pushpin'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'Tämä aihe on kiinnitetty')));
         if ($this->locked)
-            $icons[] = l(TbHtml::icon('lock'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'This thread is locked')));
+            $icons[] = l(TbHtml::icon('lock'), '#', array('rel' => 'tooltip', 'title' => t('threadTitle', 'Tämä aihe on lukittu')));
         return !empty($icons) ? implode(' ', $icons) . ' ' : '';
 	}
 
     public function buttonToolbar()
     {
         $buttons = array();
-        $buttons[] = TbHtml::linkButton(t('threadButton', 'Quote'), array(
+        $buttons[] = TbHtml::linkButton(t('threadButton', 'Lainaa'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'url' => '#',
             'class' => 'quote-button thread-button',
@@ -194,14 +194,14 @@ class Thread extends AuditActiveRecord
             $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
                 'url' => array('update', 'id' => $this->id),
                 'rel' => 'tooltip',
-                'title' => t('threadTitle', 'Edit thread'),
+                'title' => t('threadTitle', 'Muokkaa aihetta'),
                 'class' => 'thread-button',
             ));
             $buttons[] = TbHtml::linkButton(TbHtml::icon('remove'), array(
                 'url' => array('delete', 'id' => $this->id),
                 'rel' => 'tooltip',
-                'title' => t('threadTitle', 'Delete thread'),
-                'confirm' => t('threadConfirm', 'Are you sure you want to delete this thread?'),
+                'title' => t('threadTitle', 'Poista aihe'),
+                'confirm' => t('threadConfirm', 'Oletko varma että haluat poistaa tämän aiheen?'),
                 'class' => 'thread-button',
             ));
         }
@@ -216,14 +216,14 @@ class Thread extends AuditActiveRecord
     {
         return !empty($this->alias)
             ? '<span class="alias">' . $this->alias . '</span>'
-            : '<span class="alias muted">' . t('reply', 'Anonymous') . '</span>';
+            : '<span class="alias muted">' . t('reply', 'Nimetön') . '</span>';
     }
 
     public function lastPostColumn()
     {
         $reply = $this->loadLastPost();
         $model = $reply !== null ? $reply : $this;
-        $column = t('threadGrid', '{timeAgo} by {alias}', array(
+        $column = t('threadGrid', '{alias} {timeAgo}', array(
             '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
             '{alias}' => '<b>' . $model->aliasText() . '</b>',
         ));

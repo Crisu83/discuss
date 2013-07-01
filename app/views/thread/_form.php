@@ -18,12 +18,12 @@
         <?php echo $form->textFieldControlGroup($model,'subject',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
         <?php echo $form->bbCodeControlGroup($model,'body'); ?>
 
-        <?php echo TbHtml::submitButton(t('threadButton','Save'),array(
+        <?php echo TbHtml::submitButton(t('threadButton','Tallenna'),array(
             'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
         )); ?>
 
-        <?php echo TbHtml::linkButton(t('threadButton','Cancel'),array(
+        <?php echo TbHtml::linkButton(t('threadButton','Peruuta'),array(
             'color'=>TbHtml::BUTTON_COLOR_LINK,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
             'url'=>!$model->isNewRecord ? $model->getUrl() : $model->room->getUrl(),

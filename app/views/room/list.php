@@ -8,7 +8,7 @@
     <hr>
 
     <?php if (!user()->isGuest): ?>
-        <?php echo TbHtml::linkButton(t('roomButton','Create room'),array(
+        <?php echo TbHtml::linkButton(t('roomButton','Uusi aihealue'),array(
             'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
             'url'=>array('create'),
             'class'=>'create-button',
@@ -19,12 +19,12 @@
         <?php $this->widget('TbGridView',array(
             'type'=>TbHtml::GRID_TYPE_STRIPED,
             'dataProvider'=>$rooms,
-            'summaryText'=>t('roomGrid','Displaying {start}-{end} of {count} rooms.'),
-            'emptyText'=>t('roomGrid','Sorry, no rooms were found.'),
+            'emptyText'=>t('roomGrid','Valitettavasti yhtään aihealuetta ei löytynyt.'),
             'filter'=>null,
+            'template'=>"{items}",
             'columns'=>array(
                 array(
-                    'header'=>t('roomGrid','Topic'),
+                    'header'=>t('roomGrid','Aihepiiri'),
                     'headerHtmlOptions'=>array('class'=>'text-column'),
                     'htmlOptions'=>array('class'=>'text-column'),
                     'value'=>function($data) {
@@ -33,7 +33,7 @@
                     },
                 ),
                 array(
-                    'header'=>t('roomGrid','Threads'),
+                    'header'=>t('roomGrid','Aiheita'),
                     'headerHtmlOptions'=>array('class'=>'number-column'),
                     'htmlOptions'=>array('class'=>'number-column'),
                     'value'=>function($data) {
@@ -42,7 +42,7 @@
                     }
                 ),
                 array(
-                    'header'=>t('roomGrid','Replies'),
+                    'header'=>t('roomGrid','Vastauksia'),
                     'headerHtmlOptions'=>array('class'=>'text-column'),
                     'htmlOptions'=>array('class'=>'text-column'),
                     'value'=>function($data) {
@@ -51,7 +51,7 @@
                     }
                 ),
                 array(
-                    'header'=>t('roomGrid','Last post'),
+                    'header'=>t('roomGrid','Viimeisin viesti'),
                     'headerHtmlOptions'=>array('class'=>'last-post'),
                     'htmlOptions'=>array('class'=>'last-post'),
                     'value'=>function($data) {

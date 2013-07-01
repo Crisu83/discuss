@@ -84,10 +84,10 @@ class User extends ActiveRecord
 	{
 		return array_merge(parent::attributeLabels(), array(
 			'id' => t('userLabel', 'Id'),
-			'name' => t('userLabel', 'Name'),
-			'password' => t('userLabel', 'Password'),
-			'lastLoginAt' => t('userLabel', 'Last login'),
-			'lastActiveAt' => t('userLabel', 'Last active'),
+			'name' => t('userLabel', 'Käyttäjänimi'),
+			'password' => t('userLabel', 'Salasana'),
+			'lastLoginAt' => t('userLabel', 'Viimein kirjautunut'),
+			'lastActiveAt' => t('userLabel', 'Viimein aktiivinen'),
 		));
 	}
 

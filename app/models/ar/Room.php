@@ -84,10 +84,10 @@ class Room extends AuditActiveRecord
     {
         return array_merge(parent::attributeLabels(), array(
             'id' => t('roomLabel', 'Id'),
-            'title' => t('roomLabel', 'Title'),
-            'description' => t('roomLabel', 'Description'),
-            'weight' => t('roomLabel', 'Weight'),
-            'status' => t('roomLabel', 'Status'),
+            'title' => t('roomLabel', 'Aihepiiri'),
+            'description' => t('roomLabel', 'Kuvaus'),
+            'weight' => t('roomLabel', 'Paino'),
+            'status' => t('roomLabel', 'Tila'),
         ));
     }
 
@@ -141,7 +141,7 @@ class Room extends AuditActiveRecord
         {
             $model = !empty($thread->replies) ? $thread->loadLastPost() : $thread;
             $rows[] = l(e($thread->subject), $model->getUrl());
-            $rows[] = t('roomGrid', '{timeAgo} by {alias}', array(
+            $rows[] = t('roomGrid', '{alias} {timeAgo}', array(
                 '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
                 '{alias}' => '<b>' . e($thread->alias) . '</b>'
             )) . ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $thread->getUrl(array('#'=>'latest-post')));

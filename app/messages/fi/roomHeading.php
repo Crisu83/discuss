@@ -17,6 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create room' => 'Luo aihealue',
-  'Edit room' => 'Muokkaa aihealuetta',
+  'Muokkaa aihealuetta' => '',
+  'Uusi aihealue' => '',
 );

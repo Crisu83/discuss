@@ -17,12 +17,11 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Displaying {start}-{end} of {count} threads.' => 'Näytetään {start}-{end} {count} aiheesta.',
-  'Last post' => 'Viimeisin viesti',
-  'Replies' => 'Vastauksia',
-  'Sorry, no were threads found.' => 'Valitettavasti yhtään aihetta ei löytynyt.',
-  'Started by {alias} – {dateTime}' => 'Aloittaja {alias} - {dateTime}',
-  'Subject' => 'Aihe',
-  'Views' => 'Katsottu',
-  '{timeAgo} by {alias}' => '{alias} {timeAgo}',
+  'Aloittaja {alias} {dateTime}' => '',
+  'Katsottu' => '',
+  'Otsikko' => '',
+  'Valitettavasti yhtään aihetta ei löytynyt.' => '',
+  'Vastauksia' => '',
+  'Viimeisin viesti' => '',
+  '{alias} {timeAgo}' => '',
 );

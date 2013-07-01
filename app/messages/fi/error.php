@@ -17,8 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Access denied.' => 'Pääsy kielletty.',
-  'Bad request.' => 'Virheellinen pyyntö.',
+  'Pääsy kielletty.' => '',
+  'Sivua ei löytynyt.' => '',
+  'Virhe {code}' => '',
+  'Virheellinen pyyntö.' => '',
   'Incorrect username or password.' => 'Väärä käyttäjänimi tai salasana.',
-  'Page not found.' => 'Sivua ei löydy.',
 );

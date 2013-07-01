@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create thread' => 'Luo aihe',
-  'Edit thread' => 'Muokaa aihetta',
-  'Post a new reply' => 'Kirjoita uusi viesti',
+  'Kirjoita uusi viesti' => '',
+  'Muokkaa aihetta' => '',
+  'Uusi aihe' => '',
 );

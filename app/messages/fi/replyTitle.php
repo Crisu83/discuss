@@ -17,6 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Delete post' => 'Poista viesti',
-  'Edit post' => 'Muokkaa viestiä',
+  'Muokkaa viestiä' => '',
+  'Poista viesti' => '',
 );

@@ -4,7 +4,7 @@
 ?>
 <div class="thread-controller update-action">
     <h1>
-        <?php echo t('threadHeading','Edit thread'); ?>
+        <?php echo t('threadHeading','Muokkaa aihetta'); ?>
         <small><?php echo e($model->subject); ?></small>
     </h1>
     <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>

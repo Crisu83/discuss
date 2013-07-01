@@ -17,10 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Subject' => 'Otsikko',
-  'Alias' => 'Nimimerkki',
-  'Body' => 'Viesti',
+  'Aihe' => '',
+  'Nimimerkki' => '',
+  'Otsikko' => '',
+  'Tila' => '',
+  'Viesti' => '',
   'Id' => 'Id',
-  'Status' => 'Tila',
-  'Thread' => 'Aihe',
 );

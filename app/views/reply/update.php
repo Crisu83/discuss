@@ -4,7 +4,7 @@
 ?>
 <div class="reply-controller update-action">
     <h1>
-        <?php echo t('replyHeading','Edit post'); ?>
+        <?php echo t('replyHeading','Muokkaa viestiä'); ?>
         <?php if (!empty($model->subject)): ?>
             <small><?php echo e($model->subject); ?></small>
         <?php endif; ?>

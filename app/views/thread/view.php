@@ -8,7 +8,7 @@ $this->breadcrumbs = array(
     $model->room->title=>array('room/view','id'=>$model->roomId),
     $model->subject,
 );
-$this->backButton = TbHtml::linkButton(t('threadLink','Return to the room'),array(
+$this->backButton = TbHtml::linkButton(t('threadLink','Palaa aihealueelle'),array(
     'url'=>$model->room->getUrl(),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
@@ -54,7 +54,7 @@ clientScript()->registerScript('PostQuoteButton',"
                     <div class="post-permalink">
                         <?php echo l(TbHtml::icon('link'),$model->getUrl(),array(
                             'rel'=>'tooltip',
-                            'title'=>t('title','Permalink'),
+                            'title'=>t('title','Linkki'),
                         )); ?>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ clientScript()->registerScript('PostQuoteButton',"
     <div class="row" id="add-reply">
         <div class="span10 offset2">
             <div class="new-reply">
-                <h3><?php echo t('threadHeading','Post a new reply'); ?></h3>
+                <h3><?php echo t('threadHeading','Kirjoita uusi viesti'); ?></h3>
                 <?php $this->renderPartial('../reply/_form', array('model'=>$reply)); ?>
             </div>
         </div>

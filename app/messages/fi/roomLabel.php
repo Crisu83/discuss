@@ -17,9 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Weight' => 'Paino',
-  'Description' => 'Kuvaus',
+  'Aihepiiri' => '',
+  'Kuvaus' => '',
+  'Paino' => '',
+  'Tila' => '',
   'Id' => 'Id',
-  'Status' => 'Tila',
-  'Title' => 'Otsikko',
 );
