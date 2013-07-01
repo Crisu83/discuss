@@ -5,7 +5,7 @@
 <body class="layout-main">
 	<?php $this->widget('bootstrap.widgets.TbNavbar',array(
         'color'=>TbHtml::NAVBAR_COLOR_INVERSE,
-        'brandLabel'=>TbHtml::icon('comments').' '.app()->name,
+        'brandLabel'=>TbHtml::icon('home').' '.app()->name,
 		'collapse'=>true,
 		'items'=>array(
             array(
@@ -28,6 +28,7 @@
                         <div class="page-breadcrumb">
                             <?php if(!empty($this->breadcrumbs)):?>
                                 <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                                    'homeLabel'=>t('breadcrumb','Home'),
                                     'links'=>$this->breadcrumbs,
                                 )); ?>
                             <?php endif?>

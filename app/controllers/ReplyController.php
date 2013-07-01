@@ -18,8 +18,10 @@ class ReplyController extends Controller
 	 */
 	public function filters()
 	{
-        return array_merge(parent::filters(), array(
-        ));
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
 	}
 
 	/**
@@ -62,6 +64,20 @@ class ReplyController extends Controller
 		}
 		$this->render('update', array('model'=>$model));
 	}
+
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id)
+    {
+        $this->loadModel($id)->delete();
+
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if (!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

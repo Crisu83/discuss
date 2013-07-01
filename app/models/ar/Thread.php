@@ -201,6 +201,7 @@ class Thread extends AuditActiveRecord
                 'url' => array('delete', 'id' => $this->id),
                 'rel' => 'tooltip',
                 'title' => t('threadTitle', 'Delete thread'),
+                'confirm' => t('threadConfirm', 'Are you sure you want to delete this thread?'),
                 'class' => 'thread-button',
             ));
         }

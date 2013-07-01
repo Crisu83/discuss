@@ -126,6 +126,7 @@ class Reply extends AuditActiveRecord
                 'url' => array('reply/update', 'id' => $this->id),
                 'rel' => 'tooltip',
                 'title' => t('replyTitle', 'Edit post'),
+                'confirm' => t('replyConfirm', 'Are you sure you want to delete this post?'),
                 'class' => 'reply-button',
             ));
             $buttons[] = TbHtml::linkButton(TbHtml::icon('remove'), array(

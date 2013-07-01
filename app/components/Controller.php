@@ -19,17 +19,6 @@ abstract class Controller extends CController
     public $backButton;
 
     /**
-     * @return array action filters
-     */
-    public function filters()
-    {
-        return array(
-            'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
-        );
-    }
-
-    /**
      * Performs ajax validation on the given model.
      * @param CModel $model the model to validate.
      * @param string $formId the form id.
@@ -43,23 +32,6 @@ abstract class Controller extends CController
             foreach ($model as $m)
                 echo CActiveForm::validate($m);
             app()->end();
-        }
-    }
-
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
-     * @param integer $id the ID of the model to be deleted
-     */
-    public function actionDelete($id)
-    {
-        if (method_exists($this, 'loadModel'))
-        {
-            $this->loadModel($id)->delete();
-
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax']))
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
         }
     }
 
