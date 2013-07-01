@@ -7,6 +7,7 @@
 * @property string $id
 * @property string $title
 * @property string $description
+* @property integer $weight
 * @property integer $status
  *
  * The followings are the available relations for table 'thread':
@@ -38,11 +39,14 @@ class Room extends AuditActiveRecord
     */
     public function behaviors()
     {
-        return array_merge(parent::rules(), array(
+        return array_merge(parent::behaviors(), array(
             array(
                 'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
                 'route' => 'room/view',
                 'params' => array('id' => $this->id, 'name' => strtolower($this->title)),
+            ),
+            'weight' => array(
+                'class' => 'app.behaviors.WeightBehavior',
             ),
         ));
     }
@@ -54,10 +58,10 @@ class Room extends AuditActiveRecord
     {
         return array_merge(parent::rules(), array(
             array('title', 'required'),
-            array('status', 'numerical', 'integerOnly'=>true),
+            array('weight, status', 'numerical', 'integerOnly'=>true),
             array('title, description', 'length', 'max'=>255),
             // The following rule is used by search().
-            array('id, title, description, status', 'safe', 'on' => 'search'),
+            array('id, title, description, weight, status', 'safe', 'on' => 'search'),
         ));
     }
 
@@ -82,6 +86,7 @@ class Room extends AuditActiveRecord
             'id' => t('roomLabel', 'Id'),
             'title' => t('roomLabel', 'Title'),
             'description' => t('roomLabel', 'Description'),
+            'weight' => t('roomLabel', 'Weight'),
             'status' => t('roomLabel', 'Status'),
         ));
     }
@@ -97,6 +102,7 @@ class Room extends AuditActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('weight',$this->weight);
 		$criteria->compare('status',$this->status);
 
         return new CActiveDataProvider($this, array(

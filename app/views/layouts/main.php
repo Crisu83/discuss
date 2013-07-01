@@ -12,8 +12,8 @@
                 'class'=>'bootstrap.widgets.TbNav',
                 'htmlOptions'=>array('pull'=>TbHtml::PULL_RIGHT),
                 'items'=>array(
-                    array('label'=>t('link','Sign in'),'url'=>array('/site/login'),'visible'=>user()->isGuest),
-                    array('label'=>t('link','Sign out'),'url'=>array('/site/logout'),'visible'=>!user()->isGuest),
+                    array('label'=>t('link','Kirjaudu ylläpitäjänä'),'url'=>array('/site/login'),'visible'=>user()->isGuest),
+                    array('label'=>t('link','Kirjaudu ulos'),'url'=>array('/site/logout'),'visible'=>!user()->isGuest),
                 ),
             ),
 		),
@@ -28,7 +28,7 @@
                         <div class="page-breadcrumb">
                             <?php if(!empty($this->breadcrumbs)):?>
                                 <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
-                                    'homeLabel'=>t('breadcrumb','Home'),
+                                    'homeLabel'=>t('breadcrumb','Etusivu'),
                                     'links'=>$this->breadcrumbs,
                                 )); ?>
                             <?php endif?>

@@ -3,7 +3,7 @@
 /* @var CActiveDataProvider $rooms */
 ?>
 <div class="room-controller list-action">
-    <?php echo TbHtml::lead(t('roomLead','Hello there! Start by choosing a discussion room.')); ?>
+    <?php echo TbHtml::lead(t('roomLead','Kotipolku.com on keskustelupalsta ja suunnattu asunnon omistajille sekä omistajuutta suunnitteleville henkilöille. Jaetaan kysymykset remonteista, sisustuksesta, lattiamateriaaleista, pihaistutuksista, homeongelmista tai vaikka laina-asioista.')); ?>
 
     <hr>
 

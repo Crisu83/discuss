@@ -11,7 +11,7 @@ defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 
 /**
  * Returns the application instance.
- * @return CWebApplication
+ * @return WebApplication
  */
 function app()
 {

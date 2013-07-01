@@ -17,8 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Id' => 'Id',
+  'Weight' => 'Paino',
   'Description' => 'Kuvaus',
+  'Id' => 'Id',
   'Status' => 'Tila',
   'Title' => 'Otsikko',
 );

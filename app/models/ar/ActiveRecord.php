@@ -27,5 +27,29 @@ class ActiveRecord extends CActiveRecord
 		}
 		return $scope;
 	}
+
+    /**
+     * Deletes the row corresponding to this active record.
+     * @return boolean whether the deletion is successful.
+     * @throws CException if the record is new
+     */
+    public function delete()
+    {
+        if ($this->hasAttribute('status'))
+        {
+            $this->changeStatus(self::STATUS_DELETED);
+            return true; // prevents hard deletion
+        }
+        return parent::delete();
+    }
+
+    /**
+     * Hard deletes the record.
+     * @return boolean whether the deletion is successful.
+     */
+    public function hardDelete()
+    {
+        return parent::delete();
+    }
 }
 

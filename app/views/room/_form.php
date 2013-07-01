@@ -16,6 +16,7 @@
 
     <?php echo $form->textFieldControlGroup($model,'title',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
     <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>5,'span'=>8)); ?>
+    <?php echo $form->textFieldControlGroup($model,'weight',array('size'=>TbHtml::INPUT_SIZE_SMALL)); ?>
 
     <?php echo TbHtml::submitButton(t('roomButton','Save'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,

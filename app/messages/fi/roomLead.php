@@ -17,5 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Hello there! Start by choosing a discussion room.' => 'Tervetuloa! Aloita valitsemalla aihealue.',
+  'Kotipolku.com on keskustelupalsta ja suunnattu asunnon omistajille sekä omistajuutta suunnitteleville henkilöille. Jaetaan kysymykset remonteista, sisustuksesta, lattiamateriaaleista, pihaistutuksista, homeongelmista tai vaikka laina-asioista.' => '',
 );

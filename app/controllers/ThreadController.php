@@ -96,15 +96,15 @@ class ThreadController extends Controller
 	{
 		$model = new Thread();
         $model->roomId = $roomId;
+        $model->getRelated('room', true);
 		$this->performAjaxValidation($model, self::FORM_ID);
         $request = request();
 		if($request->isPostRequest)
 		{
 			$model->attributes = $request->getPost('Thread');
 			if ($model->save())
-				$this->redirect($model->room->getUrl(array('id' => $model->roomId)));
+				$this->redirect($model->room->getUrl());
 		}
-
 		$this->render('create', array('model' => $model));
 	}
 
@@ -135,7 +135,9 @@ class ThreadController extends Controller
     public function actionDelete($id)
     {
         $model = $this->loadModel($id);
-        $returnUrl = $model->getUrl();
+        foreach ($model->replies as $reply)
+            $reply->delete();
+        $returnUrl = $model->room->getUrl();
         $model->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
