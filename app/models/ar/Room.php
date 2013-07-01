@@ -53,7 +53,7 @@ class Room extends AuditActiveRecord
     public function rules()
     {
         return array_merge(parent::rules(), array(
-            array('title, description', 'required'),
+            array('title', 'required'),
             array('status', 'numerical', 'integerOnly'=>true),
             array('title, description', 'length', 'max'=>255),
             // The following rule is used by search().
