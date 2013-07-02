@@ -6,8 +6,8 @@
     <div class="reply post">
         <div class="row">
             <div class="span2">
-                <div class="post-author">
-                    <?php echo TbHtml::b($data->aliasText()); ?><br>
+                <div class="post-meta">
+                    <?php echo $data->aliasText(); ?><br>
                     <?php echo l(format()->formatTimeAgo($data->createdAt),'#',array(
                         'rel'=>'tooltip',
                         'title'=>dateFormatter()->formatDateTime(strtotime($data->createdAt), 'long', 'short'),
@@ -22,6 +22,7 @@
                     <?php endif; ?>
                     <div class="post-body">
                         <?php echo app()->bbcodeParser->parse($data->body); ?>
+                        <div class="post-bbcode hidden"><?php echo $data->body; ?></div>
                     </div>
                     <div class="post-actions">
                         <div class="pull-right">

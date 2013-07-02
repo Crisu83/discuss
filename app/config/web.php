@@ -69,6 +69,9 @@ return array(
 		'bootstrap' => array(
 			'class' => 'bootstrap.components.TbApi',
 		),
+        'clientScript' => array(
+            'class' => 'ClientScript',
+        ),
 		// uncomment the following to enable the image extension
 		/*
 		'image' => array(

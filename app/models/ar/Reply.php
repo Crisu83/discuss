@@ -126,8 +126,8 @@ class Reply extends AuditActiveRecord
     public function aliasText()
     {
         return !empty($this->alias)
-            ? '<span class="alias">' . $this->alias . '</span>'
-            : '<span class="alias muted">' . t('reply', 'Nimetön') . '</span>';
+            ? '<strong class="post-author">' . $this->alias . '</strong>'
+            : '<strong class="post-author muted">' . t('reply', 'Nimetön') . '</strong>';
     }
 
 	/**
@@ -144,7 +144,7 @@ class Reply extends AuditActiveRecord
         $buttons[] = TbHtml::linkButton(t('replyButton', 'Lainaa'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'url' => '#',
-            'class' => 'reply-button',
+            'class' => 'quote-button',
         ));
         if (!user()->isGuest)
         {

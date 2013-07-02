@@ -260,7 +260,7 @@ class SBBCodeParser_TextNode extends SBBCodeParser_Node
 	{
 		if(!$nl2br)
 			return str_replace("  ", " &nbsp;", htmlentities($this->text, ENT_QUOTES | ENT_IGNORE, "UTF-8"));
-		
+
 		return str_replace("  ", " &nbsp;", nl2br(htmlentities($this->text, ENT_QUOTES | ENT_IGNORE, "UTF-8")));
 	}
 	
@@ -759,12 +759,12 @@ class SBBCodeParser_Document extends SBBCodeParser_ContainerNode
 			{
 				$cite = '';
 				if(!empty($attribs['default']))
-					$cite = "<cite>{$attribs['default']}:</cite>";
+					$cite = "<cite>{$attribs['default']}</cite>";
 
 				if($node->find_parent_by_tag('quote') !== null)
-					return "</p><blockquote><p>{$cite}{$content}</p></blockquote><p>";
-			
-				return "<blockquote><p>{$cite}{$content}</p></blockquote>";
+					return "</p><blockquote>{$cite}{$content}</blockquote><p>";
+
+				return "<blockquote>{$cite}{$content}</blockquote>";
 			}, SBBCodeParser_BBCode::BLOCK_TAG),
 		    
 			new SBBCodeParser_BBCode('font', function($content, $attribs)

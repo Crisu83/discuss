@@ -41,7 +41,7 @@
 					'<body contenteditable="true"></body>' +
 				'</html>',
 
-		toolbarButton:	'<a class="btn" data-sceditor-command="{name}" unselectable="on"><i class="icon-{icon}"></i></a>',
+		toolbarButton:	'<a class="btn btn-link" data-sceditor-command="{name}" unselectable="on"><i class="icon-{icon}"></i></a>',
 
 		emoticon:	'<img src="{url}" data-sceditor-emoticon="{key}" alt="{key}" title="{tooltip}" />',
 

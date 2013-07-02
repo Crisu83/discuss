@@ -19,23 +19,24 @@ $this->backButton = TbHtml::linkButton(t('threadLink','Palaa aihealueelle'),arra
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
 
-/*
 clientScript()->registerScript('PostQuoteButton',"
-    $('.quote-button').click(function() {
-            window.location.hash = 'add-reply';
-            var bbcode = $(this).parents('.post-content').find('.post-bbcode').html();
-            $('#Reply_body').text(bbcode);
-            return false;
+    $('.quote-button').click(function(event) {
+        var bbcode = $(this).parents('.post').find('.post-bbcode').text();
+        var author = $(this).parents('.post').find('.post-author').text();
+        bbcode = '[quote=' + author + ']' + bbcode + '[/quote]';
+        $('#Reply_body').sceditor('instance').insert(bbcode);
+        jQuery(window).scrollTop(jQuery('#add-reply').position().top);
+        event.preventDefault();
+        return false;
     });
-");
-*/
+",CClientScript::POS_READY);
 ?>
 <div class="thread-controller view-action">
     <div class="thread post">
         <div class="row">
             <div class="span2">
-                <div class="post-author">
-                    <?php echo TbHtml::b($model->alias); ?><br>
+                <div class="post-meta">
+                    <?php echo TbHtml::b($model->alias,array('class'=>'post-author')); ?><br>
                     <?php echo l(format()->formatTimeAgo($model->createdAt),'#',array(
                         'rel'=>'tooltip',
                         'title'=>dateFormatter()->formatDateTime(strtotime($model->createdAt), 'long', 'short'),
