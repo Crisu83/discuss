@@ -35,6 +35,32 @@ class Reply extends AuditActiveRecord
 		return 'reply';
 	}
 
+    /**
+     * @return array attached behaviors.
+     */
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), array(
+            array(
+                'class' => 'app.behaviors.WorkflowBehavior',
+                'defaultStatus' => self::STATUS_DEFAULT,
+                'statuses' => array(
+                    self::STATUS_DEFAULT => array(
+                        'label' => t('threadStatus', 'Default'),
+                        'transitions' => array(self::STATUS_REPORTED, self::STATUS_DELETED),
+                    ),
+                    self::STATUS_REPORTED => array(
+                        'label' => t('threadStatus', 'Reported'),
+                        'transitions' => array(self::STATUS_DEFAULT, self::STATUS_DELETED),
+                    ),
+                    self::STATUS_DELETED => array(
+                        'label' => t('threadStatus', 'Deleted'),
+                    ),
+                ),
+            )
+        ));
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -101,7 +127,7 @@ class Reply extends AuditActiveRecord
     {
         return !empty($this->alias)
             ? '<span class="alias">' . $this->alias . '</span>'
-            : '<span class="alias muted">' . t('reply', 'Anonymous') . '</span>';
+            : '<span class="alias muted">' . t('reply', 'Nimetön') . '</span>';
     }
 
 	/**

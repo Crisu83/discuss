@@ -51,7 +51,17 @@ class Thread extends AuditActiveRecord
             array(
                 'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
                 'route' => 'thread/view',
-                'params' => array('id' => $this->id, 'name' => strtolower($this->subject), 'room' => strtolower(v($this, 'room.title'))),
+                'params' => array(
+                    'id' => function($data) {
+                        return $data->id;
+                    },
+                    'name' => function($data) {
+                        return strtolower($data->subject);
+                    },
+                    'room' => function($data) {
+                        return strtolower(v($data, 'room.title'));
+                    },
+                ),
             ),
             array(
                 'class' => 'app.behaviors.WorkflowBehavior',

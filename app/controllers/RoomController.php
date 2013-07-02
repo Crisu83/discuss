@@ -64,7 +64,7 @@ class RoomController extends Controller
         {
             $model->attributes = $request->getPost('Room');
             if ($model->save())
-                $this->redirect(array('list'));
+                $this->redirect(array('view', 'id' => $model->id));
         }
         $this->render('create', array(
             'model' => $model,

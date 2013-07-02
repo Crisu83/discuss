@@ -103,7 +103,7 @@ class ThreadController extends Controller
 		{
 			$model->attributes = $request->getPost('Thread');
 			if ($model->save())
-				$this->redirect($model->room->getUrl());
+				$this->redirect($model->getUrl());
 		}
 		$this->render('create', array('model' => $model));
 	}
