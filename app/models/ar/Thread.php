@@ -49,7 +49,7 @@ class Thread extends AuditActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             array(
-                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
+                'class' => 'SeoActiveRecordBehavior',
                 'route' => 'thread/view',
                 'params' => array(
                     'id' => function($data) {

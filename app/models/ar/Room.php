@@ -41,7 +41,7 @@ class Room extends AuditActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             array(
-                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
+                'class' => 'SeoActiveRecordBehavior',
                 'route' => 'room/view',
                 'params' => array('id' => $this->id, 'name' => strtolower($this->title)),
             ),
