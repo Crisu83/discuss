@@ -19,6 +19,19 @@ abstract class Controller extends CController
     public $backButton;
 
     /**
+     * @param string $value the page title.
+     */
+    public function setPageTitle($value)
+    {
+        if (is_array($value))
+        {
+            $value[] = app()->name;
+            $value = implode(' - ', $value);
+        }
+        parent::setPageTitle($value);
+    }
+
+    /**
      * Performs ajax validation on the given model.
      * @param CModel $model the model to validate.
      * @param string $formId the form id.

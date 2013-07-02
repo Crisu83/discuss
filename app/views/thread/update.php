@@ -1,6 +1,10 @@
 <?php
 /* @var ThreadController $this */
 /* @var Thread $model */
+
+$this->pageTitle = array(
+    t('threadTitle','Muokkaa aihetta'),
+);
 ?>
 <div class="thread-controller update-action">
     <h1>

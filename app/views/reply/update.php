@@ -1,6 +1,10 @@
 <?php
 /* @var ThreadController $this */
 /* @var Reply $model */
+
+$this->pageTitle = array(
+    t('threadTitle','Muokkaa viestiä'),
+);
 ?>
 <div class="reply-controller update-action">
     <h1>

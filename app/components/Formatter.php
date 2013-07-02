@@ -23,17 +23,17 @@ class Formatter extends CFormatter
         $minutes = $diff->format('%i');
 
         if ($years > 0)
-            $timeAgo = t('format', '{n} year ago|{n} years ago', $years);
+            $timeAgo = t('format', '{n} vuosi sitten|{n} vuotta sitten', $years);
         else if ($months > 0)
-            $timeAgo = t('format', '{n} month ago|{n} months ago', $months);
+            $timeAgo = t('format', '{n} kuukausi sitten|{n} kuukautta sitten', $months);
         else if ($days > 0)
-            $timeAgo = t('format', '{n} day ago|{n} days ago', $days);
+            $timeAgo = t('format', '{n} päivä sitten|{n} päivää sitten', $days);
         else if ($hours > 0)
-            $timeAgo = t('format', '{n} hour ago|{n} hours ago', $hours);
+            $timeAgo = t('format', '{n} tunti sitten|{n} tuntia sitten', $hours);
         else if ($minutes > 0)
-            $timeAgo = t('format', '{n} minute ago|{n} minutes ago', $minutes);
+            $timeAgo = t('format', '{n} minuutti sitten|{n} minuuttia sitten', $minutes);
         else
-            $timeAgo = t('format', 'just now');
+            $timeAgo = t('format', 'juuri nyt');
 
         return $timeAgo;
     }

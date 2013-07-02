@@ -1,6 +1,10 @@
 <?php
 /* @var $this RoomController */
 /* @var $model Room */
+
+$this->pageTitle = array(
+    t('roomTitle', 'Muokkaa aihealuetta'),
+);
 ?>
 <div class="room-controller update-action">
     <h1>

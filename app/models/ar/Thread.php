@@ -68,15 +68,15 @@ class Thread extends AuditActiveRecord
                 'defaultStatus' => self::STATUS_DEFAULT,
                 'statuses' => array(
                     self::STATUS_DEFAULT => array(
-                        'label' => t('threadStatus', 'Default'),
+                        'label' => t('threadStatus', 'Oletus'),
                         'transitions' => array(self::STATUS_REPORTED, self::STATUS_DELETED),
                     ),
                     self::STATUS_REPORTED => array(
-                        'label' => t('threadStatus', 'Reported'),
+                        'label' => t('threadStatus', 'Ilmoitettu'),
                         'transitions' => array(self::STATUS_DEFAULT, self::STATUS_DELETED),
                     ),
                     self::STATUS_DELETED => array(
-                        'label' => t('threadStatus', 'Deleted'),
+                        'label' => t('threadStatus', 'Poistettu'),
                     ),
                 ),
             )

@@ -4,10 +4,16 @@
 /* @var CActiveDataProvider $replies */
 /* @var $reply Reply */
 
+$this->pageTitle = array(
+    $model->subject,
+    $model->room->title,
+);
+
 $this->breadcrumbs = array(
     $model->room->title=>array('room/view','id'=>$model->roomId),
     $model->subject,
 );
+
 $this->backButton = TbHtml::linkButton(t('threadLink','Palaa aihealueelle'),array(
     'url'=>$model->room->getUrl(),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,

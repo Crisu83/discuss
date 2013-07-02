@@ -2,9 +2,14 @@
 /* @var RoomController $this */
 /* @var Room $model */
 
+$this->pageTitle = array(
+    $model->title,
+);
+
 $this->breadcrumbs=array(
     $model->title,
 );
+
 $this->backButton = TbHtml::linkButton(t('threadLink','Palaa etusivulle'),array(
     'url'=>array('room/list'),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
