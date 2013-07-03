@@ -130,9 +130,9 @@ class CoalmineConnection extends CComponent {
 					} else {
 						$retryAfter = 0;
 					}
-					$this->logTooManyRequests($retryAfter);
+					//$this->logTooManyRequests($retryAfter);
 					if (($cache = $this->_getCache()) !== null) {
-						//$cache->set($this->_calculateCacheKey('retryAfter'), time() + $retryAfter);
+						$cache->set($this->_calculateCacheKey('retryAfter'), time() + $retryAfter);
 					}
 					break;
 				default:

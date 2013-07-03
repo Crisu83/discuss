@@ -65,7 +65,6 @@ class FbLike extends CWidget
      */
     public function init()
     {
-        parent::init();
         if (isset($this->htmlOptions['class']))
             $this->htmlOptions['class'] .= ' fb-like';
         else
@@ -83,7 +82,6 @@ class FbLike extends CWidget
             $this->htmlOptions['data-colorscheme'] = $this->colorscheme;
         if (!empty($this->action))
             $this->htmlOptions['data-action'] = $this->action;
-
     }
 
     /**
