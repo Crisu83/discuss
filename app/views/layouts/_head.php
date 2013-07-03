@@ -6,6 +6,7 @@
     <?php /*<link rel="icon" href="<?php echo baseUrl('/favicon.ico'); ?>" type="image/x-icon"/>*/ ?>
 
     <title><?php echo e($this->pageTitle); ?></title>
+    <?php $this->widget('app.widgets.SeoHead'); ?>
 
     <?php css('css/main.css'); ?>
     <?php css('css/responsive.css'); ?>

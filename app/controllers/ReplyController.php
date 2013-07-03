@@ -59,7 +59,7 @@ class ReplyController extends Controller
         {
             $model->attributes = $request->getPost('Reply');
 			if ($model->save())
-				$this->redirect($model->getUrl());
+				$this->redirect($model->createUrl());
 		}
 		$this->render('update', array('model'=>$model));
 	}
@@ -72,7 +72,7 @@ class ReplyController extends Controller
     public function actionDelete($id)
     {
         $model = $this->loadModel($id);
-        $returnUrl = $model->thread->getUrl();
+        $returnUrl = $model->thread->createUrl();
         $model->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

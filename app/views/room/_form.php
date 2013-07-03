@@ -26,7 +26,7 @@
     <?php echo TbHtml::linkButton(t('roomButton','Peruuta'),array(
         'color'=>TbHtml::BUTTON_COLOR_LINK,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
-        'url'=>!$model->isNewRecord ? $model->getUrl() : array('list'),
+        'url'=>!$model->isNewRecord ? $model->createUrl() : array('list'),
     )); ?>
 
 <?php $this->endWidget(); ?>

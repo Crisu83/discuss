@@ -15,7 +15,7 @@ class AuditActiveRecord extends ActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             'audit' => array(
-                'class' => 'vendor.nordsoftware.yii-audit.behaviors.AuditBehavior',
+                'class' => 'app.behaviors.AuditBehavior',
             )
         ));
     }

@@ -22,7 +22,7 @@ class SeoActiveRecordBehavior extends CActiveRecordBehavior
      * @param array $params additional GET parameters (name=>value)
      * @return string the URL
      */
-    public function getUrl($params=array())
+    public function createUrl($params=array())
     {
         return Yii::app()->createUrl($this->route, CMap::mergeArray($params, $this->evaluateParams($this->params)));
     }
@@ -32,7 +32,7 @@ class SeoActiveRecordBehavior extends CActiveRecordBehavior
      * @param array $params additional GET parameters (name=>value)
      * @return string the URL
      */
-    public function getAbsoluteUrl($params=array())
+    public function createAbsoluteUrl($params=array())
     {
         return Yii::app()->createAbsoluteUrl($this->route, CMap::mergeArray($params, $this->evaluateParams($this->params)));
     }

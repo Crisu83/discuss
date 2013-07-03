@@ -3,6 +3,8 @@
 <html lang="en">
 <?php $this->renderPartial('app.views.layouts._head'); ?>
 <body class="layout-main">
+    <?php app()->facebook->register(); ?>
+
 	<?php $this->widget('bootstrap.widgets.TbNavbar',array(
         'color'=>TbHtml::NAVBAR_COLOR_INVERSE,
         'brandLabel'=>TbHtml::icon('home').' '.app()->name,

@@ -26,7 +26,7 @@
         <?php echo TbHtml::linkButton(t('replyButton','Peruuta'),array(
             'color'=>TbHtml::BUTTON_COLOR_LINK,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
-            'url'=>$model->thread->getUrl(),
+            'url'=>$model->thread->createUrl(),
         )); ?>
 
     <?php $this->endWidget(); ?>

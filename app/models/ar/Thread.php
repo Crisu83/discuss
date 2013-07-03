@@ -49,7 +49,7 @@ class Thread extends AuditActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             array(
-                'class' => 'SeoActiveRecordBehavior',
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
                 'route' => 'thread/view',
                 'params' => array(
                     'id' => function($data) {
@@ -168,7 +168,7 @@ class Thread extends AuditActiveRecord
 	 */
 	public function subjectColumn()
 	{
-        $heading = $this->renderIcons() . l($this->subject, $this->getUrl());
+        $heading = $this->renderIcons() . l($this->subject, $this->createUrl());
 		$column = Html::tag('h5', array(), $heading);
         $column .= TbHtml::mutedSpan(t('threadGrid', 'Aloittaja {alias} {dateTime}', array(
             '{alias}' => '<b>' . $this->alias . '</b>',
@@ -194,13 +194,56 @@ class Thread extends AuditActiveRecord
     public function buttonToolbar()
     {
         $buttons = array();
-        $buttons[] = TbHtml::linkButton(t('threadButton', 'Lainaa'), array(
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'url' => '#',
-            'class' => 'quote-button thread-button',
-        ));
+        if (!$this->isLocked())
+        {
+            $buttons[] = TbHtml::linkButton(t('threadButton', 'Lainaa'), array(
+                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                'url' => '#',
+                'class' => 'quote-button thread-button',
+            ));
+        }
         if (!user()->isGuest)
         {
+            if ($this->isPinned())
+            {
+                $buttons[] = TbHtml::linkButton(TbHtml::icon('pushpin'), array(
+                    'color' => TbHtml::BUTTON_COLOR_INVERSE,
+                    'url' => array('setPin', 'id' => $this->id, 'value' => 0),
+                    'rel' => 'tooltip',
+                    'title' => t('threadTitle', 'Poista kiinnitys'),
+                    'class' => 'thread-button',
+                ));
+            }
+            else
+            {
+                $buttons[] = TbHtml::linkButton(TbHtml::icon('pushpin'), array(
+                    'color' => TbHtml::BUTTON_COLOR_DEFAULT,
+                    'url' => array('setPin', 'id' => $this->id, 'value' => 1),
+                    'rel' => 'tooltip',
+                    'title' => t('threadTitle', 'Kiinnitä aihe'),
+                    'class' => 'thread-button',
+                ));
+            }
+            if ($this->isLocked())
+            {
+                $buttons[] = TbHtml::linkButton(TbHtml::icon('lock'), array(
+                    'color' => TbHtml::BUTTON_COLOR_INVERSE,
+                    'url' => array('setLock', 'id' => $this->id, 'value' => 0),
+                    'rel' => 'tooltip',
+                    'title' => t('threadTitle', 'Poista lukitus'),
+                    'class' => 'thread-button',
+                ));
+            }
+            else
+            {
+                $buttons[] = TbHtml::linkButton(TbHtml::icon('lock'), array(
+                    'color' => TbHtml::BUTTON_COLOR_DEFAULT,
+                    'url' => array('setLock', 'id' => $this->id, 'value' => 1),
+                    'rel' => 'tooltip',
+                    'title' => t('threadTitle', 'Lukitse aihe'),
+                    'class' => 'thread-button',
+                ));
+            }
             $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
                 'url' => array('update', 'id' => $this->id),
                 'rel' => 'tooltip',
@@ -237,7 +280,7 @@ class Thread extends AuditActiveRecord
             '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
             '{alias}' => '<b>' . $model->aliasText() . '</b>',
         ));
-        $column .= ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $model->getUrl());
+        $column .= ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $model->createUrl());
         return $column;
     }
 
@@ -267,5 +310,13 @@ class Thread extends AuditActiveRecord
         $criteria->order = 'audit_model.created DESC';
         $criteria->limit = 1;
         return $criteria;
+    }
+
+    public function isPinned() {
+        return (int)$this->pinned === 1;
+    }
+
+    public function isLocked() {
+        return (int)$this->locked === 1;
     }
 }

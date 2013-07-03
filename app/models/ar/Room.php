@@ -41,9 +41,16 @@ class Room extends AuditActiveRecord
     {
         return array_merge(parent::behaviors(), array(
             array(
-                'class' => 'SeoActiveRecordBehavior',
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
                 'route' => 'room/view',
-                'params' => array('id' => $this->id, 'name' => strtolower($this->title)),
+                'params' => array(
+                    'id' => function($data) {
+                        return $data->id;
+                    },
+                    'name' => function($data) {
+                        return strtolower($data->title);
+                    },
+                ),
             ),
             'weight' => array(
                 'class' => 'app.behaviors.WeightBehavior',
@@ -115,12 +122,8 @@ class Room extends AuditActiveRecord
         $criteria = new CDbCriteria();
         $criteria->distinct = true;
         $criteria->addCondition('roomId=:roomId');
-        $criteria->join = 'INNER JOIN audit_model ON (t.id=modelId AND model=:model)';
-        $criteria->params = array(
-            ':roomId' => $this->id,
-            ':model' => 'Thread',
-        );
-        $criteria->order = 'pinned DESC, audit_model.created DESC';
+        $criteria->params[':roomId'] = $this->id;
+        $criteria->order = 'pinned DESC, lastActivityAt DESC';
         return new CActiveDataProvider('Thread', array(
             'criteria' => $criteria,
         ));
@@ -128,7 +131,7 @@ class Room extends AuditActiveRecord
 
     public function topicColumn()
     {
-        $column = Html::tag('h5', array(), l(e($this->title), $this->getUrl()));
+        $column = Html::tag('h5', array(), l(e($this->title), $this->createUrl()));
         $column .= e($this->description);
         return $column;
     }
@@ -142,11 +145,11 @@ class Room extends AuditActiveRecord
             $model = !empty($thread->replies) ? $thread->loadLastPost() : $thread;
             if ($model !== null)
             {
-                $rows[] = l(e($thread->subject), $model->getUrl());
+                $rows[] = l(e($thread->subject), $model->createUrl());
                 $rows[] = t('roomGrid', '{alias} {timeAgo}', array(
                     '{timeAgo}' => format()->formatTimeAgo($model->createdAt),
                     '{alias}' => '<b>' . e($thread->alias) . '</b>'
-                )) . ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $thread->getUrl(array('#'=>'latest-post')));
+                )) . ' ' . l(TbHtml::icon(TbHtml::ICON_FORWARD), $thread->createUrl(array('#' => 'latest-post')));
                 return implode('<br>', $rows);
             }
         }

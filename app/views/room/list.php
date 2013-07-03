@@ -2,7 +2,8 @@
 /* @var RoomController $this */
 /* @var CActiveDataProvider $rooms */
 
-$this->pageTitle = app()->name;
+$this->pageTitle=app()->name;
+$this->canonical=$this->createUrl('list');
 ?>
 <div class="room-controller list-action">
     <?php echo TbHtml::lead(t('roomLead','Kotipolku.com on keskustelupalsta ja suunnattu asunnon omistajille sekä omistajuutta suunnitteleville henkilöille. Jaetaan kysymykset remonteista, sisustuksesta, lattiamateriaaleista, pihaistutuksista, homeongelmista tai vaikka laina-asioista.')); ?>

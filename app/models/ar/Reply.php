@@ -133,19 +133,22 @@ class Reply extends AuditActiveRecord
 	/**
 	 * @return string the URL to this comment.
 	 */
-	public function getUrl()
+	public function createUrl()
 	{
-		return $this->thread->getUrl(array('#' => 'post-'.$this->id));
+		return $this->thread->createUrl(array('#' => 'post-'.$this->id));
 	}
 
     public function buttonToolbar()
     {
         $buttons = array();
-        $buttons[] = TbHtml::linkButton(t('replyButton', 'Lainaa'), array(
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'url' => '#',
-            'class' => 'quote-button',
-        ));
+        if (!$this->thread->isLocked())
+        {
+            $buttons[] = TbHtml::linkButton(t('replyButton', 'Lainaa'), array(
+                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                'url' => '#',
+                'class' => 'quote-button',
+            ));
+        }
         if (!user()->isGuest)
         {
             $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(

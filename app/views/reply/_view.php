@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="post-permalink">
-                        <?php echo l(TbHtml::icon('link'),$data->getUrl(),array(
+                        <?php echo l(TbHtml::icon('link'),$data->createUrl(),array(
                             'rel'=>'tooltip',
                             'title'=>t('title','Linkki'),
                         )); ?>

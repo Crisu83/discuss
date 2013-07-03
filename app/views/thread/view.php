@@ -4,21 +4,24 @@
 /* @var CActiveDataProvider $replies */
 /* @var $reply Reply */
 
-$this->pageTitle = array(
+$this->pageTitle=array(
     $model->subject,
     $model->room->title,
 );
-
-$this->breadcrumbs = array(
+$this->addMetaProperty('og:title',$model->subject);
+$this->addMetaProperty('og:url',$model->createAbsoluteUrl());
+$this->addMetaProperty('og:site_name',Yii::app()->facebook->siteName);
+$this->addMetaProperty('og:locale',Yii::app()->facebook->locale);
+$this->addMetaProperty('fb:app_id',Yii::app()->facebook->appId);
+$this->canonical=$model->createAbsoluteUrl();
+$this->breadcrumbs=array(
     $model->room->title=>array('room/view','id'=>$model->roomId),
     $model->subject,
 );
-
-$this->backButton = TbHtml::linkButton(t('threadLink','Palaa aihealueelle'),array(
-    'url'=>$model->room->getUrl(),
+$this->backButton=TbHtml::linkButton(t('threadLink','Palaa aihealueelle'),array(
+    'url'=>$model->room->createUrl(),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
-
 clientScript()->registerScript('PostQuoteButton',"
     $('.quote-button').click(function(event) {
         var bbcode = $(this).parents('.post').find('.post-bbcode').text();
@@ -59,11 +62,17 @@ clientScript()->registerScript('PostQuoteButton',"
                         </div>
                     </div>
                     <div class="post-permalink">
-                        <?php echo l(TbHtml::icon('link'),$model->getUrl(),array(
+                        <?php echo l(TbHtml::icon('link'),$model->createUrl(),array(
                             'rel'=>'tooltip',
                             'title'=>t('title','Linkki'),
                         )); ?>
                     </div>
+                </div>
+                <div class="post-share">
+                    <?php $this->widget('ext.facebook.widgets.FbLike',array(
+                        'url'=>$model->createUrl(),
+                        'send'=>true,
+                    )); ?>
                 </div>
             </div>
         </div>
@@ -79,12 +88,14 @@ clientScript()->registerScript('PostQuoteButton',"
         )); ?>
     </div>
 
-    <div class="row" id="add-reply">
-        <div class="span10 offset2">
-            <div class="new-reply">
-                <h3><?php echo t('threadHeading','Kirjoita uusi viesti'); ?></h3>
-                <?php $this->renderPartial('../reply/_form', array('model'=>$reply)); ?>
+    <?php if (!$model->isLocked()): ?>
+        <div class="row" id="add-reply">
+            <div class="span10 offset2">
+                <div class="new-reply">
+                    <h3><?php echo t('threadHeading','Kirjoita uusi viesti'); ?></h3>
+                    <?php $this->renderPartial('../reply/_form', array('model'=>$reply)); ?>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
 </div>

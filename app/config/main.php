@@ -33,6 +33,10 @@ return array(
 
 	// application components
 	'components' => array(
+        'appMessages' => array(
+            'class' => 'CPhpMessageSource',
+            'language' => 'fi',
+        ),
 		// uncomment the following to enable the email extension
 		/*
 		'emailer' => array(
@@ -65,6 +69,14 @@ return array(
 				'enabledEnvironments' => array('production', 'staging'),
 			),
 		),
+        'facebook' => array(
+            'class' => 'ext.facebook.components.FacebookApi',
+            'appId' => '482990508443117',
+            'appSecret' => 'a8c2473c9644b676b95bf6828d75c3a2',
+            'siteName' => 'Kotipolku',
+            'namespace' => 'kotipolku',
+            'locale' => 'fi_FI',
+        ),
 		'fileManager' => array(
 			'class' => 'vendor.crisu83.yii-filemanager.components.FileManager',
 		),

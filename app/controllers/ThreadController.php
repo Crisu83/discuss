@@ -40,7 +40,7 @@ class ThreadController extends Controller
                 'users' => array('*'),
             ),
             array('allow',
-                'actions' => array('update', 'delete'),
+                'actions' => array('update', 'delete', 'setPin', 'setLock'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -66,7 +66,11 @@ class ThreadController extends Controller
         {
             $reply->attributes = $request->getPost('Reply');
             if ($reply->save())
-                $this->redirect($model->getUrl());
+            {
+                $model->lastActivityAt = date('Y-m-d H:i:s');
+                $model->save(true, array('lastActivityAt'));
+                $this->redirect($model->createUrl());
+            }
         }
 
         $replies = new CActiveDataProvider('Reply', array(
@@ -102,8 +106,9 @@ class ThreadController extends Controller
 		if($request->isPostRequest)
 		{
 			$model->attributes = $request->getPost('Thread');
+            $model->lastActivityAt = date('Y-m-d H:i:s');
 			if ($model->save())
-				$this->redirect($model->getUrl());
+				$this->redirect($model->createUrl());
 		}
 		$this->render('create', array('model' => $model));
 	}
@@ -122,10 +127,26 @@ class ThreadController extends Controller
         {
             $model->attributes = $request->getPost('Thread');
 			if ($model->save())
-				$this->redirect($model->getUrl());
+				$this->redirect($model->createUrl());
 		}
 		$this->render('update', array('model'=>$model));
 	}
+
+    public function actionSetPin($id, $value)
+    {
+        $model = $this->loadModel($id);
+        $model->pinned = $value;
+        $model->save(true, array('pinned'));
+        $this->redirect(array('view', 'id' => $id));
+    }
+
+    public function actionSetLock($id, $value)
+    {
+        $model = $this->loadModel($id);
+        $model->locked = $value;
+        $model->save(true, array('locked'));
+        $this->redirect(array('view', 'id' => $id));
+    }
 
     /**
      * Deletes a particular model.
@@ -137,7 +158,7 @@ class ThreadController extends Controller
         $model = $this->loadModel($id);
         foreach ($model->replies as $reply)
             $reply->delete();
-        $returnUrl = $model->room->getUrl();
+        $returnUrl = $model->room->createUrl();
         $model->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

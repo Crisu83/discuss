@@ -111,6 +111,8 @@ function user()
  */
 function t($category, $message, $params = array(), $source = null, $language = null)
 {
+    if ($source === null)
+        $source = 'appMessages';
 	return Yii::t($category, $message, $params, $source, $language);
 }
 
