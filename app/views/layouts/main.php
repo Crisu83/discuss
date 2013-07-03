@@ -60,7 +60,7 @@
                 <div class="span4">
                     <div class="like-box">
                         <?php $this->widget('ext.facebook.widgets.FbLikeBox',array(
-                            'url'=>baseUrl(),
+                            'url'=>request()->getBaseUrl(true),
                             'showStream'=>false,
                             'showBorder'=>false,
                             'showHeader'=>false,
