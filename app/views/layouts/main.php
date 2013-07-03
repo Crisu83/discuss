@@ -59,12 +59,12 @@
             <div class="row">
                 <div class="span4">
                     <div class="like-box">
-                        <?php $this->widget('ext.facebook.widgets.FbLikeBox',array(
+                        <?php /*$this->widget('ext.facebook.widgets.FbLikeBox',array(
                             'url'=>request()->getBaseUrl(true),
                             'showStream'=>false,
                             'showBorder'=>false,
                             'showHeader'=>false,
-                        )); ?>
+                        ));*/ ?>
                     </div>
                 </div>
                 <div class="span8">
