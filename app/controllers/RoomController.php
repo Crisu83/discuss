@@ -38,6 +38,9 @@ class RoomController extends Controller
         $criteria = Room::model()->createWeightCriteria();
         $rooms = new CActiveDataProvider('Room', array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 50,
+            ),
         ));
 
         $this->render('list', array(
