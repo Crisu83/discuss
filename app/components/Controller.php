@@ -26,7 +26,7 @@ abstract class Controller extends CController
         if (is_array($value))
         {
             $value[] = app()->name;
-            $value = implode(' - ', $value);
+            $value = implode(' · ', $value);
         }
         parent::setPageTitle($value);
     }

@@ -7,7 +7,7 @@
 
 	<?php $this->widget('bootstrap.widgets.TbNavbar',array(
         'color'=>TbHtml::NAVBAR_COLOR_INVERSE,
-        'brandLabel'=>TbHtml::icon('home').' '.app()->name,
+        'brandLabel'=>TbHtml::icon('home').' Kotipolku',
 		'collapse'=>true,
 		'items'=>array(
             array(

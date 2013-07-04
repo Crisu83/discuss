@@ -4,7 +4,7 @@ return array(
 	'basePath' => realpath(__DIR__ . '/..'),
 
 	// application name
-	'name' => 'Kotipolku',
+	'name' => 'Kotipolku – Kaikki kodistasi',
 
 	// application language
 	'language' => 'fi',

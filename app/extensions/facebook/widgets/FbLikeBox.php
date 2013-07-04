@@ -1,5 +1,6 @@
 <?php
 
+// todo: comment
 class FbLikeBox extends CWidget
 {
     const COLORSCHEME_LIGHT = '';

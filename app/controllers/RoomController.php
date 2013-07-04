@@ -26,6 +26,7 @@ class RoomController extends Controller
         return array(
             array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
             'accessControl', // perform access control for CRUD operations
+            'postOnly + ajaxSortable',
         );
     }
 
@@ -44,6 +45,20 @@ class RoomController extends Controller
         ));
     }
 
+    public function actionAjaxSortable()
+    {
+        if (isset($_POST['data']))
+        {
+            $models = Room::model()->findAll();
+            Room::model()->updateWeights($_POST['data'], $models);
+        }
+        Yii::app()->end();
+    }
+
+    /**
+     * Displays a single room.
+     * @param integer $id the model id.
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
