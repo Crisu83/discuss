@@ -5,7 +5,7 @@
 ?>
 <div class="site-controller login-action">
 
-	<h1><?php echo app()->name; ?></h1>
+	<h1>Kotipolku</h1>
 
 	<div class="login-form">
 
