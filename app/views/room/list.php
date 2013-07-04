@@ -35,6 +35,13 @@ clientScript()->registerScript('RoomSortable',"
 <div class="room-controller list-action">
     <?php echo TbHtml::lead(t('roomLead','Kotipolku.com on keskustelupalsta ja suunnattu asunnon omistajille sekä omistajuutta suunnitteleville henkilöille. Jaetaan kysymykset remonteista, sisustuksesta, lattiamateriaaleista, pihaistutuksista, homeongelmista tai vaikka laina-asioista.')); ?>
 
+    <div class="site-share">
+        <?php $this->widget('ext.facebook.widgets.FbLike',array(
+            'url'=>request()->getBaseUrl(true),
+            'send'=>true,
+        )); ?>
+    </div>
+
     <hr>
 
     <?php if (!user()->isGuest): ?>
