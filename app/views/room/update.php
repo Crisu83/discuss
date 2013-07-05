@@ -5,6 +5,11 @@
 $this->pageTitle = array(
     t('roomTitle', 'Muokkaa aihealuetta'),
 );
+$this->breadcrumbs=array(
+    t('roomBreadcrumb', 'Keskustelu')=>array('index'),
+    $model->title=>array('view','id'=>$model->id),
+    t('roomBreadcrumb', 'Muokkaa'),
+);
 ?>
 <div class="room-controller update-action">
     <h1>

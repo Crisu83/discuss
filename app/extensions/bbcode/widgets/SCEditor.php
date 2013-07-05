@@ -1,8 +1,6 @@
 <?php
 
-Yii::import('vendor.crisu83.yii-extension.behaviors.WidgetBehavior', true);
-
-use \crisu83\yii_extension\behaviors\WidgetBehavior;
+Yii::import('vendor.crisu83.yii-extension.behaviors.WidgetBehavior');
 
 class SCEditor extends CInputWidget
 {

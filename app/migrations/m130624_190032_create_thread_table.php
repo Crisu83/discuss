@@ -20,6 +20,6 @@ class m130624_190032_create_thread_table extends CDbMigration
 
 	public function down()
 	{
-		$this->dropTable('topic');
+		$this->dropTable('thread');
 	}
 }

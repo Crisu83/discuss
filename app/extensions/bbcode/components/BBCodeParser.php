@@ -1,8 +1,6 @@
 <?php
 
-use crisu83\yii_extension\behaviors\ComponentBehavior;
-
-\Yii::import('vendor.crisu83.yii-extension.behaviors.ComponentBehavior', true);
+Yii::import('vendor.crisu83.yii-extension.behaviors.ComponentBehavior');
 
 require_once(__DIR__ . '/../lib/sbbcodeparser/SBBCodeParser.php');
 

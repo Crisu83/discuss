@@ -5,6 +5,12 @@
 $this->pageTitle = array(
     t('threadTitle','Muokkaa aihetta'),
 );
+$this->breadcrumbs=array(
+    t('roomBreadcrumb', 'Keskustelu')=>array('room/index'),
+    $model->room->title=>array('room/view','id'=>$model->roomId),
+    $model->subject=>array('view','id'=>$model->id),
+    t('threadBreadcrumb','Muokkaa'),
+);
 ?>
 <div class="thread-controller update-action">
     <h1>

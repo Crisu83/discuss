@@ -23,7 +23,7 @@
 
 	<div class="container" id="page">
 
-        <?php if (!empty($this->breadcrumbs) && !empty($this->backButton)): ?>
+        <?php if (!empty($this->breadcrumbs) || !empty($this->backButton)): ?>
             <div class="page-top">
                 <div class="row">
                     <div class="span8">
@@ -56,22 +56,8 @@
         <hr>
 
         <div id="footer">
-            <div class="row">
-                <div class="span4">
-                    <div class="like-box">
-                        <?php /*$this->widget('ext.facebook.widgets.FbLikeBox',array(
-                            'url'=>request()->getBaseUrl(true),
-                            'showStream'=>false,
-                            'showBorder'=>false,
-                            'showHeader'=>false,
-                        ));*/ ?>
-                    </div>
-                </div>
-                <div class="span8">
-                    <div class="copyright">
-                        <?php echo t('app','&copy; Kotipolku {year}. Kaikki oikeudet pidätetään.',array('{year}'=>date('Y'))); ?>
-                    </div>
-                </div>
+            <div class="copyright">
+                <?php echo t('app','&copy; Kotipolku {year}. Kaikki oikeudet pidätetään.',array('{year}'=>date('Y'))); ?>
             </div>
         </div>
 

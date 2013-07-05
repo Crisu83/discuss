@@ -1,20 +1,8 @@
 <?php
 
-class RoomController extends Controller
+class BlogController extends Controller
 {
-    const FORM_ID = 'roomForm';
-
-    /**
-     * @return array attached behaviors.
-     */
-    public function behaviors()
-    {
-        return array(
-            'seo' => array(
-                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoBehavior',
-            ),
-        );
-    }
+    const FORM_ID = 'blogForm';
 
     /**
      * @return array action filters
@@ -22,7 +10,6 @@ class RoomController extends Controller
     public function filters()
     {
         return array(
-            array('vendor.crisu83.yii-seo.filters.SeoFilter + view'),
             'accessControl', // perform access control for CRUD operations
             'postOnly + ajaxSort',
         );
@@ -34,38 +21,26 @@ class RoomController extends Controller
     public function actionAjaxSort()
     {
         if (isset($_POST['data']))
-            Room::model()->updateWeights($_POST['data'], Room::model()->findAll());
+            Blog::model()->updateWeights($_POST['data'], Blog::model()->findAll());
         Yii::app()->end();
     }
 
     /**
-     * Displays the discussion main page.
+     * Displays a admin of blogs.
      */
-    public function actionIndex()
+    public function actionAdmin()
     {
         $criteria = new CDbCriteria();
-        $criteria = Room::model()->applyWeightCriteria($criteria);
-        $rooms = new CActiveDataProvider('Room', array(
+        $criteria = Blog::model()->applyWeightCriteria($criteria);
+        $blogs = new CActiveDataProvider('Blog', array(
             'criteria' => $criteria,
             'pagination' => array(
                 'pageSize' => 50,
             ),
         ));
 
-        $this->render('index', array(
-            'rooms' => $rooms,
-        ));
-    }
-
-    /**
-     * Displays a single room.
-     * @param integer $id the model id.
-     */
-    public function actionView($id)
-    {
-        $model = $this->loadModel($id);
-        $this->render('view', array(
-            'model' => $model,
+        $this->render('admin', array(
+            'blogs' => $blogs,
         ));
     }
 
@@ -74,14 +49,14 @@ class RoomController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Room();
+        $model = new Blog();
         $this->performAjaxValidation($model, self::FORM_ID);
         $request = request();
         if ($request->isPostRequest)
         {
-            $model->attributes = $request->getPost('Room');
+            $model->attributes = $request->getPost('Blog');
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
         $this->render('create', array(
             'model' => $model,
@@ -99,9 +74,9 @@ class RoomController extends Controller
         $request = request();
         if ($request->isPostRequest)
         {
-            $model->attributes = $request->getPost('Room');
+            $model->attributes = $request->getPost('Blog');
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
         $this->render('update', array(
             'model' => $model,
@@ -119,18 +94,18 @@ class RoomController extends Controller
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * @param integer $id the ID of the model to be loaded
-     * @return Room the loaded model.
+     * @return Blog the loaded model.
      * @throws CHttpException if the model is not found.
      */
     public function loadModel($id)
     {
-        $model = Room::model()->findByPk($id);
+        $model = Blog::model()->findByPk($id);
         if ($model === null)
             $this->pageNotFound();
         return $model;

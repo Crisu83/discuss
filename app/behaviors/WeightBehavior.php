@@ -9,11 +9,11 @@ class WeightBehavior extends CActiveRecordBehavior
 
     /**
      * Creates the criteria for ordering by weight.
+     * @param CDbCriteria $criteria the criteria.
      * @return CDbCriteria the criteria.
      */
-    public function createWeightCriteria()
+    public function applyWeightCriteria($criteria)
     {
-        $criteria = new CDbCriteria();
         $criteria->order = 'weight ASC';
         return $criteria;
     }

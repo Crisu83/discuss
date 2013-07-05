@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3ac98762166f6ccbd0ea763ad9bcd14b",
+    "hash": "2c21ae46957beddd8cd44e707adb33d0",
     "packages": [
         {
             "name": "crisu83/yii-configbuilder",
@@ -71,16 +71,16 @@
         },
         {
             "name": "crisu83/yii-extension",
-            "version": "dev-master",
+            "version": "dev-no-namespaces",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-extension.git",
-                "reference": "1add4a36788a9849bddb6146c59702c10e57cdfd"
+                "reference": "4774e7ff5f34be9a96ef8e6d054b1ddd129a589e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/1add4a36788a9849bddb6146c59702c10e57cdfd",
-                "reference": "1add4a36788a9849bddb6146c59702c10e57cdfd",
+                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/4774e7ff5f34be9a96ef8e6d054b1ddd129a589e",
+                "reference": "4774e7ff5f34be9a96ef8e6d054b1ddd129a589e",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "Tools for building extensions for the Yii PHP framework.",
-            "time": "2013-06-27 21:02:02"
+            "time": "2013-07-04 19:42:12"
         },
         {
             "name": "crisu83/yii-filemanager",
@@ -103,16 +103,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-filemanager.git",
-                "reference": "48a99790b155689604bca297e3716ddd9113423a"
+                "reference": "b583b418ac455ee1c99c6a7e324de2b2dfa51795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-filemanager/zipball/48a99790b155689604bca297e3716ddd9113423a",
-                "reference": "48a99790b155689604bca297e3716ddd9113423a",
+                "url": "https://api.github.com/repos/Crisu83/yii-filemanager/zipball/b583b418ac455ee1c99c6a7e324de2b2dfa51795",
+                "reference": "b583b418ac455ee1c99c6a7e324de2b2dfa51795",
                 "shasum": ""
             },
             "require": {
-                "crisu83/yii-extension": "dev-master"
+                "crisu83/yii-extension": "dev-no-namespaces"
             },
             "type": "yii-extension",
             "notification-url": "https://packagist.org/downloads/",
@@ -126,7 +126,39 @@
                 }
             ],
             "description": "File manager for the Yii PHP framework.",
-            "time": "2013-05-14 07:55:48"
+            "time": "2013-07-04 20:03:43"
+        },
+        {
+            "name": "crisu83/yii-imagemanager",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crisu83/yii-imagemanager.git",
+                "reference": "3279ed520e8018cd6b173fe278ec1391a71057f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crisu83/yii-imagemanager/zipball/3279ed520e8018cd6b173fe278ec1391a71057f4",
+                "reference": "3279ed520e8018cd6b173fe278ec1391a71057f4",
+                "shasum": ""
+            },
+            "require": {
+                "crisu83/yii-extension": "dev-no-namespaces",
+                "imagine/imagine": "dev-develop"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "ChristofferNiska@gmail.com"
+                }
+            ],
+            "description": "Image manager for the Yii PHP framework.",
+            "time": "2013-07-04 20:04:15"
         },
         {
             "name": "crisu83/yii-seo",
@@ -134,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-seo.git",
-                "reference": "49bafe78fe342939d8920eb31667221fab6d21bc"
+                "reference": "1ff24a392b1e8ba753e9389065fd23a9becee17a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-seo/zipball/49bafe78fe342939d8920eb31667221fab6d21bc",
-                "reference": "49bafe78fe342939d8920eb31667221fab6d21bc",
+                "url": "https://api.github.com/repos/Crisu83/yii-seo/zipball/1ff24a392b1e8ba753e9389065fd23a9becee17a",
+                "reference": "1ff24a392b1e8ba753e9389065fd23a9becee17a",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -158,7 +190,7 @@
             "keywords": [
                 "seo"
             ],
-            "time": "2013-02-16 22:19:09"
+            "time": "2013-07-03 21:11:06"
         },
         {
             "name": "crisu83/yiistrap",
@@ -240,6 +272,58 @@
                 "sdk"
             ],
             "time": "2013-05-16 02:42:18"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "06639db40fc2edccda499883b8f04b45b684fc1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/06639db40fc2edccda499883b8f04b45b684fc1b",
+                "reference": "06639db40fc2edccda499883b8f04b45b684fc1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2013-07-03 18:07:10"
         },
         {
             "name": "malyshev/yii-debug-toolbar",
@@ -336,8 +420,8 @@
     "stability-flags": {
         "crisu83/yii-configbuilder": 20,
         "crisu83/yii-debug": 20,
-        "crisu83/yii-extension": 20,
         "crisu83/yii-filemanager": 20,
+        "crisu83/yii-imagemanager": 20,
         "crisu83/yii-seo": 20,
         "crisu83/yiistrap": 20,
         "malyshev/yii-debug-toolbar": 20,

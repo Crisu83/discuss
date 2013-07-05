@@ -87,7 +87,7 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
     */
     public function behaviors()
     {
-        return array_merge(parent::rules(), array(
+        return array_merge(parent::behaviors(), array(
         ));
     }
 

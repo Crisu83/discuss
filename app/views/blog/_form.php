@@ -1,12 +1,12 @@
 <?php
-/* @var RoomController $this */
-/* @var Room $model */
+/* @var BlogController $this */
+/* @var Blog $model */
 /* @var ActiveForm $form */
 ?>
 
 <?php $form=$this->beginWidget('ActiveForm', array(
     'layout'=>TbHtml::FORM_LAYOUT_VERTICAL,
-	'id'=>RoomController::FORM_ID,
+	'id'=>BlogController::FORM_ID,
 	'enableAjaxValidation'=>true,
     'enableClientValidation'=>true,
     'clientOptions'=>array(
@@ -14,19 +14,20 @@
     ),
 )); ?>
 
-    <?php echo $form->textFieldControlGroup($model,'title',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
+    <?php echo $form->textFieldControlGroup($model,'name',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
     <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>5,'span'=>8)); ?>
+    <?php echo $form->textFieldControlGroup($model,'url',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
 
-    <?php echo TbHtml::submitButton(t('roomButton','Tallenna'),array(
+    <?php echo TbHtml::submitButton(t('blogButton','Tallenna'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
     )); ?>
 
-    <?php echo TbHtml::linkButton(t('roomButton','Peruuta'),array(
+    <?php echo TbHtml::linkButton(t('blogButton','Peruuta'),array(
         'color'=>TbHtml::BUTTON_COLOR_LINK,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
-        'url'=>!$model->isNewRecord ? $model->createUrl() : array('index'),
-        'confirm'=>t('roomConfirm','Oletko varma että haluat peruuttaa? Kaikki tallentamattomat muutokset menetetään.'),
+        'url'=>array('admin'),
+        'confirm'=>t('blogConfirm','Oletko varma että haluat peruuttaa? Kaikki tallentamattomat muutokset menetetään.'),
     )); ?>
 
 <?php $this->endWidget(); ?>

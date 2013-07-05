@@ -89,6 +89,6 @@ class FbLike extends CWidget
      */
     public function run()
     {
-        echo CHtml::tag('div', $this->htmlOptions);
+        echo CHtml::openTag('div', $this->htmlOptions).'</div>';
     }
 }

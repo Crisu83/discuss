@@ -14,7 +14,7 @@
         ),
     )); ?>
 
-        <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE,'value'=>($user = user()->loadModel()) !== null ? $user->name : '')); ?>
+        <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE)); ?>
         <?php echo $form->textFieldControlGroup($model,'subject',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
         <?php echo $form->bbCodeControlGroup($model,'body'); ?>
 

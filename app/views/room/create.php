@@ -5,6 +5,10 @@
 $this->pageTitle = array(
     t('roomTitle', 'Uusi aihealue'),
 );
+$this->breadcrumbs=array(
+    t('roomBreadcrumb', 'Keskustelu')=>array('index'),
+    t('roomBreadcrumb', 'Uusi aihealue'),
+);
 ?>
 <div class="room-controller create-action">
     <h1><?php echo t('roomHeading','Uusi aihealue'); ?></h1>

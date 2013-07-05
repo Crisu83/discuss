@@ -15,6 +15,7 @@ $this->addMetaProperty('og:locale',Yii::app()->facebook->locale);
 $this->addMetaProperty('fb:app_id',Yii::app()->facebook->appId);
 $this->canonical=$model->createAbsoluteUrl();
 $this->breadcrumbs=array(
+    t('roomBreadcrumb', 'Keskustelu')=>array('room/index'),
     $model->room->title=>array('room/view','id'=>$model->roomId),
     $model->subject,
 );

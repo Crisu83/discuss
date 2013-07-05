@@ -54,7 +54,7 @@ return array(
             'class' => 'ext.bbcode.components.BBCodeParser',
         ),
 		'db' => array(
-			'connectionString' => 'mysql:host=localhost;dbname=discuss',
+			'connectionString' => 'mysql:host=localhost;dbname=kotipolku',
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
@@ -105,6 +105,6 @@ return array(
 
 	// application parameters
 	'params' => array(
-		'adminEmail' => 'webmaster@example.com',
+		'adminEmail' => 'kotipolku@outlook.com',
 	),
 );

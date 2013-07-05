@@ -1,8 +1,6 @@
 <?php
 // web application configuration
 return array(
-    'defaultController' => 'room',
-
 	// path aliases
 	'aliases' => array(
 		'bootstrap' => 'vendor.crisu83.yiistrap',
@@ -96,6 +94,7 @@ return array(
 				// language rules, uncomment the following if your application is multilingual
 				//'<lang:([a-z]{2}(?:_[a-z]{2})?)>/<route:[\w\/]+>'=>'<route>',
 				// seo rules
+                'keskustelu.html' => 'room/index',
                 'keskustelu/<name>-<id:\d+>.html' => 'room/view',
                 'keskustelu/<room>/<name>-<id:\d+>.html' => 'thread/view',
                 '<controller:\w+>/<name>-<id:\d+>.html'=>'<controller>/view',

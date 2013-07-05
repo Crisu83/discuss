@@ -4,6 +4,48 @@ class SiteController extends Controller
 {
     const FORM_ID_LOGIN = 'loginForm';
 
+    /**
+     * @return array attached behaviors.
+     */
+    public function behaviors()
+    {
+        return array(
+            'seo' => array(
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoBehavior',
+            ),
+        );
+    }
+
+    /**
+     * Displays the front page.
+     */
+    public function actionIndex()
+    {
+        $blogCriteria = new CDbCriteria();
+        $blogCriteria = Blog::model()->applyWeightCriteria($blogCriteria);
+        $blogCriteria->limit = 6;
+        $blogs = new CActiveDataProvider('Blog', array(
+            'criteria' => $blogCriteria,
+            'pagination' => array(
+                'pageSize' => 6,
+            ),
+        ));
+
+        $threadCriteria = new CDbCriteria();
+        $threadCriteria->order = 'lastActivityAt DESC';
+        $threads = new CActiveDataProvider('Thread', array(
+            'criteria' => $threadCriteria,
+            'pagination' => array(
+                'pageSize' => 5,
+            ),
+        ));
+
+        $this->render('index', array(
+            'blogs' => $blogs,
+            'threads' => $threads,
+        ));
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */

@@ -14,7 +14,7 @@
         ),
     )); ?>
 
-        <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE,'value'=>($user = user()->loadModel()) !== null ? $user->name : '')); ?>
+        <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE)); ?>
         <?php echo $form->textFieldControlGroup($model,'subject',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
         <?php echo $form->bbCodeControlGroup($model,'body'); ?>
 
@@ -27,6 +27,7 @@
             'color'=>TbHtml::BUTTON_COLOR_LINK,
             'size'=>TbHtml::BUTTON_SIZE_LARGE,
             'url'=>!$model->isNewRecord ? $model->createUrl() : $model->room->createUrl(),
+            'confirm'=>t('threadConfirm','Oletko varma että haluat peruuttaa? Kaikki tallentamattomat muutokset menetetään.'),
         )); ?>
 
     <?php $this->endWidget(); ?>
