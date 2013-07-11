@@ -73,6 +73,7 @@ $this->canonical=$this->createUrl('index');
                         'dataProvider'=>$blogs,
                         'template'=>"{items}",
                         'itemsCssClass'=>'blog-thumbnails row-fluid',
+                        'emptyText'=>t('blogList','Valitettavasti yhtään blogia ei löytynyt.'),
                         'itemView'=>'app.views.blog._thumbnail',
                     )); ?>
                 </div>
