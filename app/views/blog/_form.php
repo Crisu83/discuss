@@ -18,7 +18,8 @@
 )); ?>
 
     <?php echo $form->textFieldControlGroup($model,'name',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
-    <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>5,'span'=>8)); ?>
+    <?php echo $form->textAreaControlGroup($model,'lead',array('rows'=>3,'size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
+    <?php echo $form->textAreaControlGroup($model,'description',array('rows'=>12,'size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
     <?php echo $form->textFieldControlGroup($model,'url',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
 
     <div class="blog-picture">
