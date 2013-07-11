@@ -3,14 +3,14 @@
 /* @var FeaturedBlog $model */
 
 $this->pageTitle = array(
-    t('blogTitle', 'Uusi blogi'),
+    t('blogTitle', 'Lisää blogi'),
 );
 $this->breadcrumbs=array(
     t('blogBreadcrumb','Blogit')=>array('list'),
-    t('blogBreadcrumb', 'Uusi blogi'),
+    t('blogBreadcrumb', 'Lisää blogi'),
 );
 ?>
 <div class="blog-controller create-action">
-    <h1><?php echo t('blogHeading','Uusi blogi'); ?></h1>
+    <h1><?php echo t('blogHeading','Lisää blogi'); ?></h1>
     <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
 </div>

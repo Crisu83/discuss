@@ -5,7 +5,9 @@
 <div class="span6">
     <div class="blog-item">
         <div class="blog-picture">
-            <?php echo $data->renderImagePreset('blogCard'); ?>
+            <a href="<?php echo $data->createUrl(); ?>">
+                <?php echo $data->renderImagePreset('blogCard'); ?>
+            </a>
         </div>
         <div class="blog-content">
             <h3 class="blog-name"><?php echo l(e($data->name),$data->createUrl()); ?></h3>

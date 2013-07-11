@@ -64,6 +64,15 @@ class BlogController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+
+        Statistic::create(array(
+            'action' => Statistic::ACTION_VIEW,
+            'model' => get_class($model),
+            'modelId' => $model->id,
+            'ipAddress' => request()->getUserHostAddress(),
+            'userId' => user()->id,
+        ));
+
         $this->render('view', array(
             'model' => $model,
         ));

@@ -15,7 +15,7 @@ $this->backButton=TbHtml::linkButton(t('threadLink','Palaa etusivulle'),array(
 ?>
 <div class="blog-controller list-action">
     <h1><?php echo t('blogHeading','Blogit'); ?></h1>
-    <?php echo TbHtml::lead(t('blogLead','Lorem ipsum dolor sit amet.')); ?>
+    <?php echo TbHtml::lead(t('blogLead','Suosittelemme seuraavia blogeja.')); ?>
 
     <hr>
 

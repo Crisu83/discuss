@@ -27,7 +27,7 @@ $this->backButton=TbHtml::linkButton(t('threadLink','Palaa keskustelualueelle'),
 
     <hr>
 
-    <?php echo TbHtml::linkButton(t('threadButton','Uusi aihe'),array(
+    <?php echo TbHtml::linkButton(t('threadButton','Luo aihe'),array(
         'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
         'url'=>array('thread/create', 'roomId'=>$model->id),
         'class'=>'create-button',

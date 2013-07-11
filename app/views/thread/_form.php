@@ -14,9 +14,13 @@
         ),
     )); ?>
 
-        <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE)); ?>
-        <?php echo $form->textFieldControlGroup($model,'subject',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
-        <?php echo $form->bbCodeControlGroup($model,'body'); ?>
+        <div class="row">
+            <div class="span8">
+                <?php echo $form->textFieldControlGroup($model,'alias',array('size'=>TbHtml::INPUT_SIZE_LARGE)); ?>
+                <?php echo $form->textFieldControlGroup($model,'subject',array('size'=>TbHtml::INPUT_SIZE_XXLARGE)); ?>
+                <?php echo $form->bbCodeControlGroup($model,'body'); ?>
+            </div>
+        </div>
 
         <?php echo TbHtml::submitButton(t('threadButton','Tallenna'),array(
             'color'=>TbHtml::BUTTON_COLOR_PRIMARY,

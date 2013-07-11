@@ -147,6 +147,11 @@ class FeaturedBlog extends ActiveRecord
     public function buttonToolbar()
     {
         $buttons = array();
+        $buttons[] = TbHtml::linkButton(t('blogButton','Tutustu'), array(
+            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+            'url' => $this->createUrl(),
+            'class' => 'blog-button',
+        ));
         if (!user()->isGuest)
         {
             $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
