@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
     $model->title,
 );
 $this->backButton=TbHtml::linkButton(t('threadLink','Palaa keskustelualueelle'),array(
-    'url'=>array('index'),
+    'url'=>array('list'),
     'size'=>TbHtml::BUTTON_SIZE_LARGE,
 ));
 ?>
