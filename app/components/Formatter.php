@@ -16,29 +16,20 @@ class Formatter extends CFormatter
         $then = new DateTime(sqlDateTime(strtotime($value)));
         $diff = $now->diff($then);
 
-        $years = $diff->format('%y');
-        $months = $diff->format('%m');
         $days = $diff->format('%d');
         $hours = $diff->format('%h');
         $minutes = $diff->format('%i');
 
-        if ($days > 6)
+        if ($days > 1)
             $timeAgo = dateFormatter()->formatDateTime($value, 'medium', 'short');
+        else if ($days == 1)
+            $timeAgo = t('format', 'Eilen');
+        else if ($hours > 0)
+            $timeAgo = t('format', '{n} tunti sitten|{n} tuntia sitten', $hours);
+        else if ($minutes > 0)
+            $timeAgo = t('format', '{n} minuutti sitten|{n} minuuttia sitten', $minutes);
         else
-        {
-            /*if ($years > 0)
-                $timeAgo = t('format', '{n} vuosi sitten|{n} vuotta sitten', $years);
-            else if ($months > 0)
-                $timeAgo = t('format', '{n} kuukausi sitten|{n} kuukautta sitten', $months);
-            else*/ if ($days > 0)
-                $timeAgo = t('format', '{n} päivä sitten|{n} päivää sitten', $days);
-            else if ($hours > 0)
-                $timeAgo = t('format', '{n} tunti sitten|{n} tuntia sitten', $hours);
-            else if ($minutes > 0)
-                $timeAgo = t('format', '{n} minuutti sitten|{n} minuuttia sitten', $minutes);
-            else
-                $timeAgo = t('format', 'juuri nyt');
-        }
+            $timeAgo = t('format', 'juuri nyt');
 
         return $timeAgo;
     }
