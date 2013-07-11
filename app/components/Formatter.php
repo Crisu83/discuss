@@ -22,18 +22,23 @@ class Formatter extends CFormatter
         $hours = $diff->format('%h');
         $minutes = $diff->format('%i');
 
-        if ($years > 0)
-            $timeAgo = t('format', '{n} vuosi sitten|{n} vuotta sitten', $years);
-        else if ($months > 0)
-            $timeAgo = t('format', '{n} kuukausi sitten|{n} kuukautta sitten', $months);
-        else if ($days > 0)
-            $timeAgo = t('format', '{n} päivä sitten|{n} päivää sitten', $days);
-        else if ($hours > 0)
-            $timeAgo = t('format', '{n} tunti sitten|{n} tuntia sitten', $hours);
-        else if ($minutes > 0)
-            $timeAgo = t('format', '{n} minuutti sitten|{n} minuuttia sitten', $minutes);
+        if ($days > 6)
+            $timeAgo = dateFormatter()->formatDateTime($value, 'medium', 'short');
         else
-            $timeAgo = t('format', 'juuri nyt');
+        {
+            /*if ($years > 0)
+                $timeAgo = t('format', '{n} vuosi sitten|{n} vuotta sitten', $years);
+            else if ($months > 0)
+                $timeAgo = t('format', '{n} kuukausi sitten|{n} kuukautta sitten', $months);
+            else*/ if ($days > 0)
+                $timeAgo = t('format', '{n} päivä sitten|{n} päivää sitten', $days);
+            else if ($hours > 0)
+                $timeAgo = t('format', '{n} tunti sitten|{n} tuntia sitten', $hours);
+            else if ($minutes > 0)
+                $timeAgo = t('format', '{n} minuutti sitten|{n} minuuttia sitten', $minutes);
+            else
+                $timeAgo = t('format', 'juuri nyt');
+        }
 
         return $timeAgo;
     }

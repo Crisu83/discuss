@@ -18,7 +18,6 @@ class Html extends CHtml
             'options' => array(
                 'autoExpand' => true,
                 'autoUpdate' => true,
-                //'emoticonsCompat' => true,
                 'enablePasteFiltering' => true,
                 'resizeEnabled' => false,
                 'toolbar' => 'bold,italic,underline|link|quote|emoticon|source',

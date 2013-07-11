@@ -38,7 +38,7 @@ $this->backButton=TbHtml::linkButton(t('threadLink','Palaa blogeihin'),array(
 
             <hr>
 
-            <p class="blog-description"><?php echo e($model->description); ?></p>
+            <p class="blog-description"><?php echo app()->bbcodeParser->parse($model->description); ?></p>
 
             <?php echo TbHtml::linkButton(t('blogButton','Siirry blogiin'),array(
                 'id'=>'gotoBlogLink',

@@ -7,7 +7,7 @@ $this->pageTitle = array(
 );
 $this->breadcrumbs=array(
     t('blogBreadcrumb','Blogit')=>array('list'),
-    $model->name=>array('#'),
+    $model->name=>$model->createUrl(),
     t('blogBreadcrumb', 'Muokkaa'),
 );
 ?>
