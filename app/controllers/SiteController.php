@@ -22,9 +22,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $blogCriteria = new CDbCriteria();
-        $blogCriteria = Blog::model()->applyWeightCriteria($blogCriteria);
+        $blogCriteria = FeaturedBlog::model()->applyWeightCriteria($blogCriteria);
         $blogCriteria->limit = 6;
-        $blogs = new CActiveDataProvider('Blog', array(
+        $blogs = new CActiveDataProvider('FeaturedBlog', array(
             'criteria' => $blogCriteria,
             'pagination' => array(
                 'pageSize' => 6,
@@ -33,10 +33,11 @@ class SiteController extends Controller
 
         $threadCriteria = new CDbCriteria();
         $threadCriteria->order = 'lastActivityAt DESC';
+        $blogCriteria->limit = 10;
         $threads = new CActiveDataProvider('Thread', array(
             'criteria' => $threadCriteria,
             'pagination' => array(
-                'pageSize' => 5,
+                'pageSize' => 10,
             ),
         ));
 

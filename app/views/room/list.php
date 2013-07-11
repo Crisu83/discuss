@@ -2,7 +2,9 @@
 /* @var RoomController $this */
 /* @var CActiveDataProvider $rooms */
 
-$this->pageTitle=app()->name;
+$this->pageTitle=array(
+    t('roomTitle','Keskustelu'),
+);
 $this->breadcrumbs=array(
     t('roomBreadcrumb', 'Keskustelu'),
 );
@@ -15,7 +17,7 @@ $this->canonical=$this->createUrl('index');
     <hr>
 
     <?php if (!user()->isGuest): ?>
-        <?php echo TbHtml::linkButton(t('siteButton','Uusi aihealue'),array(
+        <?php echo TbHtml::linkButton(t('siteButton','Lisää aihealue'),array(
             'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
             'url'=>array('create'),
             'class'=>'create-button',
@@ -23,7 +25,7 @@ $this->canonical=$this->createUrl('index');
     <?php endif; ?>
 
     <div class="rooms">
-        <?php $this->widget('app.widgets.sortablegridview.widgets.SortableGridView',array(
+        <?php $this->widget('app.widgets.sortable.widgets.SortableGridView',array(
             'sortUrl'=>app()->createUrl('room/ajaxSort'),
             'sortEnabled'=>!user()->isGuest,
             'type'=>TbHtml::GRID_TYPE_STRIPED,
@@ -33,7 +35,7 @@ $this->canonical=$this->createUrl('index');
             'template'=>"{items}",
             'columns'=>array(
                 array(
-                    'header'=>t('roomGrid','Aihepiiri'),
+                    'header'=>t('roomGrid','Aihealue'),
                     'headerHtmlOptions'=>array('class'=>'text-column'),
                     'htmlOptions'=>array('class'=>'text-column'),
                     'value'=>function($data) {

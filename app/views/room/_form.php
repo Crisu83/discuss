@@ -25,7 +25,7 @@
     <?php echo TbHtml::linkButton(t('roomButton','Peruuta'),array(
         'color'=>TbHtml::BUTTON_COLOR_LINK,
         'size'=>TbHtml::BUTTON_SIZE_LARGE,
-        'url'=>!$model->isNewRecord ? $model->createUrl() : array('index'),
+        'url'=>!$model->isNewRecord ? $model->createUrl() : array('list'),
         'confirm'=>t('roomConfirm','Oletko varma että haluat peruuttaa? Kaikki tallentamattomat muutokset menetetään.'),
     )); ?>
 

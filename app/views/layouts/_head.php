@@ -6,7 +6,13 @@
     <?php /*<link rel="icon" href="<?php echo baseUrl('/favicon.ico'); ?>" type="image/x-icon"/>*/ ?>
 
     <title><?php echo e($this->pageTitle); ?></title>
-    <?php $this->widget('app.widgets.SeoHead'); ?>
+    <?php $this->widget('app.widgets.SeoHead',array(
+        'defaultProperties'=>array(
+            'og:site_name'=>app()->facebook->siteName,
+            'og:locale'=>app()->facebook->locale,
+            'fb:app_id'=>app()->facebook->appId,
+        ),
+    )); ?>
 
     <?php css('css/main.css'); ?>
     <?php css('css/responsive.css'); ?>

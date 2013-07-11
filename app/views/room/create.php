@@ -6,7 +6,7 @@ $this->pageTitle = array(
     t('roomTitle', 'Uusi aihealue'),
 );
 $this->breadcrumbs=array(
-    t('roomBreadcrumb', 'Keskustelu')=>array('index'),
+    t('roomBreadcrumb', 'Keskustelu')=>array('list'),
     t('roomBreadcrumb', 'Uusi aihealue'),
 );
 ?>

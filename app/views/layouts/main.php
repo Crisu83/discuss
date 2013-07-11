@@ -12,6 +12,14 @@
 		'items'=>array(
             array(
                 'class'=>'bootstrap.widgets.TbNav',
+                'items'=>array(
+                    array('label'=>t('link','Etusivu'),'url'=>array('/site/index')),
+                    array('label'=>t('link','Keskustelu'),'url'=>array('/room/list')),
+                    array('label'=>t('link','Blogit'),'url'=>array('/blog/list')),
+                ),
+            ),
+            array(
+                'class'=>'bootstrap.widgets.TbNav',
                 'htmlOptions'=>array('pull'=>TbHtml::PULL_RIGHT),
                 'items'=>array(
                     array('label'=>t('link','Kirjaudu ylläpitäjänä'),'url'=>array('/site/login'),'visible'=>user()->isGuest),

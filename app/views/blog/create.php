@@ -1,12 +1,12 @@
 <?php
 /* @var BlogController $this */
-/* @var Blog $model */
+/* @var FeaturedBlog $model */
 
 $this->pageTitle = array(
     t('blogTitle', 'Uusi blogi'),
 );
 $this->breadcrumbs=array(
-    t('blogBreadcrumb','Blogit')=>array('admin'),
+    t('blogBreadcrumb','Blogit')=>array('list'),
     t('blogBreadcrumb', 'Uusi blogi'),
 );
 ?>

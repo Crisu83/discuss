@@ -85,6 +85,20 @@ return array(
         ),
 		'imageManager' => array(
 			'class' => 'vendor.crisu83.yii-imagemanager.components.ImageManager',
+            'presets' => array(
+                'blogThumb' => array(
+                    array('thumbnail', 'width' => 132, 'height' => 180, 'mode' => 'outbound'),
+                ),
+                'blogCard' => array(
+                    array('thumbnail', 'width' => 150, 'height' => 190, 'mode' => 'outbound'),
+                ),
+                'blogPage' => array(
+                    array('thumbnail', 'width' => 370, 'height' => 480, 'mode' => 'outbound'),
+                ),
+                'blogPreview' => array(
+                    array('thumbnail', 'width' => 320, 'height' => 320, 'mode' => 'outbound'),
+                ),
+            ),
 		),
 		'log' => array(
 			'class' => 'CLogRouter',

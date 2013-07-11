@@ -10,12 +10,9 @@ $this->pageTitle=array(
 );
 $this->addMetaProperty('og:title',$model->subject);
 $this->addMetaProperty('og:url',$model->createAbsoluteUrl());
-$this->addMetaProperty('og:site_name',Yii::app()->facebook->siteName);
-$this->addMetaProperty('og:locale',Yii::app()->facebook->locale);
-$this->addMetaProperty('fb:app_id',Yii::app()->facebook->appId);
 $this->canonical=$model->createAbsoluteUrl();
 $this->breadcrumbs=array(
-    t('roomBreadcrumb', 'Keskustelu')=>array('room/index'),
+    t('roomBreadcrumb', 'Keskustelu')=>array('room/list'),
     $model->room->title=>array('room/view','id'=>$model->roomId),
     $model->subject,
 );
@@ -69,7 +66,7 @@ clientScript()->registerScript('PostQuoteButton',"
                         )); ?>
                     </div>
                 </div>
-                <div class="post-share">
+                <div class="facebook-like">
                     <?php $this->widget('ext.facebook.widgets.FbLike',array(
                         'url'=>$model->createUrl(),
                         'send'=>true,

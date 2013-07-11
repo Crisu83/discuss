@@ -6,7 +6,7 @@ $this->pageTitle = array(
     t('threadTitle','Uusi aihe'),
 );
 $this->breadcrumbs=array(
-    t('roomBreadcrumb', 'Keskustelu')=>array('room/index'),
+    t('roomBreadcrumb', 'Keskustelu')=>array('room/list'),
     $model->room->title=>array('room/view','id'=>$model->roomId),
     t('threadBreadcrumb','Uusi aihe'),
 );

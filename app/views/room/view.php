@@ -7,7 +7,7 @@ $this->pageTitle=array(
 );
 $this->canonical=$model->createAbsoluteUrl();
 $this->breadcrumbs=array(
-    t('roomBreadcrumb', 'Keskustelu')=>array('index'),
+    t('roomBreadcrumb', 'Keskustelu')=>array('list'),
     $model->title,
 );
 $this->backButton=TbHtml::linkButton(t('threadLink','Palaa keskustelualueelle'),array(

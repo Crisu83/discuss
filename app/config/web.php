@@ -30,8 +30,10 @@ return array(
 
 	// controllers mappings
 	'controllerMap' => array(
-		'email' => array('class' => 'vendor.nordsoftware.yii-emailer.controllers.EmailController'),
-		'image' => array('class' => 'vendor.crisu83.yii-image.controllers.ImageController'),
+		//'email' => array('class' => 'vendor.nordsoftware.yii-emailer.controllers.EmailController'),
+		'image' => array(
+            'class' => 'vendor.crisu83.yii-imagemanager.controllers.ImageController',
+        ),
 	),
 
 	// application modules
@@ -94,7 +96,9 @@ return array(
 				// language rules, uncomment the following if your application is multilingual
 				//'<lang:([a-z]{2}(?:_[a-z]{2})?)>/<route:[\w\/]+>'=>'<route>',
 				// seo rules
-                'keskustelu.html' => 'room/index',
+                'blogit.html' => 'blog/list',
+                'blogit/<name>-<id:\d+>.html' => 'blog/view',
+                'keskustelu.html' => 'room/list',
                 'keskustelu/<name>-<id:\d+>.html' => 'room/view',
                 'keskustelu/<room>/<name>-<id:\d+>.html' => 'thread/view',
                 '<controller:\w+>/<name>-<id:\d+>.html'=>'<controller>/view',

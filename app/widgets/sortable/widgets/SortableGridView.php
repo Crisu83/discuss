@@ -19,31 +19,30 @@ class SortableGridView extends TbGridView
      */
     public function init()
     {
-        $this->columns = array_merge(array(
-            array(
-                'type'=>'raw',
-                'value'=>function($data) {
-                    echo TbHtml::icon('move').'<span class="model-id" style="display:none;">'.$data->id.'</span>';
-                },
-                'htmlOptions'=>array('class'=>'draggable-column'),
-            ),
-        ), $this->columns);
-
-        parent::init();
         $this->attachBehavior('widget', new WidgetBehavior);
         $this->copyId();
 
         if ($this->sortEnabled)
         {
+            $this->columns = array_merge(array(
+                array(
+                    'type'=>'raw',
+                    'value'=>function($data) {
+                        echo TbHtml::icon('move').'<span class="model-id" style="display:none;">'.$data->id.'</span>';
+                    },
+                    'htmlOptions'=>array('class'=>'draggable-column'),
+                ),
+            ), $this->columns);
+
             $script = <<<EOD
-    var grid = jQuery('#{$this->id}');
-    var tableBody = grid.find('tbody').sortable({
+    var widget = jQuery('#{$this->id}');
+    var tableBody = widget.find('tbody').sortable({
         containerSelector: 'tbody',
         itemSelector: 'tr',
         handle: '.draggable-column',
         placeholder: '<tr class=\"placeholder\"/>',
         onDrop: function(item, container, _super) {
-            grid.addClass('grid-view-loading');
+            widget.addClass('grid-view-loading');
             var data = tableBody.sortable('serialize').get();
             jQuery.ajax({
                 type: 'POST',
@@ -51,7 +50,7 @@ class SortableGridView extends TbGridView
                 data: { data: data },
                 dataType: 'json',
                 complete: function(jqXHR, textStatus) {
-                    grid.removeClass('grid-view-loading');
+                    widget.removeClass('grid-view-loading');
                 }
             });
             _super(item, container);
@@ -69,5 +68,7 @@ EOD;
             $cs->registerScriptFile($assetsUrl . '/js/jquery-sortable.js', CClientScript::POS_END);
             $cs->registerScript(__CLASS__ . '#' . $this->id . '_sortable', $script);
         }
+
+        parent::init();
     }
 }

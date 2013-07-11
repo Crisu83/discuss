@@ -79,7 +79,7 @@ class Thread extends AuditActiveRecord
                         'label' => t('threadStatus', 'Poistettu'),
                     ),
                 ),
-            )
+            ),
         ));
     }
 

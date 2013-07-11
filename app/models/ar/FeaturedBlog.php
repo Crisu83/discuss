@@ -15,12 +15,14 @@
 * The followings are the available relations:
 * @property Image $image
 */
-class Blog extends ActiveRecord
+class FeaturedBlog extends ActiveRecord
 {
+    public $upload;
+
     /**
     * Returns the static model of the specified AR class.
     * @param string $className active record class name.
-    * @return Blog the static model class.
+    * @return FeaturedBlog the static model class.
     */
     public static function model($className = __CLASS__)
     {
@@ -32,7 +34,7 @@ class Blog extends ActiveRecord
     */
     public function tableName()
     {
-        return 'blog';
+        return 'featured_blog';
     }
 
     /**
@@ -41,8 +43,36 @@ class Blog extends ActiveRecord
     public function behaviors()
     {
         return array_merge(parent::behaviors(), array(
+            'seo' => array(
+                'class' => 'vendor.crisu83.yii-seo.behaviors.SeoActiveRecordBehavior',
+                'route' => 'blog/view',
+                'params' => array(
+                    'id' => function($data) {
+                        return $data->id;
+                    },
+                    'name' => function($data) {
+                        return strtolower($data->name);
+                    },
+                ),
+            ),
+            'image' => array(
+                'class' => 'vendor.crisu83.yii-imagemanager.behaviors.ImageBehavior',
+            ),
             'weight' => array(
                 'class' => 'app.behaviors.WeightBehavior',
+            ),
+            'workflow' => array(
+                'class' => 'app.behaviors.WorkflowBehavior',
+                'defaultStatus' => self::STATUS_DEFAULT,
+                'statuses' => array(
+                    self::STATUS_DEFAULT => array(
+                        'label' => t('threadStatus', 'Oletus'),
+                        'transitions' => array(self::STATUS_DELETED),
+                    ),
+                    self::STATUS_DELETED => array(
+                        'label' => t('threadStatus', 'Poistettu'),
+                    ),
+                ),
             ),
         ));
     }
@@ -53,13 +83,14 @@ class Blog extends ActiveRecord
     public function rules()
     {
         return array_merge(parent::rules(), array(
-            array('name, description, url', 'required'),
+            array('name, lead, url', 'required'),
             array('weight, status', 'numerical', 'integerOnly'=>true),
             array('imageId', 'length', 'max'=>10),
-            array('name, url', 'length', 'max'=>255),
+            array('name, lead, url', 'length', 'max'=>255),
             array('url', 'url', 'defaultScheme' => 'http'),
+            array('upload', 'safe'),
             // The following rule is used by search().
-            array('id, imageId, name, description, url, weight, status', 'safe', 'on' => 'search'),
+            array('id, imageId, name, lead, description, url, weight, status', 'safe', 'on' => 'search'),
         ));
     }
 
@@ -82,10 +113,12 @@ class Blog extends ActiveRecord
             'id' => t('blogLabel', 'ID'),
             'imageId' => t('blogLabel', 'Kuva'),
             'name' => t('blogLabel', 'Nimi'),
+            'lead' => t('blogLabel', 'Johdanto'),
             'description' => t('blogLabel', 'Kuvaus'),
             'url' => t('blogLabel', 'URL osoite'),
             'weight' => t('blogLabel', 'Paino'),
             'status' => t('blogLabel', 'Tila'),
+            'upload' => t('blogLabel', 'Kuva'),
         ));
     }
 
@@ -100,6 +133,7 @@ class Blog extends ActiveRecord
 		$criteria->compare('id', $this->id);
 		$criteria->compare('imageId', $this->imageId);
 		$criteria->compare('name', $this->name, true);
+		$criteria->compare('lead', $this->lead, true);
 		$criteria->compare('description', $this->description, true);
 		$criteria->compare('url', $this->url, true);
 		$criteria->compare('weight', $this->weight);
@@ -108,5 +142,27 @@ class Blog extends ActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function buttonToolbar()
+    {
+        $buttons = array();
+        if (!user()->isGuest)
+        {
+            $buttons[] = TbHtml::linkButton(TbHtml::icon('pencil'), array(
+                'url' => array('update', 'id' => $this->id),
+                'rel' => 'tooltip',
+                'title' => t('blogTitle', 'Muokkaa blogia'),
+                'class' => 'blog-button',
+            ));
+            $buttons[] = TbHtml::linkButton(TbHtml::icon('remove'), array(
+                'url' => array('delete', 'id' => $this->id),
+                'rel' => 'tooltip',
+                'title' => t('blogTitle', 'Poista blogi'),
+                'confirm' => t('blogConfirm', 'Oletko varma että haluat poistaa tämän blogin?'),
+                'class' => 'blog-button',
+            ));
+        }
+        return implode(' ', $buttons);
     }
 }

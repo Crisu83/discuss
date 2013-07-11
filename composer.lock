@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-extension.git",
-                "reference": "4774e7ff5f34be9a96ef8e6d054b1ddd129a589e"
+                "reference": "998a0ac9cf99960ea96c37b66601f0cde1fd180e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/4774e7ff5f34be9a96ef8e6d054b1ddd129a589e",
-                "reference": "4774e7ff5f34be9a96ef8e6d054b1ddd129a589e",
+                "url": "https://api.github.com/repos/Crisu83/yii-extension/zipball/998a0ac9cf99960ea96c37b66601f0cde1fd180e",
+                "reference": "998a0ac9cf99960ea96c37b66601f0cde1fd180e",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "Tools for building extensions for the Yii PHP framework.",
-            "time": "2013-07-04 19:42:12"
+            "time": "2013-07-04 21:37:56"
         },
         {
             "name": "crisu83/yii-filemanager",
@@ -103,12 +103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-filemanager.git",
-                "reference": "b583b418ac455ee1c99c6a7e324de2b2dfa51795"
+                "reference": "e8a39298e12b5a800741e949527136485908e4e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-filemanager/zipball/b583b418ac455ee1c99c6a7e324de2b2dfa51795",
-                "reference": "b583b418ac455ee1c99c6a7e324de2b2dfa51795",
+                "url": "https://api.github.com/repos/Crisu83/yii-filemanager/zipball/e8a39298e12b5a800741e949527136485908e4e1",
+                "reference": "e8a39298e12b5a800741e949527136485908e4e1",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 }
             ],
             "description": "File manager for the Yii PHP framework.",
-            "time": "2013-07-04 20:03:43"
+            "time": "2013-07-11 20:35:22"
         },
         {
             "name": "crisu83/yii-imagemanager",
@@ -134,17 +134,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-imagemanager.git",
-                "reference": "3279ed520e8018cd6b173fe278ec1391a71057f4"
+                "reference": "9c207b826a2a7b2fe650f8ae6e8e527fe3436202"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-imagemanager/zipball/3279ed520e8018cd6b173fe278ec1391a71057f4",
-                "reference": "3279ed520e8018cd6b173fe278ec1391a71057f4",
+                "url": "https://api.github.com/repos/Crisu83/yii-imagemanager/zipball/9c207b826a2a7b2fe650f8ae6e8e527fe3436202",
+                "reference": "9c207b826a2a7b2fe650f8ae6e8e527fe3436202",
                 "shasum": ""
             },
             "require": {
                 "crisu83/yii-extension": "dev-no-namespaces",
-                "imagine/imagine": "dev-develop"
+                "imagine/imagine": "0.6.*@dev"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -158,7 +158,7 @@
                 }
             ],
             "description": "Image manager for the Yii PHP framework.",
-            "time": "2013-07-04 20:04:15"
+            "time": "2013-07-11 20:30:59"
         },
         {
             "name": "crisu83/yii-seo",
@@ -198,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "91c84283e4ab20dc9ada9457bb12e8d91b710ec5"
+                "reference": "98a2d5331d9a4bf54b5ea902a5ae1192c77ef86e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/91c84283e4ab20dc9ada9457bb12e8d91b710ec5",
-                "reference": "91c84283e4ab20dc9ada9457bb12e8d91b710ec5",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/98a2d5331d9a4bf54b5ea902a5ae1192c77ef86e",
+                "reference": "98a2d5331d9a4bf54b5ea902a5ae1192c77ef86e",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -228,7 +228,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-07-03 15:34:17"
+            "time": "2013-07-11 10:38:38"
         },
         {
             "name": "facebook/php-sdk",
@@ -279,12 +279,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "06639db40fc2edccda499883b8f04b45b684fc1b"
+                "reference": "639177bfd95cebaceecbba94052e290bb42ae48c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/06639db40fc2edccda499883b8f04b45b684fc1b",
-                "reference": "06639db40fc2edccda499883b8f04b45b684fc1b",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/639177bfd95cebaceecbba94052e290bb42ae48c",
+                "reference": "639177bfd95cebaceecbba94052e290bb42ae48c",
                 "shasum": ""
             },
             "require": {
@@ -299,6 +299,11 @@
                 "ext-imagick": "to use the Imagick implementation"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.6-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Imagine": "lib/"
@@ -323,7 +328,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2013-07-03 18:07:10"
+            "time": "2013-07-10 18:15:43"
         },
         {
             "name": "malyshev/yii-debug-toolbar",
