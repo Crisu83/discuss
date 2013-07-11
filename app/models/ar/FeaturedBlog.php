@@ -88,7 +88,7 @@ class FeaturedBlog extends ActiveRecord
             array('imageId', 'length', 'max'=>10),
             array('name, lead, url', 'length', 'max'=>255),
             array('url', 'url', 'defaultScheme' => 'http'),
-            array('upload', 'safe'),
+            array('description, upload', 'safe'),
             // The following rule is used by search().
             array('id, imageId, name, lead, description, url, weight, status', 'safe', 'on' => 'search'),
         ));

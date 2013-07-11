@@ -79,6 +79,9 @@ class BlogController extends Controller
         $request = request();
         if ($request->isPostRequest)
         {
+            $upload = CUploadedFile::getInstance($model, 'upload');
+            iF ($upload !== null)
+                $model->saveImage($upload, $model->name, 'featuredBlog');
             $model->attributes = $request->getPost('FeaturedBlog');
             if ($model->save())
                 $this->redirect(array('list'));
