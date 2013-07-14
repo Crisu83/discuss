@@ -12,6 +12,16 @@
  *
  * The followings are the available relations for table 'comment':
  * @property Thread $thread
+ *
+ * The following methods are available via WorkflowBehavior:
+ * @method changeStatus($newStatus)
+ * @method getStatusId()
+ * @method getStatusName($id = null)
+ * @method getStatusConfig($id = null)
+ * @method getStatusOptions()
+ * @method getAllowedStatusOptions()
+ * @method isTransitionAllowed($oldStatus, $newStatus)
+ * @method hasStatus($id)
  */
 class Reply extends AuditActiveRecord
 {

@@ -1,20 +1,44 @@
 <?php
 
 /**
-* This is the model class for table "blog".
-*
-* The followings are the available columns:
-* @property string $id
-* @property string $imageId
-* @property string $name
-* @property string $description
-* @property string $url
-* @property integer $weight
-* @property integer $status
-*
-* The followings are the available relations:
-* @property Image $image
-*/
+ * This is the model class for table "blog".
+ *
+ * The following are the available columns:
+ * @property string $id
+ * @property string $imageId
+ * @property string $name
+ * @property string $description
+ * @property string $url
+ * @property integer $weight
+ * @property integer $status
+ *
+ * The following are the available relations:
+ * @property Image $image
+ *
+ * The following methods are available via SeoActiveRecordBehavior:
+ * @method createUrl($params = array())
+ * @method createAbsoluteUrl($params = array()) via SeoActiveRecordBehavior
+ *
+ * The following methods are available via ImageBehavior:
+ * @method saveImage($file, $name = null, $path = null)
+ * @method renderImagePreset($name, $alt = '', $htmlOptions = array(), $placeholder = '´&nbsp;')
+ * @method createImagePresetUrl($name)
+ * @method deleteImage()
+ *
+ * The following methods are available via WeightBehavior:
+ * @method applyWeightCriteria($criteria)
+ * @method updateWeights($data, $models)
+ *
+ * The following methods are available via WorkflowBehavior:
+ * @method changeStatus($newStatus)
+ * @method getStatusId()
+ * @method getStatusName($id = null)
+ * @method getStatusConfig($id = null)
+ * @method getStatusOptions()
+ * @method getAllowedStatusOptions()
+ * @method isTransitionAllowed($oldStatus, $newStatus)
+ * @method hasStatus($id)
+ */
 class FeaturedBlog extends ActiveRecord
 {
     public $upload;

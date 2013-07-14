@@ -13,6 +13,14 @@
  * The followings are the available relations for table 'thread':
  * @property integer $numThreads
  * @property integer $numReplies
+ *
+ * The following methods are available via SeoActiveRecordBehavior:
+ * @method createUrl($params = array())
+ * @method createAbsoluteUrl($params = array()) via SeoActiveRecordBehavior
+ *
+ * The following methods are available via WeightBehavior:
+ * @method applyWeightCriteria($criteria)
+ * @method updateWeights($data, $models)
 */
 class Room extends AuditActiveRecord
 {

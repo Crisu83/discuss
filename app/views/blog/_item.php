@@ -1,4 +1,5 @@
 <?php
+/* @var SortableListView $this */
 /* @var FeaturedBlog $data */
 /* @var integer $index */
 ?>
@@ -12,9 +13,11 @@
         <div class="blog-content">
             <h3 class="blog-name"><?php echo l(e($data->name),$data->createUrl()); ?></h3>
             <p class="blog-lead"><?php echo e($data->lead); ?></p>
-            <div class="draggable-handle">
-                <?php echo TbHtml::icon('move'); ?> <span class="model-id" style="display:none;"><?php echo $data->id; ?></span>
-            </div>
+            <?php if ($this->sortEnabled): ?>
+                <div class="draggable-handle">
+                    <?php echo TbHtml::icon('move'); ?> <span class="model-id" style="display:none;"><?php echo $data->id; ?></span>
+                </div>
+            <?php endif; ?>
             <div class="blog-actions">
                 <div class="pull-right">
                     <?php echo $data->buttonToolbar(); ?>

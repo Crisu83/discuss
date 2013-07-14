@@ -19,6 +19,20 @@
  * @property Reply[] $replies
  * @property integer $numReplies
  * @property integer $numViews
+ *
+ * The following methods are available via SeoActiveRecordBehavior:
+ * @method createUrl($params = array())
+ * @method createAbsoluteUrl($params = array()) via SeoActiveRecordBehavior
+ *
+ * The following methods are available via WorkflowBehavior:
+ * @method changeStatus($newStatus)
+ * @method getStatusId()
+ * @method getStatusName($id = null)
+ * @method getStatusConfig($id = null)
+ * @method getStatusOptions()
+ * @method getAllowedStatusOptions()
+ * @method isTransitionAllowed($oldStatus, $newStatus)
+ * @method hasStatus($id)
  */
 class Thread extends AuditActiveRecord
 {
