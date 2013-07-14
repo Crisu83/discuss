@@ -1,5 +1,6 @@
 <?php
-/* @var SortableListView $this */
+/* @var BlogController $this */
+/* @var SortableListView $widget */
 /* @var FeaturedBlog $data */
 /* @var integer $index */
 ?>
@@ -13,7 +14,7 @@
         <div class="blog-content">
             <h3 class="blog-name"><?php echo l(e($data->name),$data->createUrl()); ?></h3>
             <p class="blog-lead"><?php echo e($data->lead); ?></p>
-            <?php if ($this->sortEnabled): ?>
+            <?php if ($widget->sortEnabled): ?>
                 <div class="draggable-handle">
                     <?php echo TbHtml::icon('move'); ?> <span class="model-id" style="display:none;"><?php echo $data->id; ?></span>
                 </div>
